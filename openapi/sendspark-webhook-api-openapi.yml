@@ -1,0 +1,365 @@
+openapi: 3.0.0
+info:
+  title: Sendspark DVM Bundles Webhook API
+  version: 1.2.0
+  description: Public Sendspark API. DRAFT scaffold generated from the internal API v2 spec — endpoint selection and authentication are pending engineering review before publishing.
+servers:
+- url: https://api-gw.sendspark.com
+  description: Production
+security:
+- apiKey: []
+  apiSecret: []
+tags:
+- name: Webhook
+paths:
+  /v1/workspaces/{workspaceId}/webhooks:
+    get:
+      summary: Get Webhook list by workspace ID
+      operationId: getWebhookListByWorkspaceId
+      description: Get Webhook list by workspace ID
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - Webhook
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+    post:
+      summary: Create new Webhook
+      operationId: postCreateWebhook
+      description: Create new Webhook
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWebhookRequestPayloadSchema'
+      tags:
+      - Webhook
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CreateWebhookResponseSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+  /v1/workspaces/{workspaceId}/webhooks/{webhookId}:
+    get:
+      summary: Get Webhook by ID
+      operationId: getWebhookById
+      description: Get Webhook by ID
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: webhookId
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - Webhook
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+    delete:
+      summary: Delete Webhook by ID
+      operationId: deleteWebhookById
+      description: Delete Webhook by ID
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: webhookId
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - Webhook
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+    patch:
+      summary: Modify Webhook
+      operationId: patchModifyWebhook
+      description: Modify Webhook
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: webhookId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModifyWebhookRequestPayloadSchema'
+      tags:
+      - Webhook
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ModifyWebhookResponseSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+components:
+  schemas:
+    WebhookVideoEventsSchema:
+      type: array
+      example:
+      - video_watched
+      - video_played
+      - video_cta_clicked
+      - video_viewed
+      - video_liked
+      - video_request_received
+      - video_generated_dv
+      - video_mp4_ready
+      - video_generated_error
+      items:
+        $ref: '#/components/schemas/Model143'
+    Model143:
+      type: string
+      enum:
+      - video_watched
+      - video_played
+      - video_cta_clicked
+      - video_viewed
+      - video_liked
+      - video_request_received
+      - video_generated_dv
+      - video_mp4_ready
+      - video_generated_error
+    WebhookMetadataSchema:
+      type: object
+      properties:
+        automation:
+          $ref: '#/components/schemas/automation'
+      required:
+      - automation
+    identifiers:
+      type: array
+      items:
+        type: string
+        example: sdfgh2345werty345678dfghj
+    module:
+      type: string
+      example: global | dynamics
+      enum:
+      - global
+      - dynamics
+    ModifyWebhookResponseSchema:
+      type: object
+    BadRequest:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 400
+        code:
+          type: string
+          example: S400-AHVE
+        error:
+          type: string
+          example: Bad Request
+        message:
+          type: string
+          example: Invalid request payload input
+    ModifyWebhookRequestPayloadSchema:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Production Webhook
+        description:
+          type: string
+          example: Webhook for production environment
+        extraHeaders:
+          $ref: '#/components/schemas/extraHeaders'
+        url:
+          type: string
+          example: https://example.com/webhook
+          x-format:
+            uri: true
+        module:
+          $ref: '#/components/schemas/module'
+        identifiers:
+          $ref: '#/components/schemas/identifiers'
+        events:
+          $ref: '#/components/schemas/events'
+        enabled:
+          type: boolean
+          example: true
+    extraHeaders:
+      type: array
+      example:
+      - Authorization
+      - Content-Type
+      items:
+        type: string
+    CreateWebhookRequestPayloadSchema:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Production Webhook
+        description:
+          type: string
+          example: Webhook for production environment
+        extraHeaders:
+          $ref: '#/components/schemas/extraHeaders'
+        url:
+          type: string
+          example: https://example.com/webhook
+          x-format:
+            uri: true
+        module:
+          $ref: '#/components/schemas/module'
+        identifiers:
+          $ref: '#/components/schemas/identifiers'
+        events:
+          $ref: '#/components/schemas/WebhookVideoEventsSchema'
+        metadata:
+          $ref: '#/components/schemas/WebhookMetadataSchema'
+      required:
+      - name
+      - url
+      - module
+    Model217:
+      type: string
+      enum:
+      - video_watched
+      - video_played
+      - video_cta_clicked
+      - video_viewed
+      - video_liked
+      - video_request_received
+      - video_generated_dv
+      - video_mp4_ready
+      - video_generated_error
+    events:
+      type: array
+      example:
+      - video_watched
+      - video_played
+      - video_cta_clicked
+      - video_viewed
+      - video_liked
+      - video_request_received
+      - video_generated_dv
+      - video_mp4_ready
+      - video_generated_error
+      items:
+        $ref: '#/components/schemas/Model217'
+    automation:
+      type: object
+      properties:
+        workflowId:
+          type: number
+        provider:
+          type: string
+      required:
+      - provider
+    ResourceNotFoundOrInvalidAccess:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 404
+        error:
+          type: string
+          example: Not Found
+        message:
+          type: string
+          example: Resource not found or invalid access
+    CreateWebhookResponseSchema:
+      type: object
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+    apiSecret:
+      type: apiKey
+      in: header
+      name: x-api-secret

@@ -1,0 +1,125 @@
+openapi: 3.0.0
+info:
+  title: Sendspark DVM Bundles Workspace API
+  version: 1.2.0
+  description: Public Sendspark API. DRAFT scaffold generated from the internal API v2 spec — endpoint selection and authentication are pending engineering review before publishing.
+servers:
+- url: https://api-gw.sendspark.com
+  description: Production
+security:
+- apiKey: []
+  apiSecret: []
+tags:
+- name: Workspace
+paths:
+  /v1/workspaces:
+    get:
+      summary: Get the list of the current users workspaces
+      operationId: getWorkspaces
+      description: Get the list of the current users workspaces
+      parameters:
+      - name: dropdownRendering
+        in: query
+        required: false
+        schema:
+          type: boolean
+      tags:
+      - Workspace
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorspacesResponseSchema'
+  /v1/workspaces/identifier:
+    get:
+      summary: Get workspace id by api key
+      operationId: getWorkspaceByApiKey
+      description: Get workspace id by api key
+      tags:
+      - Workspace
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/GetWorkspaceIdByApiKeyResponseSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+components:
+  schemas:
+    WorspacesResponseSchema:
+      type: object
+      properties:
+        workspaces:
+          $ref: '#/components/schemas/Workspaces'
+    BadRequest:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 400
+        code:
+          type: string
+          example: S400-AHVE
+        error:
+          type: string
+          example: Bad Request
+        message:
+          type: string
+          example: Invalid request payload input
+    Workspaces:
+      type: array
+      items:
+        $ref: '#/components/schemas/WorkspaceResponseSchemadropdownRendering'
+    GetWorkspaceIdByApiKeyResponseSchema:
+      type: object
+      properties:
+        workspaceId:
+          type: string
+          example: 7voa5y6qjj04kkbfqbgjd7kdvxlf4gqo
+      required:
+      - workspaceId
+    WorkspaceResponseSchemadropdownRendering:
+      type: object
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+      required:
+      - _id
+      - name
+    ResourceNotFoundOrInvalidAccess:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 404
+        error:
+          type: string
+          example: Not Found
+        message:
+          type: string
+          example: Resource not found or invalid access
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+    apiSecret:
+      type: apiKey
+      in: header
+      name: x-api-secret

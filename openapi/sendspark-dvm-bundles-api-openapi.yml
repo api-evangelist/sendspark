@@ -1,0 +1,479 @@
+openapi: 3.0.0
+info:
+  title: Sendspark DVM Bundles API
+  version: 1.2.0
+  description: Public Sendspark API. DRAFT scaffold generated from the internal API v2 spec — endpoint selection and authentication are pending engineering review before publishing.
+servers:
+- url: https://api-gw.sendspark.com
+  description: Production
+security:
+- apiKey: []
+  apiSecret: []
+tags:
+- name: DVM Bundles
+paths:
+  /v1/workspaces/{workspaceId}/dvm-bundles:
+    get:
+      summary: Get available DVM minute bundles for workspace
+      operationId: getDvmBundles
+      description: Returns available DVM minute bundle packages for the workspace plan with current balance.
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - DVM Bundles
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BundlesGetResponseSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '403':
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+  /v1/workspaces/{workspaceId}/dvm-bundles/cancel:
+    post:
+      summary: Cancel recurring DVM bundle packs
+      operationId: cancelDvmBundle
+      description: Schedules bundle cancellation at the end of the current billing period. Bundle continues to contribute minutes until then. No refund.
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BundlesCancelPayloadSchema'
+      tags:
+      - DVM Bundles
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BundlesCancelResponseSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '403':
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+  /v1/workspaces/{workspaceId}/dvm-bundles/{bundleId}:
+    patch:
+      summary: Add minutes to an existing custom DVM bundle
+      operationId: updateDvmBundle
+      description: Increases the minute quantity of an active custom DVM bundle by addMinutes. The new total is validated against plan max/step. Stripe prorates the additional cost for the remaining billing period and invoices it immediately.
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: bundleId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BundlesUpdatePayloadSchema'
+      tags:
+      - DVM Bundles
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BundlesUpdateResponseSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '403':
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+components:
+  schemas:
+    VolumeTierSchema:
+      type: object
+      properties:
+        upTo:
+          type: integer
+        unitAmountCents:
+          type: number
+      required:
+      - upTo
+      - unitAmountCents
+    balance:
+      type: object
+    CustomBundleConfigSchema:
+      type: object
+      properties:
+        id:
+          type: string
+        priceId:
+          type: string
+        tiersMode:
+          $ref: '#/components/schemas/tiersMode'
+        tiers:
+          $ref: '#/components/schemas/tiers'
+        minMinutes:
+          type: integer
+        maxMinutes:
+          type: integer
+        stepMinutes:
+          type: integer
+        quickPicks:
+          $ref: '#/components/schemas/quickPicks'
+        mostPopular:
+          type: integer
+          x-constraint:
+            sign: positive
+        label:
+          type: string
+        recurring:
+          type: boolean
+        interval:
+          $ref: '#/components/schemas/Model46'
+      required:
+      - id
+      - priceId
+      - tiersMode
+      - tiers
+      - minMinutes
+      - maxMinutes
+      - stepMinutes
+      - quickPicks
+      - mostPopular
+      - label
+      - recurring
+      - interval
+    Forbidden:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 403
+        code:
+          type: string
+          example: S403-UPLD
+        error:
+          type: string
+          example: Forbidden
+        message:
+          type: string
+          example: Invalid request payload input / Any error from provider
+    Model48:
+      type: string
+      enum:
+      - month
+      - year
+    BadRequest:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 400
+        code:
+          type: string
+          example: S400-AHVE
+        error:
+          type: string
+          example: Bad Request
+        message:
+          type: string
+          example: Invalid request payload input
+    tiersMode:
+      type: string
+      enum:
+      - volume
+      - graduated
+    Model49:
+      type: string
+      enum:
+      - one-time
+      - recurring
+      - custom
+    ActiveBundleSchema:
+      type: object
+      properties:
+        bundleId:
+          type: string
+        module:
+          type: string
+        minutesPerBundle:
+          type: number
+        bundleCount:
+          type: number
+        unit:
+          type: string
+        priceId:
+          type: string
+        subscriptionItemId:
+          type: string
+        label:
+          type: string
+        productName:
+          type: string
+          example: Custom DVM Minutes - Growth
+        unitAmountCents:
+          type: number
+          example: 120.75
+        totalPriceCents:
+          type: integer
+          example: 4500
+        status:
+          $ref: '#/components/schemas/Model47'
+        endsAt:
+          type: string
+          format: date
+        purchasedAt:
+          type: string
+          format: date
+        purchasedBy:
+          type: string
+        interval:
+          $ref: '#/components/schemas/Model48'
+        cancelingCount:
+          type: number
+        type:
+          $ref: '#/components/schemas/Model49'
+        isCustom:
+          type: boolean
+        isCanceling:
+          type: boolean
+        quantity:
+          type: integer
+      required:
+      - bundleId
+      - module
+      - minutesPerBundle
+      - bundleCount
+      - unit
+      - priceId
+      - subscriptionItemId
+      - status
+    BundlesCancelResponseSchema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: canceling
+        endsAt:
+          type: string
+          format: date
+        message:
+          type: string
+      required:
+      - status
+      - message
+    ResourceNotFoundOrInvalidAccess:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 404
+        error:
+          type: string
+          example: Not Found
+        message:
+          type: string
+          example: Resource not found or invalid access
+    BundlesUpdateResponseSchema:
+      type: object
+      properties:
+        bundle:
+          $ref: '#/components/schemas/UpdatedBundleResult'
+        addedMinutes:
+          type: integer
+        previousTotalMinutes:
+          type: integer
+        newTotalMinutes:
+          type: integer
+        additionalChargeCents:
+          type: integer
+        balance:
+          type: string
+      required:
+      - bundle
+      - addedMinutes
+      - previousTotalMinutes
+      - newTotalMinutes
+      - additionalChargeCents
+    BundlesUpdatePayloadSchema:
+      type: object
+      properties:
+        addMinutes:
+          type: integer
+          example: 50
+          x-constraint:
+            sign: positive
+      required:
+      - addMinutes
+    quickPicks:
+      type: array
+      items:
+        type: integer
+        x-constraint:
+          sign: positive
+    Model47:
+      type: string
+      enum:
+      - active
+      - canceling
+      - canceled
+    tiers:
+      type: array
+      minItems: 1
+      items:
+        $ref: '#/components/schemas/VolumeTierSchema'
+    Model46:
+      type: string
+      enum:
+      - month
+      - year
+    activeBundles:
+      type: array
+      items:
+        $ref: '#/components/schemas/ActiveBundleSchema'
+    UpdatedBundleResult:
+      type: object
+      properties:
+        bundleId:
+          type: string
+        subscriptionItemId:
+          type: string
+        minutesPerBundle:
+          type: number
+        label:
+          type: string
+        unitPriceCents:
+          type: number
+        totalPriceCents:
+          type: number
+      required:
+      - bundleId
+      - subscriptionItemId
+      - minutesPerBundle
+      - label
+      - unitPriceCents
+      - totalPriceCents
+    Model45:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model44'
+    Model44:
+      type: object
+      properties:
+        id:
+          type: string
+          example: prod_UB6XkMTrkKEdxB
+        priceId:
+          type: string
+          example: price_1RBg7yADxQe4sXwj5E3Bt8qM
+        minutes:
+          type: integer
+          example: 30
+        label:
+          type: string
+          example: 30-Minute Bundle
+        unitPriceCents:
+          type: integer
+          example: 100
+        totalPriceCents:
+          type: integer
+          example: 3000
+        badge:
+          type: string
+          example: Best Value
+        sortOrder:
+          type: integer
+          example: 1
+      required:
+      - id
+      - priceId
+      - minutes
+      - label
+      - unitPriceCents
+      - totalPriceCents
+      - sortOrder
+    BundlesCancelPayloadSchema:
+      type: object
+      properties:
+        subscriptionItemId:
+          type: string
+          example: si_UKraMwyWFL7t4w
+      required:
+      - subscriptionItemId
+    BundlesGetResponseSchema:
+      type: object
+      properties:
+        bundles:
+          $ref: '#/components/schemas/Model45'
+        customBundleConfig:
+          $ref: '#/components/schemas/CustomBundleConfigSchema'
+        activeBundles:
+          $ref: '#/components/schemas/activeBundles'
+        balance:
+          $ref: '#/components/schemas/balance'
+      required:
+      - bundles
+      - balance
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+    apiSecret:
+      type: apiKey
+      in: header
+      name: x-api-secret

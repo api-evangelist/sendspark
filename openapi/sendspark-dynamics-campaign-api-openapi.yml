@@ -1,0 +1,1495 @@
+openapi: 3.0.0
+info:
+  title: Sendspark DVM Bundles Dynamics Campaign API
+  version: 1.2.0
+  description: Public Sendspark API. DRAFT scaffold generated from the internal API v2 spec — endpoint selection and authentication are pending engineering review before publishing.
+servers:
+- url: https://api-gw.sendspark.com
+  description: Production
+security:
+- apiKey: []
+  apiSecret: []
+tags:
+- name: Dynamics Campaign
+paths:
+  /v1/workspaces/{workspaceId}/dynamics:
+    get:
+      summary: Get the list of Dynamic Campaigns by workspace
+      operationId: getDynamicsList
+      description: Get the list of Dynamic Campaigns by workspace
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: number
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: dropdownRendering
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: projectionType
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - DEFAULT
+          - DETAILED
+          - MINIMAL
+      - name: sortOrder
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: prospectOnly
+        in: query
+        required: false
+        schema:
+          type: boolean
+      tags:
+      - Dynamics Campaign
+      responses:
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+        '503':
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ServiceUnavailable'
+    post:
+      summary: Create Dynamics Campaign
+      operationId: postDynamics
+      description: Create Dynamics Campaign in folder
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestParamsCreateDynamicsCampaignsSchema'
+      tags:
+      - Dynamics Campaign
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseCreateDynamicsCampaignSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '403':
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+        '503':
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ServiceUnavailable'
+  /v1/workspaces/{workspaceId}/dynamics/{dynamicId}:
+    get:
+      summary: Get workspace dynamic campaign
+      operationId: getWorkspaceDynamics
+      description: Get workspace dynamic campaign
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dynamicId
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - Dynamics Campaign
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Model57'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+        '503':
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ServiceUnavailable'
+  /v1/workspaces/{workspaceId}/dynamics/settings:
+    get:
+      summary: Get dynamics settings
+      operationId: getDynamicsSettings
+      description: Get dynamics settings
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - Dynamics Campaign
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/dynamicSettingsGetResponseSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+        '503':
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ServiceUnavailable'
+  /v1/workspaces/{workspaceId}/dynamics/{dynamicId}/prospects/{contactEmail}:
+    get:
+      summary: Get prospect data from prospect email
+      operationId: getProspectDynamicsVideos
+      description: Get prospect data from prospect email
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dynamicId
+        in: path
+        required: true
+        schema:
+          type: string
+      - x-format:
+          email: true
+        name: contactEmail
+        in: path
+        required: true
+        schema:
+          type: string
+      - description: Comma-separated list of additional fields to include in the response (emailEmbedHTML, fields)
+        name: include
+        in: query
+        required: false
+        schema:
+          type: string
+      tags:
+      - Dynamics Campaign
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DynamicVideosGetProspectResponseSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+  /v2/workspaces/{workspaceId}/dynamics:
+    post:
+      summary: Create Dynamics Campaign for the DV by steps UI
+      operationId: postDynamicsV2
+      description: Create Dynamics Campaign in folder for the DV by steps UI
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model144'
+      tags:
+      - Dynamics Campaign
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Model149'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '403':
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+        '503':
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ServiceUnavailable'
+  /dv-v2/workspaces/{workspaceId}/dynamics/{dynamicId}/bulk:
+    post:
+      summary: Generate videos for Dynamics Campaign prospect list
+      operationId: postDynamicsVideoBulk
+      description: Generate videos for Dynamics Campaign prospect list
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dynamicId
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - Dynamics Campaign
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseDynamicsVideoAddSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '403':
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+        '503':
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ServiceUnavailable'
+  /v1/workspaces/{workspaceId}/dynamics/{dynamicId}/bulk:
+    post:
+      summary: Generate videos for Dynamics Campaign prospect list
+      operationId: postV1WorkspacesWorkspaceidDynamicsDynamicidBulk
+      description: Generate videos for Dynamics Campaign prospect list
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dynamicId
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - Dynamics Campaign
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseDynamicsVideoAddSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '403':
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+        '503':
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ServiceUnavailable'
+  /v1/workspaces/{workspaceId}/dynamics/{dynamicsId}/prospect:
+    post:
+      summary: Add prospect to Dynamics Campaign and process video.
+      operationId: postV1WorkspacesWorkspaceidDynamicsDynamicsidProspect
+      description: API Gateway only.
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dynamicsId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestPayloadAddProspectsDynamicsCampaignsSchema'
+      tags:
+      - Dynamics Campaign
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseModifyDynamicsCampaignSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '403':
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+        '503':
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ServiceUnavailable'
+  /v1/workspaces/{workspaceId}/dynamics/{dynamicsId}/prospects/bulk:
+    post:
+      summary: Bulk add and process prospects to a dynamics campaign.
+      operationId: postDynamicsProspectsBulkModify
+      description: Listed in API Gateway only.
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dynamicsId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestPayloadBulkProspectsDynamicsCampaignsSchema'
+      tags:
+      - Dynamics Campaign
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseModifyDynamicsCampaignSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '403':
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+        '503':
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ServiceUnavailable'
+  /v2/workspaces/{workspaceId}/dynamics/{dynamicsId}:
+    patch:
+      summary: Persisting Prospect Lists
+      operationId: patchDynamicsModifyV2
+      description: Persisting Prospect Lists
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dynamicsId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model222'
+      tags:
+      - Dynamics Campaign
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseModifyDynamicsCampaignSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '403':
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+        '503':
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ServiceUnavailable'
+  /v1/workspaces/{workspaceId}/dynamics/{dynamicId}/settings:
+    patch:
+      summary: Update settings in Dynamics Campaign
+      operationId: patchDynamicModifySettings
+      description: Update settings in Dynamics Campaign
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dynamicId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestPayloadDynamicModifySettingsSchema'
+      tags:
+      - Dynamics Campaign
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseDynamicModifySettingsSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+        '503':
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ServiceUnavailable'
+  /v1/workspaces/{workspaceId}/dynamics/{dynamicsId}/prospects/urls/bulk:
+    patch:
+      summary: Bulk update prospect background URLs based on email domains.
+      operationId: patchDynamicsProspectsUrlsBulkUpdate
+      description: This endpoint is used to bulk update prospect background URLs based on email domains.
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dynamicsId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestPayloadBulkUpdateProspectsUrlSchema'
+      tags:
+      - Dynamics Campaign
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseBulkUpdateProspectsUrlSchema'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '403':
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
+        '503':
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ServiceUnavailable'
+components:
+  schemas:
+    RequestPayloadBulkUpdateProspectsUrlSchema:
+      type: object
+      properties:
+        extractUrlFromEmail:
+          type: boolean
+          description: If true, sets backgroundUrl based on email domain. If false, removes backgroundUrls matching email domain.
+      required:
+      - extractUrlFromEmail
+    Forbidden:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 403
+        code:
+          type: string
+          example: S403-UPLD
+        error:
+          type: string
+          example: Forbidden
+        message:
+          type: string
+          example: Invalid request payload input / Any error from provider
+    Model221:
+      type: object
+    BadRequest:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 400
+        code:
+          type: string
+          example: S400-AHVE
+        error:
+          type: string
+          example: Bad Request
+        message:
+          type: string
+          example: Invalid request payload input
+    MultivariableLanguagesGetResponseSchema:
+      type: object
+    Model145:
+      type: object
+      properties:
+        provider:
+          type: string
+        link:
+          type: string
+    videosAssets:
+      type: array
+      items:
+        type: string
+    buttons:
+      type: array
+      items:
+        type: string
+    SharePage:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Hello there!
+        message:
+          type: string
+          example: welcome to my dynamic campaign
+        buttons:
+          $ref: '#/components/schemas/object'
+        calendar:
+          $ref: '#/components/schemas/Model170'
+        layout:
+          $ref: '#/components/schemas/layout'
+        transcriptionsViewEnabled:
+          type: boolean
+          example: false
+    PlaceholdersGetResponseSchema:
+      type: object
+      properties:
+        word:
+          type: string
+          example: watermelon
+        replace:
+          type: string
+          example: '{{firstname | there}}'
+      required:
+      - word
+      - replace
+    Model147:
+      type: object
+      properties:
+        sharePage:
+          $ref: '#/components/schemas/Model146'
+    ServiceUnavailable:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 503
+        error:
+          type: string
+          example: Service Unavailable
+        message:
+          type: string
+          example: Service Unavailable
+    Model222:
+      type: object
+      properties:
+        videoUrl:
+          type: string
+          example: https://stg341.sendspark.com/share/i5hu8v1ctjt5surn
+          x-format:
+            uri: true
+        name:
+          type: string
+          example: My Dynamic Campaign
+        title:
+          type: string
+          example: Hello there!
+        message:
+          type: string
+          example: welcome to my dynamic campaign
+        buttons:
+          $ref: '#/components/schemas/object'
+        calendar:
+          $ref: '#/components/schemas/Model170'
+        prospectList:
+          $ref: '#/components/schemas/prospectList'
+        voiceCloning:
+          $ref: '#/components/schemas/Model221'
+        prospectDepurationConfig:
+          $ref: '#/components/schemas/prospectDepurationConfig'
+        processAndAuthorizeCharge:
+          type: boolean
+          example: false
+        callbackId:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
+        fields:
+          $ref: '#/components/schemas/Fields'
+    RequestPayloadBulkProspectsDynamicsCampaignsSchema:
+      type: object
+      properties:
+        prospectList:
+          $ref: '#/components/schemas/prospectList'
+        prospectDepurationConfig:
+          $ref: '#/components/schemas/prospectDepurationConfig'
+        processAndAuthorizeCharge:
+          type: boolean
+          example: false
+        callbackId:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
+    RequestParamsCreateDynamicsCampaignsSchema:
+      type: object
+      properties:
+        name:
+          type: string
+          example: My Dynamic Campaign
+      required:
+      - name
+    Model149:
+      type: object
+      properties:
+        name:
+          type: string
+          example: My Dynamic Campaign
+        languageCode:
+          type: string
+          example: en
+        videoProperties:
+          $ref: '#/components/schemas/Model147'
+        metadata:
+          $ref: '#/components/schemas/Model148'
+        combinedVideo:
+          type: boolean
+          example: false
+        dynamicBackground:
+          type: boolean
+          example: false
+        status:
+          type: string
+          example: pending
+        creator:
+          type: string
+          example: okn4ra9qjlpzhs2zpuni426jizysbdcp
+        folder:
+          type: string
+          example: ibdls2hjvaebvg0k4mz0zgvndbai9th7
+        workspace:
+          type: string
+          example: 3vwdfm4jmhfyzt1yqp0r8v3qgaocrczb
+        videosAssets:
+          $ref: '#/components/schemas/videosAssets'
+        id:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
+        createdAt:
+          type: string
+          format: date
+          example: '2021-03-01T00:00:00.000Z'
+      required:
+      - combinedVideo
+      - dynamicBackground
+      - status
+      - creator
+      - folder
+      - workspace
+      - id
+      - createdAt
+    Model57:
+      type: object
+    VideoProperties:
+      type: object
+      properties:
+        sharePage:
+          $ref: '#/components/schemas/SharePage'
+    Model148:
+      type: object
+      properties:
+        version:
+          type: number
+          example: 1
+        migrated:
+          type: string
+          format: date
+          example: '2021-03-01T00:00:00.000Z'
+    payloadDepurationStrategy:
+      type: string
+      enum:
+      - keep-first-valid
+      - keep-last-valid
+    Model146:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Hello there!
+        message:
+          type: string
+          example: welcome to my dynamic campaign
+        buttons:
+          $ref: '#/components/schemas/buttons'
+        calendar:
+          $ref: '#/components/schemas/Model145'
+        layout:
+          $ref: '#/components/schemas/layout'
+        transcriptionsViewEnabled:
+          type: boolean
+          example: false
+    requestPayloadProspectSchema:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
+        contactName:
+          type: string
+          example: John Doe
+        contactEmail:
+          type: string
+          description: Must be unique for each dynamics videos campaign
+          example: johndoe@example.com
+        company:
+          type: string
+          example: Example Company
+        jobTitle:
+          type: string
+          example: Example jobTitle
+        customField:
+          type: string
+          example: Example Custom Field
+        backgroundUrl:
+          type: string
+          example: https://example.com
+        originalBackgroundUrl:
+          type: string
+          example: https://example.com
+        screenshotUrl:
+          type: string
+          example: https://sendspark.com
+          x-format:
+            uri: true
+        webhookUrl:
+          type: string
+          example: https://sendspark.com
+          x-format:
+            uri: true
+        webhookEvents:
+          $ref: '#/components/schemas/webhookEvents'
+        audioUrl:
+          type: string
+          example: https://sendspark.com
+          x-format:
+            uri: true
+        valid:
+          type: boolean
+          example: false
+        fallbackDataUsed:
+          type: boolean
+          example: false
+        fields:
+          $ref: '#/components/schemas/Fields'
+        hash:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
+    ResponseBulkUpdateProspectsUrlSchema:
+      type: object
+      properties:
+        updatedCount:
+          type: number
+          description: Number of prospects updated
+        totalCount:
+          type: number
+          description: Total number of prospects
+      required:
+      - updatedCount
+      - totalCount
+    prospectDepurationConfig:
+      type: object
+      properties:
+        forceCreation:
+          type: boolean
+          example: false
+        payloadDepurationStrategy:
+          $ref: '#/components/schemas/payloadDepurationStrategy'
+    Model169:
+      type: object
+      properties:
+        position:
+          type: number
+        label:
+          type: string
+        link:
+          type: string
+          example: http://www.sendspark.com/
+    Model170:
+      type: object
+      properties:
+        provider:
+          type: string
+        link:
+          type: string
+          x-format:
+            uri: true
+    ResponseModifyDynamicsCampaignSchema:
+      type: object
+      properties:
+        name:
+          type: string
+          example: My Dynamic Campaign
+        videoProperties:
+          $ref: '#/components/schemas/VideoProperties'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        combinedVideo:
+          type: boolean
+          example: false
+        dynamicBackground:
+          type: boolean
+          example: false
+        status:
+          type: string
+          example: pending
+        creator:
+          type: string
+          example: okn4ra9qjlpzhs2zpuni426jizysbdcp
+        folder:
+          type: string
+          example: ibdls2hjvaebvg0k4mz0zgvndbai9th7
+        workspace:
+          type: string
+          example: 3vwdfm4jmhfyzt1yqp0r8v3qgaocrczb
+        videosAssets:
+          $ref: '#/components/schemas/videosAssets'
+        _id:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
+        createdAt:
+          type: string
+          format: date
+          example: '2021-03-01T00:00:00.000Z'
+        deletedAt:
+          type: string
+          format: date
+          description: For managing soft deletes
+          example: null
+        prospectList:
+          $ref: '#/components/schemas/ResponsePayloadProspectList'
+      required:
+      - combinedVideo
+      - dynamicBackground
+      - status
+      - creator
+      - folder
+      - workspace
+      - createdAt
+    ResourceNotFoundOrInvalidAccess:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 404
+        error:
+          type: string
+          example: Not Found
+        message:
+          type: string
+          example: Resource not found or invalid access
+    dynamicSettingsLanguagesGetResponseSchema:
+      type: object
+      properties:
+        en:
+          $ref: '#/components/schemas/LanguagesGetResponseSchema'
+        es:
+          $ref: '#/components/schemas/LanguagesGetResponseSchema'
+        de:
+          $ref: '#/components/schemas/LanguagesGetResponseSchema'
+    validationDetails:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model100'
+    DynamicVideosGetProspectResponseSchema:
+      type: object
+      properties:
+        contactEmail:
+          type: string
+          example: 'Contact Email, Example: john@example.com'
+        backgroundUrl:
+          type: string
+          example: 'Backgound URL, Example: https://example.com'
+        originalBackgroundUrl:
+          type: string
+          example: 'Backgound URL, Example: https://example.com'
+        status:
+          type: string
+          example: 'Current prospect status, Example: saved, billed, errored, processing, uploaded, completed'
+        deletedAt:
+          type: string
+          format: date
+          example: 'Deleted Date if prospect was deleted, Example: 2020-01-01T00:00:00.000Z'
+        valid:
+          type: boolean
+          example: False if prospect has validation errors
+        createdAt:
+          type: string
+          format: date
+          example: 'Create date, example: 2020-01-01T00:00:00.000Z'
+        updatedAt:
+          type: string
+          format: date
+          example: 'Update date, example: 2020-01-01T00:00:00.000Z'
+        validationDetails:
+          $ref: '#/components/schemas/validationDetails'
+        contactName:
+          type: string
+          example: 'Contact Name, example: John Doe'
+        company:
+          type: string
+          example: 'Company Name, example: Sendspark'
+        jobTitle:
+          type: string
+          example: 'Job Title, example: Software Engineer'
+        id:
+          type: string
+          example: 'Internal prospect ID, example: 997f191e810c19729de860fd'
+        shareUrl:
+          type: string
+          example: 'Public URL to share the final video, example: https://sendspark.com/share/997f191e81'
+        emailEmbedHTML:
+          type: string
+          description: HTML code for email embedding
+        fields:
+          $ref: '#/components/schemas/Model101'
+    ResponseCreateDynamicsCampaignSchema:
+      type: object
+      properties:
+        name:
+          type: string
+          example: My Dynamic Campaign
+        videoProperties:
+          $ref: '#/components/schemas/videoProperties'
+        metadata:
+          $ref: '#/components/schemas/Model139'
+        combinedVideo:
+          type: boolean
+          example: false
+        dynamicBackground:
+          type: boolean
+          example: false
+        status:
+          type: string
+          example: pending
+        creator:
+          type: string
+          example: okn4ra9qjlpzhs2zpuni426jizysbdcp
+        folder:
+          type: string
+          example: ibdls2hjvaebvg0k4mz0zgvndbai9th7
+        workspace:
+          type: string
+          example: 3vwdfm4jmhfyzt1yqp0r8v3qgaocrczb
+        videosAssets:
+          $ref: '#/components/schemas/videosAssets'
+        _id:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
+        createdAt:
+          type: string
+          format: date
+          example: '2021-03-01T00:00:00.000Z'
+      required:
+      - combinedVideo
+      - dynamicBackground
+      - status
+      - creator
+      - folder
+      - workspace
+      - _id
+      - createdAt
+    Metadata:
+      type: object
+      properties:
+        version:
+          type: number
+          example: 1
+        migrated:
+          type: string
+          format: date
+          example: '2021-03-01T00:00:00.000Z'
+    Model139:
+      type: object
+      properties:
+        version:
+          type: number
+          example: 1
+        migrated:
+          type: string
+          format: date
+          example: '2021-03-01T00:00:00.000Z'
+    Model100:
+      type: object
+      properties:
+        validationField:
+          type: string
+          example: 'Show field with errors, Example: contactEmail'
+        validationMessage:
+          type: string
+          example: 'Show error detail related with field with error, example: Invalid email'
+        validationCode:
+          type: string
+          example: 'Show error code related with field with error, example: 400'
+    ResponsePayloadProspectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/responsePayloadProspectSchema'
+    object:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model169'
+    videoProperties:
+      type: object
+      properties:
+        sharePage:
+          $ref: '#/components/schemas/sharePage'
+    placeholders:
+      type: array
+      items:
+        $ref: '#/components/schemas/PlaceholdersGetResponseSchema'
+    RequestPayloadAddProspectsDynamicsCampaignsSchema:
+      type: object
+      properties:
+        prospect:
+          $ref: '#/components/schemas/requestPayloadProspectSchema'
+        prospectDepurationConfig:
+          $ref: '#/components/schemas/prospectDepurationConfig'
+        processAndAuthorizeCharge:
+          type: boolean
+          example: false
+        fallbackToEmailDomainForBackground:
+          type: boolean
+          example: false
+        callbackId:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
+      required:
+      - prospect
+    ResponseDynamicsVideoAddSchema:
+      type: object
+    Model138:
+      type: object
+      properties:
+        provider:
+          type: string
+        link:
+          type: string
+          x-format:
+            uri: true
+    webhookEvents:
+      type: array
+      example:
+      - video_generated_dv
+      - video_watched
+      - video_played
+      - video_cta_clicked
+      - video_viewed
+      - video_liked
+      items:
+        type: string
+    layout:
+      type: string
+      example: layout-default
+      enum:
+      - layout-default
+      - layout-title-above
+    fallbacks:
+      type: array
+      items:
+        type: string
+        example: there
+    LanguagesGetResponseSchema:
+      type: object
+      properties:
+        name:
+          type: string
+          example: English
+        placeholders:
+          $ref: '#/components/schemas/placeholders'
+        fallbacks:
+          $ref: '#/components/schemas/fallbacks'
+      required:
+      - name
+    sharePage:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Hello there!
+        message:
+          type: string
+          example: welcome to my dynamic campaign
+        buttons:
+          $ref: '#/components/schemas/buttons'
+        calendar:
+          $ref: '#/components/schemas/Model138'
+        layout:
+          $ref: '#/components/schemas/layout'
+        transcriptionsViewEnabled:
+          type: boolean
+          example: false
+    dynamicSettingsGetResponseSchema:
+      type: object
+      properties:
+        languages:
+          $ref: '#/components/schemas/dynamicSettingsLanguagesGetResponseSchema'
+        multivariableLanguages:
+          $ref: '#/components/schemas/MultivariableLanguagesGetResponseSchema'
+    ResponseDynamicModifySettingsSchema:
+      type: object
+    RequestPayloadDynamicModifySettingsSchema:
+      type: object
+      properties:
+        useFallbackData:
+          type: boolean
+          example: false
+    responsePayloadProspectSchema:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
+        campaign:
+          type: string
+          example: okn4ra9qjl3fs2zpuni426jizysbdcp
+        contactName:
+          type: string
+          example: John Doe
+        contactEmail:
+          type: string
+          description: Must be unique for each dynamics videos campaign
+          example: johndoe@example.com
+        company:
+          type: string
+          example: Example Company
+        jobTitle:
+          type: string
+          example: Example jobTitle
+        backgroundUrl:
+          type: string
+          example: https://example.com
+        originalBackgroundUrl:
+          type: string
+          example: https://example.com
+        screenshotUrl:
+          type: string
+          example: https://sendspark.com
+          x-format:
+            uri: true
+        webhookUrl:
+          type: string
+          example: https://sendspark.com
+          x-format:
+            uri: true
+        trimMuxId:
+          type: string
+        webhookEvents:
+          $ref: '#/components/schemas/webhookEvents'
+        webhookPaused:
+          type: boolean
+          example: false
+        audioUrl:
+          type: string
+          example: https://sendspark.com
+          x-format:
+            uri: true
+        videoLipSyncUrl:
+          type: string
+          example: https://sendspark.com
+          x-format:
+            uri: true
+        valid:
+          type: boolean
+          example: false
+        bulkId:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
+        status:
+          type: string
+          description: Manage constants for this
+          example: saved
+        createdAt:
+          type: string
+          format: date
+          example: '2023-06-02T00:57:45.447Z'
+        updatedAt:
+          type: string
+          format: date
+          example: '2023-06-02T00:57:45.447Z'
+        deletedAt:
+          type: string
+          format: date
+          description: For managing soft deletes
+          example: null
+        validationDetails:
+          type: string
+        resourcesStatus:
+          $ref: '#/components/schemas/ResourcesStatus'
+        isNotified:
+          type: boolean
+          example: false
+        fallback:
+          type: boolean
+          example: false
+        regenerationCount:
+          type: number
+          example: 0
+        fallbackDataUsed:
+          type: boolean
+          example: false
+        fields:
+          $ref: '#/components/schemas/Fields'
+        hash:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
+      required:
+      - status
+    ResourcesStatus:
+      type: object
+    Fields:
+      type: object
+    Model144:
+      type: object
+      properties:
+        name:
+          type: string
+          example: My Dynamic Campaign
+        voiceCloning:
+          type: boolean
+          example: false
+        languageCode:
+          type: string
+          example: en
+        videoUrl:
+          type: string
+          example: https://ssoven341-d3vz.com/share/9up29v11k16cqtyie1hx74cmhva5yutz
+        version:
+          type: number
+          example: 1
+        multivariable:
+          type: boolean
+          example: false
+      required:
+      - name
+    prospectList:
+      type: array
+      minItems: 1
+      maxItems: 10000
+      items:
+        $ref: '#/components/schemas/requestPayloadProspectSchema'
+    Model101:
+      type: object
+      description: Additional fields associated with the prospect
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+    apiSecret:
+      type: apiKey
+      in: header
+      name: x-api-secret
