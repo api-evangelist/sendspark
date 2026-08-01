@@ -1,0 +1,3451 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Sendspark API",
+    "version": "1.2.0",
+    "description": "Public Sendspark API. DRAFT scaffold generated from the internal API v2 spec — endpoint selection and authentication are pending engineering review before publishing."
+  },
+  "security": [
+    {
+      "apiKey": [],
+      "apiSecret": []
+    }
+  ],
+  "tags": [],
+  "paths": {
+    "/v1/workspaces": {
+      "get": {
+        "summary": "Get the list of the current users workspaces",
+        "operationId": "getWorkspaces",
+        "description": "Get the list of the current users workspaces",
+        "parameters": [
+          {
+            "name": "dropdownRendering",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "tags": [
+          "Workspace"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorspacesResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workspaces/identifier": {
+      "get": {
+        "summary": "Get workspace id by api key",
+        "operationId": "getWorkspaceByApiKey",
+        "description": "Get workspace id by api key",
+        "tags": [
+          "Workspace"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetWorkspaceIdByApiKeyResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/webhooks": {
+      "get": {
+        "summary": "Get Webhook list by workspace ID",
+        "operationId": "getWebhookListByWorkspaceId",
+        "description": "Get Webhook list by workspace ID",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "Webhook"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create new Webhook",
+        "operationId": "postCreateWebhook",
+        "description": "Create new Webhook",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWebhookRequestPayloadSchema"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Webhook"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateWebhookResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/dynamics": {
+      "get": {
+        "summary": "Get the list of Dynamic Campaigns by workspace",
+        "operationId": "getDynamicsList",
+        "description": "Get the list of Dynamic Campaigns by workspace",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dropdownRendering",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "projectionType",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "DEFAULT",
+                "DETAILED",
+                "MINIMAL"
+              ]
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "prospectOnly",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "tags": [
+          "Dynamics Campaign"
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailable"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create Dynamics Campaign",
+        "operationId": "postDynamics",
+        "description": "Create Dynamics Campaign in folder",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestParamsCreateDynamicsCampaignsSchema"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Dynamics Campaign"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseCreateDynamicsCampaignSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailable"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/dvm-bundles": {
+      "get": {
+        "summary": "Get available DVM minute bundles for workspace",
+        "operationId": "getDvmBundles",
+        "description": "Returns available DVM minute bundle packages for the workspace plan with current balance.",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "DVM Bundles"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BundlesGetResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/dynamics/{dynamicId}": {
+      "get": {
+        "summary": "Get workspace dynamic campaign",
+        "operationId": "getWorkspaceDynamics",
+        "description": "Get workspace dynamic campaign",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dynamicId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "Dynamics Campaign"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Model57"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailable"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/dynamics/settings": {
+      "get": {
+        "summary": "Get dynamics settings",
+        "operationId": "getDynamicsSettings",
+        "description": "Get dynamics settings",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "Dynamics Campaign"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/dynamicSettingsGetResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailable"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/webhooks/{webhookId}": {
+      "get": {
+        "summary": "Get Webhook by ID",
+        "operationId": "getWebhookById",
+        "description": "Get Webhook by ID",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "webhookId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "Webhook"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Webhook by ID",
+        "operationId": "deleteWebhookById",
+        "description": "Delete Webhook by ID",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "webhookId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "Webhook"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Modify Webhook",
+        "operationId": "patchModifyWebhook",
+        "description": "Modify Webhook",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "webhookId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyWebhookRequestPayloadSchema"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Webhook"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModifyWebhookResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/dynamics/{dynamicId}/prospects/{contactEmail}": {
+      "get": {
+        "summary": "Get prospect data from prospect email",
+        "operationId": "getProspectDynamicsVideos",
+        "description": "Get prospect data from prospect email",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dynamicId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "x-format": {
+              "email": true
+            },
+            "name": "contactEmail",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated list of additional fields to include in the response (emailEmbedHTML, fields)",
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "Dynamics Campaign"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/DynamicVideosGetProspectResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/workspaces/{workspaceId}/dynamics": {
+      "post": {
+        "summary": "Create Dynamics Campaign for the DV by steps UI",
+        "operationId": "postDynamicsV2",
+        "description": "Create Dynamics Campaign in folder for the DV by steps UI",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Model144"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Dynamics Campaign"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Model149"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailable"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/dvm-bundles/cancel": {
+      "post": {
+        "summary": "Cancel recurring DVM bundle packs",
+        "operationId": "cancelDvmBundle",
+        "description": "Schedules bundle cancellation at the end of the current billing period. Bundle continues to contribute minutes until then. No refund.",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BundlesCancelPayloadSchema"
+              }
+            }
+          }
+        },
+        "tags": [
+          "DVM Bundles"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BundlesCancelResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dv-v2/workspaces/{workspaceId}/dynamics/{dynamicId}/bulk": {
+      "post": {
+        "summary": "Generate videos for Dynamics Campaign prospect list",
+        "operationId": "postDynamicsVideoBulk",
+        "description": "Generate videos for Dynamics Campaign prospect list",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dynamicId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "Dynamics Campaign"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDynamicsVideoAddSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailable"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/dynamics/{dynamicId}/bulk": {
+      "post": {
+        "summary": "Generate videos for Dynamics Campaign prospect list",
+        "operationId": "postV1WorkspacesWorkspaceidDynamicsDynamicidBulk",
+        "description": "Generate videos for Dynamics Campaign prospect list",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dynamicId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "Dynamics Campaign"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDynamicsVideoAddSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailable"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/dynamics/{dynamicsId}/prospect": {
+      "post": {
+        "summary": "Add prospect to Dynamics Campaign and process video.",
+        "operationId": "postV1WorkspacesWorkspaceidDynamicsDynamicsidProspect",
+        "description": "API Gateway only.",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dynamicsId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestPayloadAddProspectsDynamicsCampaignsSchema"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Dynamics Campaign"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseModifyDynamicsCampaignSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailable"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/dynamics/{dynamicsId}/prospects/bulk": {
+      "post": {
+        "summary": "Bulk add and process prospects to a dynamics campaign.",
+        "operationId": "postDynamicsProspectsBulkModify",
+        "description": "Listed in API Gateway only.",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dynamicsId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestPayloadBulkProspectsDynamicsCampaignsSchema"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Dynamics Campaign"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseModifyDynamicsCampaignSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailable"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/dvm-bundles/{bundleId}": {
+      "patch": {
+        "summary": "Add minutes to an existing custom DVM bundle",
+        "operationId": "updateDvmBundle",
+        "description": "Increases the minute quantity of an active custom DVM bundle by addMinutes. The new total is validated against plan max/step. Stripe prorates the additional cost for the remaining billing period and invoices it immediately.",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "bundleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BundlesUpdatePayloadSchema"
+              }
+            }
+          }
+        },
+        "tags": [
+          "DVM Bundles"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BundlesUpdateResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/workspaces/{workspaceId}/dynamics/{dynamicsId}": {
+      "patch": {
+        "summary": "Persisting Prospect Lists",
+        "operationId": "patchDynamicsModifyV2",
+        "description": "Persisting Prospect Lists",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dynamicsId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Model222"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Dynamics Campaign"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseModifyDynamicsCampaignSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailable"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/dynamics/{dynamicId}/settings": {
+      "patch": {
+        "summary": "Update settings in Dynamics Campaign",
+        "operationId": "patchDynamicModifySettings",
+        "description": "Update settings in Dynamics Campaign",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dynamicId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestPayloadDynamicModifySettingsSchema"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Dynamics Campaign"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDynamicModifySettingsSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailable"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/dynamics/{dynamicsId}/prospects/urls/bulk": {
+      "patch": {
+        "summary": "Bulk update prospect background URLs based on email domains.",
+        "operationId": "patchDynamicsProspectsUrlsBulkUpdate",
+        "description": "This endpoint is used to bulk update prospect background URLs based on email domains.",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dynamicsId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestPayloadBulkUpdateProspectsUrlSchema"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Dynamics Campaign"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBulkUpdateProspectsUrlSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceNotFoundOrInvalidAccess"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailable"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api-gw.sendspark.com",
+      "description": "Production"
+    }
+  ],
+  "components": {
+    "requestBodies": {},
+    "securitySchemes": {
+      "apiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key"
+      },
+      "apiSecret": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-secret"
+      }
+    },
+    "schemas": {
+      "BadRequest": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "example": 400
+          },
+          "code": {
+            "type": "string",
+            "example": "S400-AHVE"
+          },
+          "error": {
+            "type": "string",
+            "example": "Bad Request"
+          },
+          "message": {
+            "type": "string",
+            "example": "Invalid request payload input"
+          }
+        }
+      },
+      "ResourceNotFoundOrInvalidAccess": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "example": 404
+          },
+          "error": {
+            "type": "string",
+            "example": "Not Found"
+          },
+          "message": {
+            "type": "string",
+            "example": "Resource not found or invalid access"
+          }
+        }
+      },
+      "WorkspaceResponseSchemadropdownRendering": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "_id",
+          "name"
+        ]
+      },
+      "Workspaces": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/WorkspaceResponseSchemadropdownRendering"
+        }
+      },
+      "WorspacesResponseSchema": {
+        "type": "object",
+        "properties": {
+          "workspaces": {
+            "$ref": "#/components/schemas/Workspaces"
+          }
+        }
+      },
+      "GetWorkspaceIdByApiKeyResponseSchema": {
+        "type": "object",
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "example": "7voa5y6qjj04kkbfqbgjd7kdvxlf4gqo"
+          }
+        },
+        "required": [
+          "workspaceId"
+        ]
+      },
+      "ServiceUnavailable": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "example": 503
+          },
+          "error": {
+            "type": "string",
+            "example": "Service Unavailable"
+          },
+          "message": {
+            "type": "string",
+            "example": "Service Unavailable"
+          }
+        }
+      },
+      "Forbidden": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "example": 403
+          },
+          "code": {
+            "type": "string",
+            "example": "S403-UPLD"
+          },
+          "error": {
+            "type": "string",
+            "example": "Forbidden"
+          },
+          "message": {
+            "type": "string",
+            "example": "Invalid request payload input / Any error from provider"
+          }
+        }
+      },
+      "Model44": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "prod_UB6XkMTrkKEdxB"
+          },
+          "priceId": {
+            "type": "string",
+            "example": "price_1RBg7yADxQe4sXwj5E3Bt8qM"
+          },
+          "minutes": {
+            "type": "integer",
+            "example": 30
+          },
+          "label": {
+            "type": "string",
+            "example": "30-Minute Bundle"
+          },
+          "unitPriceCents": {
+            "type": "integer",
+            "example": 100
+          },
+          "totalPriceCents": {
+            "type": "integer",
+            "example": 3000
+          },
+          "badge": {
+            "type": "string",
+            "example": "Best Value"
+          },
+          "sortOrder": {
+            "type": "integer",
+            "example": 1
+          }
+        },
+        "required": [
+          "id",
+          "priceId",
+          "minutes",
+          "label",
+          "unitPriceCents",
+          "totalPriceCents",
+          "sortOrder"
+        ]
+      },
+      "Model45": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Model44"
+        }
+      },
+      "tiersMode": {
+        "type": "string",
+        "enum": [
+          "volume",
+          "graduated"
+        ]
+      },
+      "VolumeTierSchema": {
+        "type": "object",
+        "properties": {
+          "upTo": {
+            "type": "integer"
+          },
+          "unitAmountCents": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "upTo",
+          "unitAmountCents"
+        ]
+      },
+      "tiers": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "$ref": "#/components/schemas/VolumeTierSchema"
+        }
+      },
+      "quickPicks": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "x-constraint": {
+            "sign": "positive"
+          }
+        }
+      },
+      "Model46": {
+        "type": "string",
+        "enum": [
+          "month",
+          "year"
+        ]
+      },
+      "CustomBundleConfigSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "priceId": {
+            "type": "string"
+          },
+          "tiersMode": {
+            "$ref": "#/components/schemas/tiersMode"
+          },
+          "tiers": {
+            "$ref": "#/components/schemas/tiers"
+          },
+          "minMinutes": {
+            "type": "integer"
+          },
+          "maxMinutes": {
+            "type": "integer"
+          },
+          "stepMinutes": {
+            "type": "integer"
+          },
+          "quickPicks": {
+            "$ref": "#/components/schemas/quickPicks"
+          },
+          "mostPopular": {
+            "type": "integer",
+            "x-constraint": {
+              "sign": "positive"
+            }
+          },
+          "label": {
+            "type": "string"
+          },
+          "recurring": {
+            "type": "boolean"
+          },
+          "interval": {
+            "$ref": "#/components/schemas/Model46"
+          }
+        },
+        "required": [
+          "id",
+          "priceId",
+          "tiersMode",
+          "tiers",
+          "minMinutes",
+          "maxMinutes",
+          "stepMinutes",
+          "quickPicks",
+          "mostPopular",
+          "label",
+          "recurring",
+          "interval"
+        ]
+      },
+      "Model47": {
+        "type": "string",
+        "enum": [
+          "active",
+          "canceling",
+          "canceled"
+        ]
+      },
+      "Model48": {
+        "type": "string",
+        "enum": [
+          "month",
+          "year"
+        ]
+      },
+      "Model49": {
+        "type": "string",
+        "enum": [
+          "one-time",
+          "recurring",
+          "custom"
+        ]
+      },
+      "ActiveBundleSchema": {
+        "type": "object",
+        "properties": {
+          "bundleId": {
+            "type": "string"
+          },
+          "module": {
+            "type": "string"
+          },
+          "minutesPerBundle": {
+            "type": "number"
+          },
+          "bundleCount": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "priceId": {
+            "type": "string"
+          },
+          "subscriptionItemId": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "productName": {
+            "type": "string",
+            "example": "Custom DVM Minutes - Growth"
+          },
+          "unitAmountCents": {
+            "type": "number",
+            "example": 120.75
+          },
+          "totalPriceCents": {
+            "type": "integer",
+            "example": 4500
+          },
+          "status": {
+            "$ref": "#/components/schemas/Model47"
+          },
+          "endsAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "purchasedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "purchasedBy": {
+            "type": "string"
+          },
+          "interval": {
+            "$ref": "#/components/schemas/Model48"
+          },
+          "cancelingCount": {
+            "type": "number"
+          },
+          "type": {
+            "$ref": "#/components/schemas/Model49"
+          },
+          "isCustom": {
+            "type": "boolean"
+          },
+          "isCanceling": {
+            "type": "boolean"
+          },
+          "quantity": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "bundleId",
+          "module",
+          "minutesPerBundle",
+          "bundleCount",
+          "unit",
+          "priceId",
+          "subscriptionItemId",
+          "status"
+        ]
+      },
+      "activeBundles": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ActiveBundleSchema"
+        }
+      },
+      "balance": {
+        "type": "object"
+      },
+      "BundlesGetResponseSchema": {
+        "type": "object",
+        "properties": {
+          "bundles": {
+            "$ref": "#/components/schemas/Model45"
+          },
+          "customBundleConfig": {
+            "$ref": "#/components/schemas/CustomBundleConfigSchema"
+          },
+          "activeBundles": {
+            "$ref": "#/components/schemas/activeBundles"
+          },
+          "balance": {
+            "$ref": "#/components/schemas/balance"
+          }
+        },
+        "required": [
+          "bundles",
+          "balance"
+        ]
+      },
+      "Model57": {
+        "type": "object"
+      },
+      "PlaceholdersGetResponseSchema": {
+        "type": "object",
+        "properties": {
+          "word": {
+            "type": "string",
+            "example": "watermelon"
+          },
+          "replace": {
+            "type": "string",
+            "example": "{{firstname | there}}"
+          }
+        },
+        "required": [
+          "word",
+          "replace"
+        ]
+      },
+      "placeholders": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/PlaceholdersGetResponseSchema"
+        }
+      },
+      "fallbacks": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "example": "there"
+        }
+      },
+      "LanguagesGetResponseSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "English"
+          },
+          "placeholders": {
+            "$ref": "#/components/schemas/placeholders"
+          },
+          "fallbacks": {
+            "$ref": "#/components/schemas/fallbacks"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "dynamicSettingsLanguagesGetResponseSchema": {
+        "type": "object",
+        "properties": {
+          "en": {
+            "$ref": "#/components/schemas/LanguagesGetResponseSchema"
+          },
+          "es": {
+            "$ref": "#/components/schemas/LanguagesGetResponseSchema"
+          },
+          "de": {
+            "$ref": "#/components/schemas/LanguagesGetResponseSchema"
+          }
+        }
+      },
+      "MultivariableLanguagesGetResponseSchema": {
+        "type": "object"
+      },
+      "dynamicSettingsGetResponseSchema": {
+        "type": "object",
+        "properties": {
+          "languages": {
+            "$ref": "#/components/schemas/dynamicSettingsLanguagesGetResponseSchema"
+          },
+          "multivariableLanguages": {
+            "$ref": "#/components/schemas/MultivariableLanguagesGetResponseSchema"
+          }
+        }
+      },
+      "Model100": {
+        "type": "object",
+        "properties": {
+          "validationField": {
+            "type": "string",
+            "example": "Show field with errors, Example: contactEmail"
+          },
+          "validationMessage": {
+            "type": "string",
+            "example": "Show error detail related with field with error, example: Invalid email"
+          },
+          "validationCode": {
+            "type": "string",
+            "example": "Show error code related with field with error, example: 400"
+          }
+        }
+      },
+      "validationDetails": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Model100"
+        }
+      },
+      "Model101": {
+        "type": "object",
+        "description": "Additional fields associated with the prospect"
+      },
+      "DynamicVideosGetProspectResponseSchema": {
+        "type": "object",
+        "properties": {
+          "contactEmail": {
+            "type": "string",
+            "example": "Contact Email, Example: john@example.com"
+          },
+          "backgroundUrl": {
+            "type": "string",
+            "example": "Backgound URL, Example: https://example.com"
+          },
+          "originalBackgroundUrl": {
+            "type": "string",
+            "example": "Backgound URL, Example: https://example.com"
+          },
+          "status": {
+            "type": "string",
+            "example": "Current prospect status, Example: saved, billed, errored, processing, uploaded, completed"
+          },
+          "deletedAt": {
+            "type": "string",
+            "format": "date",
+            "example": "Deleted Date if prospect was deleted, Example: 2020-01-01T00:00:00.000Z"
+          },
+          "valid": {
+            "type": "boolean",
+            "example": "False if prospect has validation errors"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date",
+            "example": "Create date, example: 2020-01-01T00:00:00.000Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date",
+            "example": "Update date, example: 2020-01-01T00:00:00.000Z"
+          },
+          "validationDetails": {
+            "$ref": "#/components/schemas/validationDetails"
+          },
+          "contactName": {
+            "type": "string",
+            "example": "Contact Name, example: John Doe"
+          },
+          "company": {
+            "type": "string",
+            "example": "Company Name, example: Sendspark"
+          },
+          "jobTitle": {
+            "type": "string",
+            "example": "Job Title, example: Software Engineer"
+          },
+          "id": {
+            "type": "string",
+            "example": "Internal prospect ID, example: 997f191e810c19729de860fd"
+          },
+          "shareUrl": {
+            "type": "string",
+            "example": "Public URL to share the final video, example: https://sendspark.com/share/997f191e81"
+          },
+          "emailEmbedHTML": {
+            "type": "string",
+            "description": "HTML code for email embedding"
+          },
+          "fields": {
+            "$ref": "#/components/schemas/Model101"
+          }
+        }
+      },
+      "RequestParamsCreateDynamicsCampaignsSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "My Dynamic Campaign"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "buttons": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "Model138": {
+        "type": "object",
+        "properties": {
+          "provider": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string",
+            "x-format": {
+              "uri": true
+            }
+          }
+        }
+      },
+      "layout": {
+        "type": "string",
+        "example": "layout-default",
+        "enum": [
+          "layout-default",
+          "layout-title-above"
+        ]
+      },
+      "sharePage": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Hello there!"
+          },
+          "message": {
+            "type": "string",
+            "example": "welcome to my dynamic campaign"
+          },
+          "buttons": {
+            "$ref": "#/components/schemas/buttons"
+          },
+          "calendar": {
+            "$ref": "#/components/schemas/Model138"
+          },
+          "layout": {
+            "$ref": "#/components/schemas/layout"
+          },
+          "transcriptionsViewEnabled": {
+            "type": "boolean",
+            "example": false
+          }
+        }
+      },
+      "videoProperties": {
+        "type": "object",
+        "properties": {
+          "sharePage": {
+            "$ref": "#/components/schemas/sharePage"
+          }
+        }
+      },
+      "Model139": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "number",
+            "example": 1
+          },
+          "migrated": {
+            "type": "string",
+            "format": "date",
+            "example": "2021-03-01T00:00:00.000Z"
+          }
+        }
+      },
+      "videosAssets": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "ResponseCreateDynamicsCampaignSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "My Dynamic Campaign"
+          },
+          "videoProperties": {
+            "$ref": "#/components/schemas/videoProperties"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Model139"
+          },
+          "combinedVideo": {
+            "type": "boolean",
+            "example": false
+          },
+          "dynamicBackground": {
+            "type": "boolean",
+            "example": false
+          },
+          "status": {
+            "type": "string",
+            "example": "pending"
+          },
+          "creator": {
+            "type": "string",
+            "example": "okn4ra9qjlpzhs2zpuni426jizysbdcp"
+          },
+          "folder": {
+            "type": "string",
+            "example": "ibdls2hjvaebvg0k4mz0zgvndbai9th7"
+          },
+          "workspace": {
+            "type": "string",
+            "example": "3vwdfm4jmhfyzt1yqp0r8v3qgaocrczb"
+          },
+          "videosAssets": {
+            "$ref": "#/components/schemas/videosAssets"
+          },
+          "_id": {
+            "type": "string",
+            "example": "63f6a4145a5e755e2e8fe19d"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date",
+            "example": "2021-03-01T00:00:00.000Z"
+          }
+        },
+        "required": [
+          "combinedVideo",
+          "dynamicBackground",
+          "status",
+          "creator",
+          "folder",
+          "workspace",
+          "_id",
+          "createdAt"
+        ]
+      },
+      "extraHeaders": {
+        "type": "array",
+        "example": [
+          "Authorization",
+          "Content-Type"
+        ],
+        "items": {
+          "type": "string"
+        }
+      },
+      "module": {
+        "type": "string",
+        "example": "global | dynamics",
+        "enum": [
+          "global",
+          "dynamics"
+        ]
+      },
+      "identifiers": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "example": "sdfgh2345werty345678dfghj"
+        }
+      },
+      "Model143": {
+        "type": "string",
+        "enum": [
+          "video_watched",
+          "video_played",
+          "video_cta_clicked",
+          "video_viewed",
+          "video_liked",
+          "video_request_received",
+          "video_generated_dv",
+          "video_mp4_ready",
+          "video_generated_error"
+        ]
+      },
+      "WebhookVideoEventsSchema": {
+        "type": "array",
+        "example": [
+          "video_watched",
+          "video_played",
+          "video_cta_clicked",
+          "video_viewed",
+          "video_liked",
+          "video_request_received",
+          "video_generated_dv",
+          "video_mp4_ready",
+          "video_generated_error"
+        ],
+        "items": {
+          "$ref": "#/components/schemas/Model143"
+        }
+      },
+      "automation": {
+        "type": "object",
+        "properties": {
+          "workflowId": {
+            "type": "number"
+          },
+          "provider": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "provider"
+        ]
+      },
+      "WebhookMetadataSchema": {
+        "type": "object",
+        "properties": {
+          "automation": {
+            "$ref": "#/components/schemas/automation"
+          }
+        },
+        "required": [
+          "automation"
+        ]
+      },
+      "CreateWebhookRequestPayloadSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Production Webhook"
+          },
+          "description": {
+            "type": "string",
+            "example": "Webhook for production environment"
+          },
+          "extraHeaders": {
+            "$ref": "#/components/schemas/extraHeaders"
+          },
+          "url": {
+            "type": "string",
+            "example": "https://example.com/webhook",
+            "x-format": {
+              "uri": true
+            }
+          },
+          "module": {
+            "$ref": "#/components/schemas/module"
+          },
+          "identifiers": {
+            "$ref": "#/components/schemas/identifiers"
+          },
+          "events": {
+            "$ref": "#/components/schemas/WebhookVideoEventsSchema"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/WebhookMetadataSchema"
+          }
+        },
+        "required": [
+          "name",
+          "url",
+          "module"
+        ]
+      },
+      "CreateWebhookResponseSchema": {
+        "type": "object"
+      },
+      "Model144": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "My Dynamic Campaign"
+          },
+          "voiceCloning": {
+            "type": "boolean",
+            "example": false
+          },
+          "languageCode": {
+            "type": "string",
+            "example": "en"
+          },
+          "videoUrl": {
+            "type": "string",
+            "example": "https://ssoven341-d3vz.com/share/9up29v11k16cqtyie1hx74cmhva5yutz"
+          },
+          "version": {
+            "type": "number",
+            "example": 1
+          },
+          "multivariable": {
+            "type": "boolean",
+            "example": false
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "Model145": {
+        "type": "object",
+        "properties": {
+          "provider": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          }
+        }
+      },
+      "Model146": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Hello there!"
+          },
+          "message": {
+            "type": "string",
+            "example": "welcome to my dynamic campaign"
+          },
+          "buttons": {
+            "$ref": "#/components/schemas/buttons"
+          },
+          "calendar": {
+            "$ref": "#/components/schemas/Model145"
+          },
+          "layout": {
+            "$ref": "#/components/schemas/layout"
+          },
+          "transcriptionsViewEnabled": {
+            "type": "boolean",
+            "example": false
+          }
+        }
+      },
+      "Model147": {
+        "type": "object",
+        "properties": {
+          "sharePage": {
+            "$ref": "#/components/schemas/Model146"
+          }
+        }
+      },
+      "Model148": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "number",
+            "example": 1
+          },
+          "migrated": {
+            "type": "string",
+            "format": "date",
+            "example": "2021-03-01T00:00:00.000Z"
+          }
+        }
+      },
+      "Model149": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "My Dynamic Campaign"
+          },
+          "languageCode": {
+            "type": "string",
+            "example": "en"
+          },
+          "videoProperties": {
+            "$ref": "#/components/schemas/Model147"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Model148"
+          },
+          "combinedVideo": {
+            "type": "boolean",
+            "example": false
+          },
+          "dynamicBackground": {
+            "type": "boolean",
+            "example": false
+          },
+          "status": {
+            "type": "string",
+            "example": "pending"
+          },
+          "creator": {
+            "type": "string",
+            "example": "okn4ra9qjlpzhs2zpuni426jizysbdcp"
+          },
+          "folder": {
+            "type": "string",
+            "example": "ibdls2hjvaebvg0k4mz0zgvndbai9th7"
+          },
+          "workspace": {
+            "type": "string",
+            "example": "3vwdfm4jmhfyzt1yqp0r8v3qgaocrczb"
+          },
+          "videosAssets": {
+            "$ref": "#/components/schemas/videosAssets"
+          },
+          "id": {
+            "type": "string",
+            "example": "63f6a4145a5e755e2e8fe19d"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date",
+            "example": "2021-03-01T00:00:00.000Z"
+          }
+        },
+        "required": [
+          "combinedVideo",
+          "dynamicBackground",
+          "status",
+          "creator",
+          "folder",
+          "workspace",
+          "id",
+          "createdAt"
+        ]
+      },
+      "BundlesCancelPayloadSchema": {
+        "type": "object",
+        "properties": {
+          "subscriptionItemId": {
+            "type": "string",
+            "example": "si_UKraMwyWFL7t4w"
+          }
+        },
+        "required": [
+          "subscriptionItemId"
+        ]
+      },
+      "BundlesCancelResponseSchema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "canceling"
+          },
+          "endsAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ]
+      },
+      "ResponseDynamicsVideoAddSchema": {
+        "type": "object"
+      },
+      "webhookEvents": {
+        "type": "array",
+        "example": [
+          "video_generated_dv",
+          "video_watched",
+          "video_played",
+          "video_cta_clicked",
+          "video_viewed",
+          "video_liked"
+        ],
+        "items": {
+          "type": "string"
+        }
+      },
+      "Fields": {
+        "type": "object"
+      },
+      "requestPayloadProspectSchema": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "63f6a4145a5e755e2e8fe19d"
+          },
+          "contactName": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "contactEmail": {
+            "type": "string",
+            "description": "Must be unique for each dynamics videos campaign",
+            "example": "johndoe@example.com"
+          },
+          "company": {
+            "type": "string",
+            "example": "Example Company"
+          },
+          "jobTitle": {
+            "type": "string",
+            "example": "Example jobTitle"
+          },
+          "customField": {
+            "type": "string",
+            "example": "Example Custom Field"
+          },
+          "backgroundUrl": {
+            "type": "string",
+            "example": "https://example.com"
+          },
+          "originalBackgroundUrl": {
+            "type": "string",
+            "example": "https://example.com"
+          },
+          "screenshotUrl": {
+            "type": "string",
+            "example": "https://sendspark.com",
+            "x-format": {
+              "uri": true
+            }
+          },
+          "webhookUrl": {
+            "type": "string",
+            "example": "https://sendspark.com",
+            "x-format": {
+              "uri": true
+            }
+          },
+          "webhookEvents": {
+            "$ref": "#/components/schemas/webhookEvents"
+          },
+          "audioUrl": {
+            "type": "string",
+            "example": "https://sendspark.com",
+            "x-format": {
+              "uri": true
+            }
+          },
+          "valid": {
+            "type": "boolean",
+            "example": false
+          },
+          "fallbackDataUsed": {
+            "type": "boolean",
+            "example": false
+          },
+          "fields": {
+            "$ref": "#/components/schemas/Fields"
+          },
+          "hash": {
+            "type": "string",
+            "example": "63f6a4145a5e755e2e8fe19d"
+          }
+        }
+      },
+      "payloadDepurationStrategy": {
+        "type": "string",
+        "enum": [
+          "keep-first-valid",
+          "keep-last-valid"
+        ]
+      },
+      "prospectDepurationConfig": {
+        "type": "object",
+        "properties": {
+          "forceCreation": {
+            "type": "boolean",
+            "example": false
+          },
+          "payloadDepurationStrategy": {
+            "$ref": "#/components/schemas/payloadDepurationStrategy"
+          }
+        }
+      },
+      "RequestPayloadAddProspectsDynamicsCampaignsSchema": {
+        "type": "object",
+        "properties": {
+          "prospect": {
+            "$ref": "#/components/schemas/requestPayloadProspectSchema"
+          },
+          "prospectDepurationConfig": {
+            "$ref": "#/components/schemas/prospectDepurationConfig"
+          },
+          "processAndAuthorizeCharge": {
+            "type": "boolean",
+            "example": false
+          },
+          "fallbackToEmailDomainForBackground": {
+            "type": "boolean",
+            "example": false
+          },
+          "callbackId": {
+            "type": "string",
+            "example": "63f6a4145a5e755e2e8fe19d"
+          }
+        },
+        "required": [
+          "prospect"
+        ]
+      },
+      "Model169": {
+        "type": "object",
+        "properties": {
+          "position": {
+            "type": "number"
+          },
+          "label": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string",
+            "example": "http://www.sendspark.com/"
+          }
+        }
+      },
+      "object": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Model169"
+        }
+      },
+      "Model170": {
+        "type": "object",
+        "properties": {
+          "provider": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string",
+            "x-format": {
+              "uri": true
+            }
+          }
+        }
+      },
+      "SharePage": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Hello there!"
+          },
+          "message": {
+            "type": "string",
+            "example": "welcome to my dynamic campaign"
+          },
+          "buttons": {
+            "$ref": "#/components/schemas/object"
+          },
+          "calendar": {
+            "$ref": "#/components/schemas/Model170"
+          },
+          "layout": {
+            "$ref": "#/components/schemas/layout"
+          },
+          "transcriptionsViewEnabled": {
+            "type": "boolean",
+            "example": false
+          }
+        }
+      },
+      "VideoProperties": {
+        "type": "object",
+        "properties": {
+          "sharePage": {
+            "$ref": "#/components/schemas/SharePage"
+          }
+        }
+      },
+      "Metadata": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "number",
+            "example": 1
+          },
+          "migrated": {
+            "type": "string",
+            "format": "date",
+            "example": "2021-03-01T00:00:00.000Z"
+          }
+        }
+      },
+      "ResourcesStatus": {
+        "type": "object"
+      },
+      "responsePayloadProspectSchema": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "63f6a4145a5e755e2e8fe19d"
+          },
+          "campaign": {
+            "type": "string",
+            "example": "okn4ra9qjl3fs2zpuni426jizysbdcp"
+          },
+          "contactName": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "contactEmail": {
+            "type": "string",
+            "description": "Must be unique for each dynamics videos campaign",
+            "example": "johndoe@example.com"
+          },
+          "company": {
+            "type": "string",
+            "example": "Example Company"
+          },
+          "jobTitle": {
+            "type": "string",
+            "example": "Example jobTitle"
+          },
+          "backgroundUrl": {
+            "type": "string",
+            "example": "https://example.com"
+          },
+          "originalBackgroundUrl": {
+            "type": "string",
+            "example": "https://example.com"
+          },
+          "screenshotUrl": {
+            "type": "string",
+            "example": "https://sendspark.com",
+            "x-format": {
+              "uri": true
+            }
+          },
+          "webhookUrl": {
+            "type": "string",
+            "example": "https://sendspark.com",
+            "x-format": {
+              "uri": true
+            }
+          },
+          "trimMuxId": {
+            "type": "string"
+          },
+          "webhookEvents": {
+            "$ref": "#/components/schemas/webhookEvents"
+          },
+          "webhookPaused": {
+            "type": "boolean",
+            "example": false
+          },
+          "audioUrl": {
+            "type": "string",
+            "example": "https://sendspark.com",
+            "x-format": {
+              "uri": true
+            }
+          },
+          "videoLipSyncUrl": {
+            "type": "string",
+            "example": "https://sendspark.com",
+            "x-format": {
+              "uri": true
+            }
+          },
+          "valid": {
+            "type": "boolean",
+            "example": false
+          },
+          "bulkId": {
+            "type": "string",
+            "example": "63f6a4145a5e755e2e8fe19d"
+          },
+          "status": {
+            "type": "string",
+            "description": "Manage constants for this",
+            "example": "saved"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date",
+            "example": "2023-06-02T00:57:45.447Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date",
+            "example": "2023-06-02T00:57:45.447Z"
+          },
+          "deletedAt": {
+            "type": "string",
+            "format": "date",
+            "description": "For managing soft deletes",
+            "example": null
+          },
+          "validationDetails": {
+            "type": "string"
+          },
+          "resourcesStatus": {
+            "$ref": "#/components/schemas/ResourcesStatus"
+          },
+          "isNotified": {
+            "type": "boolean",
+            "example": false
+          },
+          "fallback": {
+            "type": "boolean",
+            "example": false
+          },
+          "regenerationCount": {
+            "type": "number",
+            "example": 0
+          },
+          "fallbackDataUsed": {
+            "type": "boolean",
+            "example": false
+          },
+          "fields": {
+            "$ref": "#/components/schemas/Fields"
+          },
+          "hash": {
+            "type": "string",
+            "example": "63f6a4145a5e755e2e8fe19d"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "ResponsePayloadProspectList": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/responsePayloadProspectSchema"
+        }
+      },
+      "ResponseModifyDynamicsCampaignSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "My Dynamic Campaign"
+          },
+          "videoProperties": {
+            "$ref": "#/components/schemas/VideoProperties"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          },
+          "combinedVideo": {
+            "type": "boolean",
+            "example": false
+          },
+          "dynamicBackground": {
+            "type": "boolean",
+            "example": false
+          },
+          "status": {
+            "type": "string",
+            "example": "pending"
+          },
+          "creator": {
+            "type": "string",
+            "example": "okn4ra9qjlpzhs2zpuni426jizysbdcp"
+          },
+          "folder": {
+            "type": "string",
+            "example": "ibdls2hjvaebvg0k4mz0zgvndbai9th7"
+          },
+          "workspace": {
+            "type": "string",
+            "example": "3vwdfm4jmhfyzt1yqp0r8v3qgaocrczb"
+          },
+          "videosAssets": {
+            "$ref": "#/components/schemas/videosAssets"
+          },
+          "_id": {
+            "type": "string",
+            "example": "63f6a4145a5e755e2e8fe19d"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date",
+            "example": "2021-03-01T00:00:00.000Z"
+          },
+          "deletedAt": {
+            "type": "string",
+            "format": "date",
+            "description": "For managing soft deletes",
+            "example": null
+          },
+          "prospectList": {
+            "$ref": "#/components/schemas/ResponsePayloadProspectList"
+          }
+        },
+        "required": [
+          "combinedVideo",
+          "dynamicBackground",
+          "status",
+          "creator",
+          "folder",
+          "workspace",
+          "createdAt"
+        ]
+      },
+      "prospectList": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 10000,
+        "items": {
+          "$ref": "#/components/schemas/requestPayloadProspectSchema"
+        }
+      },
+      "RequestPayloadBulkProspectsDynamicsCampaignsSchema": {
+        "type": "object",
+        "properties": {
+          "prospectList": {
+            "$ref": "#/components/schemas/prospectList"
+          },
+          "prospectDepurationConfig": {
+            "$ref": "#/components/schemas/prospectDepurationConfig"
+          },
+          "processAndAuthorizeCharge": {
+            "type": "boolean",
+            "example": false
+          },
+          "callbackId": {
+            "type": "string",
+            "example": "63f6a4145a5e755e2e8fe19d"
+          }
+        }
+      },
+      "BundlesUpdatePayloadSchema": {
+        "type": "object",
+        "properties": {
+          "addMinutes": {
+            "type": "integer",
+            "example": 50,
+            "x-constraint": {
+              "sign": "positive"
+            }
+          }
+        },
+        "required": [
+          "addMinutes"
+        ]
+      },
+      "UpdatedBundleResult": {
+        "type": "object",
+        "properties": {
+          "bundleId": {
+            "type": "string"
+          },
+          "subscriptionItemId": {
+            "type": "string"
+          },
+          "minutesPerBundle": {
+            "type": "number"
+          },
+          "label": {
+            "type": "string"
+          },
+          "unitPriceCents": {
+            "type": "number"
+          },
+          "totalPriceCents": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "bundleId",
+          "subscriptionItemId",
+          "minutesPerBundle",
+          "label",
+          "unitPriceCents",
+          "totalPriceCents"
+        ]
+      },
+      "BundlesUpdateResponseSchema": {
+        "type": "object",
+        "properties": {
+          "bundle": {
+            "$ref": "#/components/schemas/UpdatedBundleResult"
+          },
+          "addedMinutes": {
+            "type": "integer"
+          },
+          "previousTotalMinutes": {
+            "type": "integer"
+          },
+          "newTotalMinutes": {
+            "type": "integer"
+          },
+          "additionalChargeCents": {
+            "type": "integer"
+          },
+          "balance": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "bundle",
+          "addedMinutes",
+          "previousTotalMinutes",
+          "newTotalMinutes",
+          "additionalChargeCents"
+        ]
+      },
+      "Model217": {
+        "type": "string",
+        "enum": [
+          "video_watched",
+          "video_played",
+          "video_cta_clicked",
+          "video_viewed",
+          "video_liked",
+          "video_request_received",
+          "video_generated_dv",
+          "video_mp4_ready",
+          "video_generated_error"
+        ]
+      },
+      "events": {
+        "type": "array",
+        "example": [
+          "video_watched",
+          "video_played",
+          "video_cta_clicked",
+          "video_viewed",
+          "video_liked",
+          "video_request_received",
+          "video_generated_dv",
+          "video_mp4_ready",
+          "video_generated_error"
+        ],
+        "items": {
+          "$ref": "#/components/schemas/Model217"
+        }
+      },
+      "ModifyWebhookRequestPayloadSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Production Webhook"
+          },
+          "description": {
+            "type": "string",
+            "example": "Webhook for production environment"
+          },
+          "extraHeaders": {
+            "$ref": "#/components/schemas/extraHeaders"
+          },
+          "url": {
+            "type": "string",
+            "example": "https://example.com/webhook",
+            "x-format": {
+              "uri": true
+            }
+          },
+          "module": {
+            "$ref": "#/components/schemas/module"
+          },
+          "identifiers": {
+            "$ref": "#/components/schemas/identifiers"
+          },
+          "events": {
+            "$ref": "#/components/schemas/events"
+          },
+          "enabled": {
+            "type": "boolean",
+            "example": true
+          }
+        }
+      },
+      "ModifyWebhookResponseSchema": {
+        "type": "object"
+      },
+      "Model221": {
+        "type": "object"
+      },
+      "Model222": {
+        "type": "object",
+        "properties": {
+          "videoUrl": {
+            "type": "string",
+            "example": "https://stg341.sendspark.com/share/i5hu8v1ctjt5surn",
+            "x-format": {
+              "uri": true
+            }
+          },
+          "name": {
+            "type": "string",
+            "example": "My Dynamic Campaign"
+          },
+          "title": {
+            "type": "string",
+            "example": "Hello there!"
+          },
+          "message": {
+            "type": "string",
+            "example": "welcome to my dynamic campaign"
+          },
+          "buttons": {
+            "$ref": "#/components/schemas/object"
+          },
+          "calendar": {
+            "$ref": "#/components/schemas/Model170"
+          },
+          "prospectList": {
+            "$ref": "#/components/schemas/prospectList"
+          },
+          "voiceCloning": {
+            "$ref": "#/components/schemas/Model221"
+          },
+          "prospectDepurationConfig": {
+            "$ref": "#/components/schemas/prospectDepurationConfig"
+          },
+          "processAndAuthorizeCharge": {
+            "type": "boolean",
+            "example": false
+          },
+          "callbackId": {
+            "type": "string",
+            "example": "63f6a4145a5e755e2e8fe19d"
+          },
+          "fields": {
+            "$ref": "#/components/schemas/Fields"
+          }
+        }
+      },
+      "RequestPayloadDynamicModifySettingsSchema": {
+        "type": "object",
+        "properties": {
+          "useFallbackData": {
+            "type": "boolean",
+            "example": false
+          }
+        }
+      },
+      "ResponseDynamicModifySettingsSchema": {
+        "type": "object"
+      },
+      "RequestPayloadBulkUpdateProspectsUrlSchema": {
+        "type": "object",
+        "properties": {
+          "extractUrlFromEmail": {
+            "type": "boolean",
+            "description": "If true, sets backgroundUrl based on email domain. If false, removes backgroundUrls matching email domain."
+          }
+        },
+        "required": [
+          "extractUrlFromEmail"
+        ]
+      },
+      "ResponseBulkUpdateProspectsUrlSchema": {
+        "type": "object",
+        "properties": {
+          "updatedCount": {
+            "type": "number",
+            "description": "Number of prospects updated"
+          },
+          "totalCount": {
+            "type": "number",
+            "description": "Total number of prospects"
+          }
+        },
+        "required": [
+          "updatedCount",
+          "totalCount"
+        ]
+      }
+    }
+  }
+}

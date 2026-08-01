@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sendspark-openapi-original.json
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    MCP surface authenticates over OAuth 2.0 (auth.sendspark.com issuer) with an
+    RFC 8414 authorization-server metadata document.
+- id: rfc8414-oauth-metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server returns 200 on apiv2.sendspark.com
+- id: oidc
+  conforms: false
+  evidence: >-
+    scopes_supported advertises openid/profile/email but /.well-known/openid-configuration returns 404
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors use a flat custom JSON envelope, not application/problem+json
+- id: idempotency
+  conforms: false
+  evidence: no Idempotency-Key contract in the OpenAPI
+- id: pagination
+  conforms: true
+  evidence: offset/limit query parameters on list operations
+- id: webhooks
+  conforms: true
+  evidence: webhook management operations (Webhook tag) plus documented event catalog

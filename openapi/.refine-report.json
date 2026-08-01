@@ -1,0 +1,20 @@
+{
+  "provider": "sendspark",
+  "sources": [
+    "sendspark-dvm-bundles-api-openapi.yml",
+    "sendspark-dynamics-campaign-api-openapi.yml",
+    "sendspark-webhook-api-openapi.yml",
+    "sendspark-workspace-api-openapi.yml"
+  ],
+  "outputs": [
+    "sendspark-dvm-bundles-api-openapi.yml",
+    "sendspark-dynamics-campaign-api-openapi.yml",
+    "sendspark-webhook-api-openapi.yml",
+    "sendspark-workspace-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

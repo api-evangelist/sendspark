@@ -1,0 +1,11 @@
+generated: '2026-07-21'
+method: generated
+skills:
+- file: sendspark-manage-webhooks.md
+  name: Subscribe to Sendspark video events via webhooks
+  api: openapi/sendspark-openapi-original.json
+  operations: [getWorkspaces, postCreateWebhook, getWebhookListByWorkspaceId, getWebhookById, patchModifyWebhook, deleteWebhookById]
+- file: sendspark-launch-dynamic-campaign.md
+  name: Launch a Sendspark dynamic video campaign and track a prospect
+  api: openapi/sendspark-openapi-original.json
+  operations: [getWorkspaces, postDynamicsV2, postV1WorkspacesWorkspaceidDynamicsDynamicsidProspect, getProspectDynamicsVideos, getWorkspaceDynamics]

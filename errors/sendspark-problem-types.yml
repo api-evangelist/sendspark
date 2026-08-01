@@ -1,0 +1,47 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sendspark-openapi-original.json
+format: custom-json
+envelope:
+  description: >-
+    Sendspark returns a flat JSON error object (not RFC 9457 problem+json).
+    Fields observed across error schemas.
+  fields:
+    statusCode: numeric HTTP status (e.g. 400, 403, 404, 503)
+    code: string error code, format S<status>-<mnemonic> (e.g. S400-AHVE, S403-UPLD); not present on all errors
+    error: short reason phrase (e.g. "Bad Request", "Forbidden", "Not Found")
+    message: human-readable detail
+problems:
+- status: 400
+  code: S400-AHVE
+  title: Bad Request
+  detail: Invalid request payload input
+  schema: BadRequest
+  source_operations:
+  - openapi/sendspark-openapi-original.json#getWorkspaceByApiKey
+  - openapi/sendspark-openapi-original.json#postCreateWebhook
+  - openapi/sendspark-openapi-original.json#postDynamics
+- status: 403
+  code: S403-UPLD
+  title: Forbidden
+  detail: Invalid request payload input / any error from provider
+  schema: Forbidden
+  source_operations:
+  - openapi/sendspark-openapi-original.json#postDynamics
+  - openapi/sendspark-openapi-original.json#getDvmBundles
+  - openapi/sendspark-openapi-original.json#cancelDvmBundle
+- status: 404
+  title: Not Found
+  detail: Resource not found or invalid access
+  schema: ResourceNotFoundOrInvalidAccess
+  source_operations:
+  - openapi/sendspark-openapi-original.json#getWorkspaceByApiKey
+  - openapi/sendspark-openapi-original.json#getWebhookById
+  - openapi/sendspark-openapi-original.json#getWorkspaceDynamics
+- status: 503
+  title: Service Unavailable
+  detail: Service Unavailable
+  schema: ServiceUnavailable
+  source_operations:
+  - openapi/sendspark-openapi-original.json#getDynamicsList
+  - openapi/sendspark-openapi-original.json#postDynamics

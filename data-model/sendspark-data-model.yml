@@ -1,0 +1,48 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sendspark-openapi-original.json
+entities:
+- name: Workspace
+  id_field: workspaceId
+  description: Top-level account container; all resources are scoped to a workspace.
+- name: DynamicsCampaign
+  id_field: dynamicId
+  description: A Dynamic Video (AI-personalized) campaign within a workspace.
+- name: Prospect
+  key: contactEmail
+  description: A recipient/contact enrolled in a Dynamics campaign; carries generated video status.
+- name: Webhook
+  id_field: webhookId
+  description: Outbound webhook subscription scoped to a workspace, listening for video events.
+- name: DvmBundle
+  id_field: bundleId
+  description: Dynamic Video Minutes (DVM) credit bundle attached to a workspace.
+relationships:
+- from: DynamicsCampaign
+  to: Workspace
+  type: belongs_to
+  via: workspaceId
+- from: Prospect
+  to: DynamicsCampaign
+  type: belongs_to
+  via: dynamicId
+- from: Webhook
+  to: Workspace
+  type: belongs_to
+  via: workspaceId
+- from: DvmBundle
+  to: Workspace
+  type: belongs_to
+  via: workspaceId
+- from: Workspace
+  to: DynamicsCampaign
+  type: has_many
+  via: dynamicId
+- from: DynamicsCampaign
+  to: Prospect
+  type: has_many
+  via: contactEmail
+- from: Workspace
+  to: Webhook
+  type: has_many
+  via: webhookId

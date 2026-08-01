@@ -1,25 +1,211 @@
 aid: sendspark
 name: Sendspark
-description: Sendspark is a company surfaced as a portfolio company of 500-global and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Sendspark is a video messaging and AI-personalized video platform for sales and
+  marketing teams. Users record a single video and use AI voice cloning, lip sync,
+  merge tags, and dynamic thumbnails to personalize it to each prospect at scale,
+  delivered through custom landing pages with embedded booking calendars and
+  call-to-action buttons. Sendspark ships a Chrome extension and desktop recorder,
+  60+ CRM/email/automation integrations (HubSpot, Salesforce, Salesloft, Clay,
+  Zapier, Make), a public REST API for Dynamic Video campaigns, prospects, DVM
+  bundles, and outbound webhooks, and a hosted read-only MCP server for AI
+  assistants. It was surfaced as a portfolio company of 500 Global.
 url: https://raw.githubusercontent.com/api-evangelist/sendspark/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - 500-global
-x-tier: stub
-x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.sendspark.com/hubfs/favicon-96x96.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Video
+- Sales
+- Marketing
+- Personalization
+- Artificial Intelligence
+- Video Messaging
+- Webhooks
+- MCP
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: sendspark:sendspark-dvm-bundles-api
+  name: Sendspark DVM Bundles API
+  description: The DVM Bundles API from Sendspark — 3 operation(s) for dvm bundles.
+  humanURL: https://help.sendspark.com/api-reference
+  baseURL: https://api-gw.sendspark.com
+  tags:
+  - DVM Bundles
+  properties:
+  - type: OpenAPI
+    url: openapi/sendspark-dvm-bundles-api-openapi.yml
+  - type: Authentication
+    url: authentication/sendspark-authentication.yml
+  - type: Conventions
+    url: conventions/sendspark-conventions.yml
+  - type: Idempotency
+    url: conventions/sendspark-conventions.yml
+  - type: ErrorCatalog
+    url: errors/sendspark-problem-types.yml
+  - type: DataModel
+    url: data-model/sendspark-data-model.yml
+  - type: AsyncAPI
+    url: asyncapi/sendspark-webhooks-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/sendspark-webhooks-asyncapi.yml
+- aid: sendspark:sendspark-dynamics-campaign-api
+  name: Sendspark Dynamics Campaign API
+  description: The Dynamics Campaign API from Sendspark — 12 operation(s) for dynamics campaign.
+  humanURL: https://help.sendspark.com/api-reference
+  baseURL: https://api-gw.sendspark.com
+  tags:
+  - Dynamics Campaign
+  properties:
+  - type: OpenAPI
+    url: openapi/sendspark-dynamics-campaign-api-openapi.yml
+  - type: Authentication
+    url: authentication/sendspark-authentication.yml
+  - type: Conventions
+    url: conventions/sendspark-conventions.yml
+  - type: Idempotency
+    url: conventions/sendspark-conventions.yml
+  - type: ErrorCatalog
+    url: errors/sendspark-problem-types.yml
+  - type: DataModel
+    url: data-model/sendspark-data-model.yml
+  - type: AsyncAPI
+    url: asyncapi/sendspark-webhooks-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/sendspark-webhooks-asyncapi.yml
+- aid: sendspark:sendspark-webhook-api
+  name: Sendspark Webhook API
+  description: The Webhook API from Sendspark — 2 operation(s) for webhook.
+  humanURL: https://help.sendspark.com/api-reference
+  baseURL: https://api-gw.sendspark.com
+  tags:
+  - Webhook
+  properties:
+  - type: OpenAPI
+    url: openapi/sendspark-webhook-api-openapi.yml
+  - type: Authentication
+    url: authentication/sendspark-authentication.yml
+  - type: Conventions
+    url: conventions/sendspark-conventions.yml
+  - type: Idempotency
+    url: conventions/sendspark-conventions.yml
+  - type: ErrorCatalog
+    url: errors/sendspark-problem-types.yml
+  - type: DataModel
+    url: data-model/sendspark-data-model.yml
+  - type: AsyncAPI
+    url: asyncapi/sendspark-webhooks-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/sendspark-webhooks-asyncapi.yml
+- aid: sendspark:sendspark-workspace-api
+  name: Sendspark Workspace API
+  description: The Workspace API from Sendspark — 2 operation(s) for workspace.
+  humanURL: https://help.sendspark.com/api-reference
+  baseURL: https://api-gw.sendspark.com
+  tags:
+  - Workspace
+  properties:
+  - type: OpenAPI
+    url: openapi/sendspark-workspace-api-openapi.yml
+  - type: Authentication
+    url: authentication/sendspark-authentication.yml
+  - type: Conventions
+    url: conventions/sendspark-conventions.yml
+  - type: Idempotency
+    url: conventions/sendspark-conventions.yml
+  - type: ErrorCatalog
+    url: errors/sendspark-problem-types.yml
+  - type: DataModel
+    url: data-model/sendspark-data-model.yml
+  - type: AsyncAPI
+    url: asyncapi/sendspark-webhooks-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/sendspark-webhooks-asyncapi.yml
 common:
+- type: AgenticAccess
+  url: agentic-access/sendspark-agentic-access.yml
+- type: Authentication
+  url: authentication/sendspark-authentication.yml
+- type: Conventions
+  url: conventions/sendspark-conventions.yml
+- type: Idempotency
+  url: conventions/sendspark-conventions.yml
+- type: ErrorCatalog
+  url: errors/sendspark-problem-types.yml
+- type: DataModel
+  url: data-model/sendspark-data-model.yml
+- type: Conformance
+  url: conformance/sendspark-conformance.yml
+- type: Lifecycle
+  url: lifecycle/sendspark-lifecycle.yml
+- type: StatusPage
+  url: https://status.sendspark.com
+- type: AsyncAPI
+  url: asyncapi/sendspark-webhooks-asyncapi.yml
+- type: Webhooks
+  url: asyncapi/sendspark-webhooks-asyncapi.yml
+- type: MCPServer
+  url: mcp/sendspark-mcp.yml
+- type: AgentSkill
+  url: skills/sendspark-manage-webhooks.md
+- type: AgentSkill
+  url: skills/sendspark-launch-dynamic-campaign.md
+- type: WellKnown
+  url: well-known/sendspark-well-known.yml
+- type: LLMsTxt
+  url: llms/sendspark-llms.txt
+- type: DomainSecurity
+  url: security/sendspark-domain-security.yml
+- type: DeveloperPortal
+  url: https://help.sendspark.com
+- type: Documentation
+  url: https://help.sendspark.com
+- type: APIReference
+  url: https://help.sendspark.com/api-reference
+- type: GettingStarted
+  url: https://help.sendspark.com/mcp/overview
+- type: Support
+  url: https://help.sendspark.com
+- type: Blog
+  url: https://blog.sendspark.com
+- type: GitHubOrganization
+  url: https://github.com/sendspark
+- type: Pricing
+  url: https://www.sendspark.com/pricing
+- type: SignUp
+  url: https://sendspark.com/signup
+- type: TermsOfService
+  url: https://www.sendspark.com/terms
+- type: PrivacyPolicy
+  url: https://www.sendspark.com/privacy
+- type: Integrations
+  url: https://www.sendspark.com/integrations
 - type: Website
   url: https://sendspark.com
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 15
+  pass: local-v1

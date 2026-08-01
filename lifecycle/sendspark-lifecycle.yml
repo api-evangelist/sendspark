@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: searched
+source:
+- openapi/sendspark-openapi-original.json
+- https://status.sendspark.com
+versioning:
+  scheme: uri-path
+  current: v2
+  versions: [v1, v2]
+  notes: >-
+    Path-prefixed API versions (/v1, /v2, /dv-v2) coexist. Spec info.version 1.2.0.
+    The published spec is described as a DRAFT scaffold pending engineering review.
+deprecation:
+  policy_documented: false
+  sunset_header: false
+sla:
+  documented: false
+status_page: https://status.sendspark.com
+deprecated_operations: []

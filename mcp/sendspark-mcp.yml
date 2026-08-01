@@ -1,0 +1,47 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: https://help.sendspark.com/mcp/overview
+server:
+  name: sendspark
+  transport: http
+  url: https://apiv2.sendspark.com/api/mcp
+  auth:
+    type: oauth2
+    style: browser-sign-in
+    issuer: https://auth.sendspark.com
+    metadata: https://apiv2.sendspark.com/.well-known/oauth-authorization-server
+    notes: >-
+      Connects over remote/HTTP with OAuth via browser sign-in — no API keys or
+      tokens to copy. Access is scoped to the workspaces the authenticated user
+      belongs to.
+access: read-only
+constraints: >-
+  Strictly read-only — the MCP server cannot create, edit, or delete campaigns,
+  prospects, or settings.
+prerequisites:
+- Growth, Business, or Scale Sendspark plan (free/trial plans excluded)
+- An AI assistant that supports custom remote MCP connectors
+supported_clients:
+- Claude
+- ChatGPT
+- Mistral Le Chat
+- Perplexity
+- Grok
+tools:
+- name: list_workspaces
+  description: Retrieve the workspaces the authenticated user can access.
+  source_operation: openapi/sendspark-openapi-original.json#getWorkspaces
+- name: list_dynamic_campaigns
+  description: View Dynamic Video campaigns in a workspace.
+  source_operation: openapi/sendspark-openapi-original.json#getDynamicsList
+- name: get_dynamic_campaign
+  description: Fetch a Dynamic Video campaign's configuration details.
+  source_operation: openapi/sendspark-openapi-original.json#getWorkspaceDynamics
+- name: get_dynamic_campaign_analytics
+  description: Retrieve performance and engagement metrics for a campaign.
+- name: list_prospects
+  description: Query prospects with filtering capabilities.
+- name: get_prospect_status
+  description: Check an individual prospect's video processing status.
+  source_operation: openapi/sendspark-openapi-original.json#getProspectDynamicsVideos

@@ -1,0 +1,42 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/sendspark-openapi-original.json
+docs: https://help.sendspark.com/api-reference
+summary:
+  types:
+  - apiKey
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - authorizationCode
+  - refresh_token
+  - device_code
+schemes:
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  sources:
+  - openapi/sendspark-openapi-original.json
+- name: apiSecret
+  type: apiKey
+  in: header
+  parameter: x-api-secret
+  sources:
+  - openapi/sendspark-openapi-original.json
+- name: mcpOAuth
+  type: oauth2
+  note: >-
+    The hosted MCP server (apiv2.sendspark.com/api/mcp) authenticates over OAuth 2.0
+    via browser sign-in (issuer https://auth.sendspark.com), separate from the REST
+    API's x-api-key/x-api-secret header auth.
+  issuer: https://auth.sendspark.com
+  metadata: https://apiv2.sendspark.com/.well-known/oauth-authorization-server
+  scopes_supported: [openid, profile, email, offline_access]
+  sources:
+  - well-known/sendspark-oauth-authorization-server.json
+notes: >-
+  REST API calls require BOTH x-api-key and x-api-secret headers; keys are
+  workspace-scoped. GET /v1/workspaces/identifier resolves the workspace id for a
+  key pair.

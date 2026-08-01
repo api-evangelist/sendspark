@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: sendspark.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 15 19:11:06 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: api-gw.sendspark.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  3 12:47:54 2026 GMT
+  hsts: null
+domains:
+- domain: sendspark.com
+  dnssec: false
+  caa:
+  - 0 issuewild "amazontrust.com"
+  - 0 issuewild "amazonaws.com"
+  - 0 issuewild "awstrust.com"
+  - 0 issue "digicert.com"
+  - 0 issuewild "amazon.com"
+  - 0 issuewild "letsencrypt.org"
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine

@@ -1,0 +1,74 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sendspark-openapi-original.json
+spec_type: AsyncAPI
+asyncapi: 3.0.0
+info:
+  title: Sendspark Webhooks
+  version: 1.2.0
+  description: >-
+    Outbound webhook event surface derived from the Sendspark REST API webhook
+    management operations and the documented WebhookVideoEventsSchema. Subscribers
+    are registered per workspace via POST /v1/workspaces/{workspaceId}/webhooks
+    and receive HTTP POST callbacks to the configured URL when video lifecycle
+    and engagement events occur.
+defaultContentType: application/json
+channels:
+  videoEvents:
+    address: '{subscriberUrl}'
+    parameters:
+      subscriberUrl:
+        description: The HTTPS endpoint registered on the webhook subscription.
+    messages:
+      video_request_received:
+        $ref: '#/components/messages/video_request_received'
+      video_generated_dv:
+        $ref: '#/components/messages/video_generated_dv'
+      video_mp4_ready:
+        $ref: '#/components/messages/video_mp4_ready'
+      video_generated_error:
+        $ref: '#/components/messages/video_generated_error'
+      video_played:
+        $ref: '#/components/messages/video_played'
+      video_watched:
+        $ref: '#/components/messages/video_watched'
+      video_viewed:
+        $ref: '#/components/messages/video_viewed'
+      video_liked:
+        $ref: '#/components/messages/video_liked'
+      video_cta_clicked:
+        $ref: '#/components/messages/video_cta_clicked'
+operations:
+  receiveVideoEvent:
+    action: receive
+    channel:
+      $ref: '#/channels/videoEvents'
+components:
+  messages:
+    video_request_received:
+      name: video_request_received
+      summary: A dynamic video generation request was received.
+    video_generated_dv:
+      name: video_generated_dv
+      summary: A dynamic video was generated.
+    video_mp4_ready:
+      name: video_mp4_ready
+      summary: The rendered MP4 is ready.
+    video_generated_error:
+      name: video_generated_error
+      summary: Video generation failed with an error.
+    video_played:
+      name: video_played
+      summary: The viewer started playing the video.
+    video_watched:
+      name: video_watched
+      summary: The viewer watched the video.
+    video_viewed:
+      name: video_viewed
+      summary: The video landing page was viewed.
+    video_liked:
+      name: video_liked
+      summary: The viewer liked the video.
+    video_cta_clicked:
+      name: video_cta_clicked
+      summary: The viewer clicked the call-to-action.

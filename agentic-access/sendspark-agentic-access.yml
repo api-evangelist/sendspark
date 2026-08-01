@@ -1,0 +1,330 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/sendspark-openapi-original.json
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 23
+  by_action_class:
+    connected: 9
+    acting: 14
+  by_consequence:
+    read: 9
+    write: 14
+  human_in_the_loop_required: 0
+operations:
+- path: /v1/workspaces
+  method: get
+  operationId: getWorkspaces
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workspaces/identifier
+  method: get
+  operationId: getWorkspaceByApiKey
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workspaces/{workspaceId}/webhooks
+  method: get
+  operationId: getWebhookListByWorkspaceId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workspaces/{workspaceId}/webhooks
+  method: post
+  operationId: postCreateWebhook
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workspaces/{workspaceId}/dynamics
+  method: get
+  operationId: getDynamicsList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workspaces/{workspaceId}/dynamics
+  method: post
+  operationId: postDynamics
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workspaces/{workspaceId}/dvm-bundles
+  method: get
+  operationId: getDvmBundles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workspaces/{workspaceId}/dynamics/{dynamicId}
+  method: get
+  operationId: getWorkspaceDynamics
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workspaces/{workspaceId}/dynamics/settings
+  method: get
+  operationId: getDynamicsSettings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workspaces/{workspaceId}/webhooks/{webhookId}
+  method: get
+  operationId: getWebhookById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/workspaces/{workspaceId}/webhooks/{webhookId}
+  method: delete
+  operationId: deleteWebhookById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workspaces/{workspaceId}/webhooks/{webhookId}
+  method: patch
+  operationId: patchModifyWebhook
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workspaces/{workspaceId}/dynamics/{dynamicId}/prospects/{contactEmail}
+  method: get
+  operationId: getProspectDynamicsVideos
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/workspaces/{workspaceId}/dynamics
+  method: post
+  operationId: postDynamicsV2
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workspaces/{workspaceId}/dvm-bundles/cancel
+  method: post
+  operationId: cancelDvmBundle
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /dv-v2/workspaces/{workspaceId}/dynamics/{dynamicId}/bulk
+  method: post
+  operationId: postDynamicsVideoBulk
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workspaces/{workspaceId}/dynamics/{dynamicId}/bulk
+  method: post
+  operationId: postV1WorkspacesWorkspaceidDynamicsDynamicidBulk
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workspaces/{workspaceId}/dynamics/{dynamicsId}/prospect
+  method: post
+  operationId: postV1WorkspacesWorkspaceidDynamicsDynamicsidProspect
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workspaces/{workspaceId}/dynamics/{dynamicsId}/prospects/bulk
+  method: post
+  operationId: postDynamicsProspectsBulkModify
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workspaces/{workspaceId}/dvm-bundles/{bundleId}
+  method: patch
+  operationId: updateDvmBundle
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/workspaces/{workspaceId}/dynamics/{dynamicsId}
+  method: patch
+  operationId: patchDynamicsModifyV2
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workspaces/{workspaceId}/dynamics/{dynamicId}/settings
+  method: patch
+  operationId: patchDynamicModifySettings
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/workspaces/{workspaceId}/dynamics/{dynamicsId}/prospects/urls/bulk
+  method: patch
+  operationId: patchDynamicsProspectsUrlsBulkUpdate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required

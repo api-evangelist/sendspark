@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: searched
+source: live probes of /.well-known/* on Sendspark hosts
+hosts:
+- host: https://apiv2.sendspark.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: sendspark-oauth-authorization-server.json
+    standard: RFC 8414 OAuth 2.0 Authorization Server Metadata
+  - path: /.well-known/openid-configuration
+    status: 404
+- host: https://api-gw.sendspark.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+- host: https://sendspark.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+notes: >-
+  The MCP OAuth surface (auth.sendspark.com issuer, browser sign-in) publishes an
+  RFC 8414 authorization-server metadata document at apiv2.sendspark.com. The
+  REST API (api-gw.sendspark.com) itself uses x-api-key/x-api-secret header auth
+  and exposes no /.well-known documents.

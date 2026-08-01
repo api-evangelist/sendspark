@@ -1,0 +1,31 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Sendspark API
+  version: 1.0.0
+extends: openapi/sendspark-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-21'
+    x-apievangelist-artifacts:
+      authentication: authentication/sendspark-authentication.yml
+      conventions: conventions/sendspark-conventions.yml
+      errors: errors/sendspark-problem-types.yml
+      lifecycle: lifecycle/sendspark-lifecycle.yml
+      data-model: data-model/sendspark-data-model.yml
+      webhooks: asyncapi/sendspark-webhooks-asyncapi.yml
+      mcp: mcp/sendspark-mcp.yml
+- target: $.tags
+  update:
+  - name: Workspace
+    description: Account containers that scope all Sendspark resources.
+  - name: Dynamics Campaign
+    description: AI-personalized (Dynamic Video) campaigns and their prospects.
+  - name: Webhook
+    description: Outbound webhook subscriptions for video events.
+  - name: DVM Bundles
+    description: Dynamic Video Minutes credit bundles.
+- target: $.servers
+  update:
+  - url: https://api-gw.sendspark.com
+    description: Production API gateway
