@@ -144,6 +144,8 @@ apis:
   - type: Webhooks
     url: asyncapi/sendspark-webhooks-asyncapi.yml
 common:
+- type: Overlay
+  url: overlays/sendspark-openapi-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/sendspark-agentic-access.yml
 - type: Authentication
