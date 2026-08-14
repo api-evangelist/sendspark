@@ -30,7 +30,7 @@ accessModel:
 image: https://www.sendspark.com/hubfs/favicon-96x96.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-08-13'
 tags:
 - Company
 - Video
@@ -61,8 +61,6 @@ apis:
     url: authentication/sendspark-authentication.yml
   - type: Conventions
     url: conventions/sendspark-conventions.yml
-  - type: Idempotency
-    url: conventions/sendspark-conventions.yml
   - type: ErrorCatalog
     url: errors/sendspark-problem-types.yml
   - type: DataModel
@@ -84,8 +82,6 @@ apis:
   - type: Authentication
     url: authentication/sendspark-authentication.yml
   - type: Conventions
-    url: conventions/sendspark-conventions.yml
-  - type: Idempotency
     url: conventions/sendspark-conventions.yml
   - type: ErrorCatalog
     url: errors/sendspark-problem-types.yml
@@ -109,8 +105,6 @@ apis:
     url: authentication/sendspark-authentication.yml
   - type: Conventions
     url: conventions/sendspark-conventions.yml
-  - type: Idempotency
-    url: conventions/sendspark-conventions.yml
   - type: ErrorCatalog
     url: errors/sendspark-problem-types.yml
   - type: DataModel
@@ -133,8 +127,6 @@ apis:
     url: authentication/sendspark-authentication.yml
   - type: Conventions
     url: conventions/sendspark-conventions.yml
-  - type: Idempotency
-    url: conventions/sendspark-conventions.yml
   - type: ErrorCatalog
     url: errors/sendspark-problem-types.yml
   - type: DataModel
@@ -151,8 +143,6 @@ common:
 - type: Authentication
   url: authentication/sendspark-authentication.yml
 - type: Conventions
-  url: conventions/sendspark-conventions.yml
-- type: Idempotency
   url: conventions/sendspark-conventions.yml
 - type: ErrorCatalog
   url: errors/sendspark-problem-types.yml
@@ -187,7 +177,7 @@ common:
 - type: APIReference
   url: https://help.sendspark.com/api-reference
 - type: GettingStarted
-  url: https://help.sendspark.com/mcp/overview
+  url: https://help.sendspark.com/getting-started-guide-record-a-video
 - type: Support
   url: https://help.sendspark.com
 - type: Blog
@@ -206,8 +196,24 @@ common:
   url: https://www.sendspark.com/integrations
 - type: Website
   url: https://sendspark.com
+- type: AgentCard
+  url: a2a/sendspark-a2a.yml
+- type: AgentSkill
+  url: skills/sendspark-published-skill.md
+- type: ToolCrosswalk
+  url: mcp/sendspark-tool-crosswalk.yml
+- type: Packages
+  url: packages/sendspark-packages.yml
+- type: OAuthScopes
+  url: scopes/sendspark-scopes.yml
+- type: Plans
+  url: plans/sendspark-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/sendspark-rate-limits.yml
+- type: TrustCenter
+  url: security/sendspark-trust-center.yml
 x-enrichment:
-  date: '2026-07-21'
+  date: '2026-08-13'
   status: enriched
-  artifacts_added: 15
+  artifacts_added: 11
   pass: local-v1
