@@ -1,0 +1,66 @@
+# Sendspark
+
+> Sendspark is an AI-personalized video platform for B2B sales, marketing, and customer success teams. Users record one video, then Sendspark uses AI voice cloning and dynamic backgrounds to generate thousands of individually personalized versions — each with the recipient's name, company, LinkedIn profile, or website as the video background. Videos are delivered via email, LinkedIn, or CRM workflows with per-viewer analytics.
+
+- Type: SaaS WebApplication
+- Category: Sales Engagement, Video Personalization
+- Audience: B2B sales teams, SDRs, AEs, marketers, customer success managers, agencies
+- Pricing: Solo $49/mo, Growth $99/mo, Team $299/mo, Business $699/mo, Enterprise custom. 7-day free trial, no credit card required.
+- Headquarters: Austin, TX
+
+## Getting Started
+
+- [Help Center](https://help.sendspark.com/en/): Primary documentation hub covering all features, integrations, and troubleshooting across 364 articles
+- [Getting Started Guide](https://help.sendspark.com/en/collections/2616498-getting-started): Step-by-step onboarding for new users — account setup, first video recording, sharing, and analytics
+- [Dynamic Video Guide](https://help.sendspark.com/en/collections/3827498-dynamic-video): How to create AI-personalized videos at scale using voice cloning, dynamic backgrounds, and CSV/CRM contact imports
+- [Automated Workflows Guide](https://help.sendspark.com/en/collections/10285776-automated-workflows): Configure trigger-based video generation from HubSpot workflows, Salesforce, Zapier, and other automation platforms
+- [Integrations Setup](https://help.sendspark.com/en/collections/2616508-installations-integrations): Installation and configuration guides for 50+ email, CRM, and automation platform integrations
+- [API and Webhooks](https://help.sendspark.com/en/collections/7688498-public-api-and-webhooks): REST API reference for programmatic dynamic video creation, webhook event subscriptions, and third-party integrations
+- [FAQ and Troubleshooting](https://help.sendspark.com/en/collections/2622102-faq-troubleshooting): Solutions for common issues including video recording, audio, browser permissions, and delivery
+
+## Product
+
+- [Features Overview](https://www.sendspark.com/features): Complete list of platform capabilities — recording, AI personalization, analytics, integrations, and team collaboration
+- [AI Personalized Video](https://www.sendspark.com/video-platform/ai-intros): Core feature page explaining AI voice cloning, dynamic backgrounds, and personalized video generation at scale
+- [Automated Workflows](https://www.sendspark.com/video-platform/automated-workflows): Trigger-based video creation — automatically generate personalized videos when contacts enter CRM stages or email sequences
+- [Scripts and Teleprompter](https://www.sendspark.com/video-platform/scripts-teleprompter): Built-in teleprompter for guided recording with customizable scroll speed and script management
+- [Video and GIF Thumbnails](https://www.sendspark.com/video-platform/video-gif-thumbnails): Generate personalized animated GIF thumbnails for email embedding that increase click-through rates
+- [Request Videos](https://www.sendspark.com/video-platform/request-videos): Send video request links to collect testimonials, onboarding videos, or responses from contacts and customers
+- [Custom Domain](https://www.sendspark.com/custom-domain): Serve video landing pages from your own branded domain instead of share.sendspark.com
+- [Pricing](https://www.sendspark.com/pricing): Plan comparison with feature breakdown — Solo ($49/mo, 1 seat), Growth ($99/mo, 3 seats), Team ($299/mo, 10 seats), Business ($699/mo, 25 seats)
+- [Chrome Extension](https://chrome.google.com/webstore/detail/sendspark-video-and-scree/blimjkpadkhcpmkeboeknjcmiaogbkph): Browser extension for recording camera, screen, or both directly from Chrome with one-click sharing
+- [Desktop App](https://www.sendspark.com/download-desktop-application): Native Mac and Windows application for recording without browser limitations
+
+## Integrations
+
+- [All Integrations](https://www.sendspark.com/integrations): Directory of 50+ supported integrations across email, CRM, automation, and messaging platforms
+- [HubSpot Integration](https://www.sendspark.com/sendspark-x-hubspot-integration): Embed personalized videos in HubSpot sequences, workflows, and email templates with CRM contact data
+- [Salesforce Integration](https://www.sendspark.com/sendspark-x-salesforce-integration): Send personalized videos from Salesforce with automatic activity logging and engagement tracking
+- [Salesloft Integration](https://www.sendspark.com/sendspark-x-salesloft-integration): Add personalized video steps to Salesloft cadences with viewer analytics synced back to Salesloft
+- [Outreach Integration](https://www.sendspark.com/sendspark-x-outreach-integration): Insert personalized videos into Outreach sequences with engagement data flowing back to prospect records
+- [LinkedIn Integration](https://www.sendspark.com/integrations/linkedin): Send personalized video messages via LinkedIn DMs and InMail using recipient profile data as video backgrounds
+- [Clay Integration](https://www.sendspark.com/integrations/clay): Use Clay's data enrichment to automatically generate hyper-personalized videos with enriched prospect data
+- [Expandi Integration](https://www.sendspark.com/integrations/expandi): Automate personalized video delivery in Expandi LinkedIn outreach campaigns
+- [HighLevel Integration](https://www.sendspark.com/sendspark-x-highlevel-integration-0): Create and send personalized videos within HighLevel CRM workflows and automations
+- [Zoho Integration](https://www.sendspark.com/sendspark-x-zoho): Embed personalized videos in Zoho CRM email templates and workflows
+- [Klaviyo Integration](https://www.sendspark.com/sendspark-x-klayviyo): Add personalized video to Klaviyo email flows and campaigns for e-commerce customer engagement
+
+## Use Cases
+
+- [Sales Prospecting](https://www.sendspark.com/solutions/sales-prospecting): How SDRs and AEs use personalized video to increase reply rates in cold outreach and deal progression
+- [Partnerships](https://www.sendspark.com/solutions/partnerships): Using personalized video for partner recruitment, onboarding, and co-marketing engagement
+- [Startups](https://www.sendspark.com/video/startups): How startup teams use video for fundraising outreach, customer development, and team communication
+- [Customer Stories](https://www.sendspark.com/customer-stories): Case studies showing how companies use Sendspark with quantified results
+- [Book a Demo](https://www.sendspark.com/demo): Schedule a live walkthrough of the Sendspark platform with the team
+
+## Optional
+
+- [Blog](https://blog.sendspark.com): Articles on video selling strategies, cold outreach tactics, sales productivity, and product updates
+- [Sendspark vs Loom](https://www.sendspark.com/compare/sendspark-vs-loom): Feature-by-feature comparison — Sendspark focuses on AI personalization at scale while Loom focuses on async communication
+- [Sendspark vs BombBomb](https://www.sendspark.com/compare/sendspark-vs-bombbomb): Comparison focused on video email capabilities, personalization features, and sales team workflows
+- [Sendspark vs Wistia](https://www.sendspark.com/compare/sendspark-vs-wistia): Comparison covering video hosting, personalization, and sales-specific analytics
+- [VideoAsk Alternative](https://www.sendspark.com/videoask-alternative): How Sendspark compares to VideoAsk for video-based lead capture and customer interaction
+- [Case Study: Brikl](https://www.sendspark.com/case-study/brikl): How Brikl increased sales engagement using personalized video outreach
+- [Case Study: Zluri](https://www.sendspark.com/case-study/zluri): How Zluri scaled outbound prospecting with AI-personalized videos
+- [Privacy Policy](https://www.sendspark.com/privacy): Data handling, storage, and privacy practices
+- [Terms of Service](https://www.sendspark.com/terms): Service agreement and usage terms

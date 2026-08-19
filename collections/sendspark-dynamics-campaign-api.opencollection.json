@@ -1,0 +1,384 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sendspark DVM Bundles Dynamics Campaign API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dynamics Campaign",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the list of Dynamic Campaigns by workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/dynamics",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dropdownRendering",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "projectionType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "prospectOnly",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the list of Dynamic Campaigns by workspace"
+        },
+        {
+          "info": {
+            "name": "Create Dynamics Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/dynamics",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Dynamics Campaign in folder"
+        },
+        {
+          "info": {
+            "name": "Get workspace dynamic campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/dynamics/:dynamicId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dynamicId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get workspace dynamic campaign"
+        },
+        {
+          "info": {
+            "name": "Get dynamics settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/dynamics/settings",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get dynamics settings"
+        },
+        {
+          "info": {
+            "name": "Get prospect data from prospect email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/dynamics/:dynamicId/prospects/:contactEmail",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dynamicId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "contactEmail",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of additional fields to include in the response (emailEmbedHTML, fields)"
+              }
+            ]
+          },
+          "docs": "Get prospect data from prospect email"
+        },
+        {
+          "info": {
+            "name": "Create Dynamics Campaign for the DV by steps UI",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gw.sendspark.com/v2/workspaces/:workspaceId/dynamics",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Dynamics Campaign in folder for the DV by steps UI"
+        },
+        {
+          "info": {
+            "name": "Generate videos for Dynamics Campaign prospect list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gw.sendspark.com/dv-v2/workspaces/:workspaceId/dynamics/:dynamicId/bulk",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dynamicId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Generate videos for Dynamics Campaign prospect list"
+        },
+        {
+          "info": {
+            "name": "Generate videos for Dynamics Campaign prospect list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/dynamics/:dynamicId/bulk",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dynamicId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Generate videos for Dynamics Campaign prospect list"
+        },
+        {
+          "info": {
+            "name": "Add prospect to Dynamics Campaign and process video.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/dynamics/:dynamicsId/prospect",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dynamicsId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "API Gateway only."
+        },
+        {
+          "info": {
+            "name": "Bulk add and process prospects to a dynamics campaign.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/dynamics/:dynamicsId/prospects/bulk",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dynamicsId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Listed in API Gateway only."
+        },
+        {
+          "info": {
+            "name": "Persisting Prospect Lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api-gw.sendspark.com/v2/workspaces/:workspaceId/dynamics/:dynamicsId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dynamicsId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Persisting Prospect Lists"
+        },
+        {
+          "info": {
+            "name": "Update settings in Dynamics Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/dynamics/:dynamicId/settings",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dynamicId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update settings in Dynamics Campaign"
+        },
+        {
+          "info": {
+            "name": "Bulk update prospect background URLs based on email domains.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/dynamics/:dynamicsId/prospects/urls/bulk",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dynamicsId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to bulk update prospect background URLs based on email domains."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

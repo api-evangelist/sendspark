@@ -1,0 +1,72 @@
+generated: '2026-08-13'
+method: probed
+source:
+- https://auth.sendspark.com/.well-known/openid-configuration
+- https://apiv2.sendspark.com/.well-known/oauth-authorization-server
+- https://apiv2.sendspark.com/.well-known/oauth-protected-resource/api/mcp
+docs: https://help.sendspark.com/mcp/overview
+applies_to: >-
+  The OAuth 2.0 / OIDC surface that authenticates the hosted MCP server at
+  https://apiv2.sendspark.com/api/mcp. The REST API (api-gw.sendspark.com) does
+  NOT use OAuth — it authenticates with an x-api-key + x-api-secret header pair
+  and therefore has no scope surface. `derive-oauth-scopes.py` correctly found
+  zero oauth2 schemes in the OpenAPI; every scope below comes from the live
+  authorization-server metadata documents, not from the spec.
+issuer: https://auth.sendspark.com
+schemes:
+- name: mcpOAuth
+  type: oauth2
+  source: https://auth.sendspark.com/.well-known/openid-configuration
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://auth.sendspark.com/oauth2/authorize
+    tokenUrl: https://auth.sendspark.com/oauth2/token
+    pkce: [S256]
+  - flow: deviceCode
+    deviceAuthorizationUrl: https://auth.sendspark.com/oauth2/device_authorization
+    grant: 'urn:ietf:params:oauth:grant-type:device_code'
+    tokenUrl: https://auth.sendspark.com/oauth2/token
+  - flow: refreshToken
+    tokenUrl: https://auth.sendspark.com/oauth2/token
+  endpoints:
+    jwks_uri: https://auth.sendspark.com/oauth2/jwks
+    introspection_endpoint: https://auth.sendspark.com/oauth2/introspection
+    registration_endpoint: https://auth.sendspark.com/oauth2/register
+  token_endpoint_auth_methods_supported: [none, client_secret_post, client_secret_basic]
+  dynamic_client_registration: true
+  client_id_metadata_document_supported: true
+  resource_indicators_supported: true
+scopes:
+- scope: openid
+  description: Standard OIDC scope requesting an ID token for the signed-in Sendspark user.
+  flows: [authorizationCode, deviceCode]
+  sources: [https://auth.sendspark.com/.well-known/openid-configuration]
+- scope: profile
+  description: Standard OIDC scope releasing the signed-in user's basic profile claims.
+  flows: [authorizationCode, deviceCode]
+  sources: [https://auth.sendspark.com/.well-known/openid-configuration]
+- scope: email
+  description: Standard OIDC scope releasing the signed-in user's email address.
+  flows: [authorizationCode, deviceCode]
+  sources: [https://auth.sendspark.com/.well-known/openid-configuration]
+- scope: offline_access
+  description: Requests a refresh token so the MCP connector can stay authorized without a repeat browser sign-in.
+  flows: [authorizationCode, deviceCode]
+  sources: [https://auth.sendspark.com/.well-known/openid-configuration]
+protected_resource:
+  resource: https://apiv2.sendspark.com/api/mcp
+  authorization_servers: [https://auth.sendspark.com]
+  bearer_methods_supported: [header]
+  scopes_required: null
+findings:
+- >-
+  Sendspark publishes only the four standard OIDC scopes. There are NO
+  Sendspark-specific authorization scopes — no per-resource or per-action scope
+  such as campaigns:read or prospects:read. Authorization is coarse: a token
+  grants the signed-in user's identity, and the MCP server then enforces
+  read-only access to whatever workspaces that user belongs to. The
+  protected-resource metadata declares no required scopes.
+- >-
+  The authorization server supports dynamic client registration
+  (/oauth2/register) and RFC 8707 resource indicators, which is what lets an
+  arbitrary MCP client connect with no pre-provisioned client id.

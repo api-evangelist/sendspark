@@ -1,0 +1,139 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sendspark DVM Bundles Webhook API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhook",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Webhook list by workspace ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/webhooks",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Webhook list by workspace ID"
+        },
+        {
+          "info": {
+            "name": "Create new Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/webhooks",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new Webhook"
+        },
+        {
+          "info": {
+            "name": "Get Webhook by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/webhooks/:webhookId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Webhook by ID"
+        },
+        {
+          "info": {
+            "name": "Modify Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/webhooks/:webhookId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify Webhook"
+        },
+        {
+          "info": {
+            "name": "Delete Webhook by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/webhooks/:webhookId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Webhook by ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

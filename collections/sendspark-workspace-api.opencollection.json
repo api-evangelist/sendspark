@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sendspark DVM Bundles Workspace API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workspace",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the list of the current users workspaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gw.sendspark.com/v1/workspaces",
+            "params": [
+              {
+                "name": "dropdownRendering",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the list of the current users workspaces"
+        },
+        {
+          "info": {
+            "name": "Get workspace id by api key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/identifier"
+          },
+          "docs": "Get workspace id by api key"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

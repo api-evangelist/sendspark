@@ -1,11 +1,30 @@
-generated: '2026-07-21'
-method: generated
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://help.sendspark.com/.well-known/agent-skills/sendspark/skill.md
+  (provider-published, saved verbatim) plus two skills generated from the
+  published OpenAPI.
 skills:
+- file: sendspark-published-skill.md
+  name: Sendspark
+  method: searched
+  source: https://help.sendspark.com/.well-known/agent-skills/sendspark/skill.md
+  published_by: Sendspark
+  description: >-
+    Sendspark's own packaged Agent Skill, saved verbatim. Covers recording
+    personalized videos, creating AI-powered dynamic video campaigns,
+    automating video generation and sending, CRM/email integrations, and video
+    engagement analytics. Referenced as skills[0] by the A2A agent card at
+    help.sendspark.com/.well-known/agent-card.json.
+  api: null
+  operations: []
 - file: sendspark-manage-webhooks.md
   name: Subscribe to Sendspark video events via webhooks
-  api: openapi/sendspark-openapi-original.json
+  method: generated
+  api: openapi/sendspark-webhook-api-openapi.yml
   operations: [getWorkspaces, postCreateWebhook, getWebhookListByWorkspaceId, getWebhookById, patchModifyWebhook, deleteWebhookById]
 - file: sendspark-launch-dynamic-campaign.md
   name: Launch a Sendspark dynamic video campaign and track a prospect
-  api: openapi/sendspark-openapi-original.json
+  method: generated
+  api: openapi/sendspark-dynamics-campaign-api-openapi.yml
   operations: [getWorkspaces, postDynamicsV2, postV1WorkspacesWorkspaceidDynamicsDynamicsidProspect, getProspectDynamicsVideos, getWorkspaceDynamics]

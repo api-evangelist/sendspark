@@ -1,0 +1,124 @@
+generated: '2026-08-13'
+method: derived
+source:
+- mcp/sendspark-mcp.yml
+- https://help.sendspark.com/mcp/tools.md
+- openapi/sendspark-workspace-api-openapi.yml
+- openapi/sendspark-dynamics-campaign-api-openapi.yml
+- openapi/sendspark-webhook-api-openapi.yml
+- openapi/sendspark-dvm-bundles-api-openapi.yml
+surfaces:
+  openapi:
+    files:
+    - openapi/sendspark-workspace-api-openapi.yml
+    - openapi/sendspark-dynamics-campaign-api-openapi.yml
+    - openapi/sendspark-webhook-api-openapi.yml
+    - openapi/sendspark-dvm-bundles-api-openapi.yml
+    base_url: https://api-gw.sendspark.com
+    auth: x-api-key + x-api-secret request headers
+    gated: false
+    note: >-
+      Published at https://help.sendspark.com/api-reference/openapi.json and
+      described by Sendspark itself as a DRAFT scaffold pending engineering
+      review, so REST coverage may be narrower than the product surface.
+  graphql:
+    endpoint: null
+    note: Sendspark publishes no GraphQL surface.
+  mcp:
+    url: https://apiv2.sendspark.com/api/mcp
+    auth: oauth2 (browser sign-in, issuer https://auth.sendspark.com)
+    gated: true
+    note: >-
+      tools/list returned HTTP 401 with an RFC 9728 Bearer challenge. Tool names
+      and input contracts below are transcribed from the provider's published
+      tool reference; live inputSchema verification requires an authenticated
+      introspection on a Growth/Team/Business workspace.
+crosswalk:
+- tool: list_workspaces
+  category: workspaces
+  rest: [getWorkspaces]
+  binding: rest
+  confidence: high
+  note: >-
+    GET /v1/workspaces returns the caller's workspaces. The MCP tool adds
+    limit/cursor pagination that the REST operation does not expose (REST offers
+    only a dropdownRendering query flag), so the tool is not a pure passthrough.
+- tool: list_dynamic_campaigns
+  category: campaigns
+  rest: [getDynamicsList]
+  binding: rest
+  confidence: high
+  note: >-
+    GET /v1/workspaces/{workspaceId}/dynamics. The tool adds a case-insensitive
+    `query` name search and cursor pagination.
+- tool: get_dynamic_campaign
+  category: campaigns
+  rest: [getWorkspaceDynamics]
+  binding: rest
+  confidence: high
+  note: GET /v1/workspaces/{workspaceId}/dynamics/{dynamicId}. Direct 1:1 read.
+- tool: get_prospect_status
+  category: prospects
+  rest: [getProspectDynamicsVideos]
+  binding: rest
+  confidence: medium
+  note: >-
+    REST keys the lookup on {dynamicId} + {contactEmail}
+    (GET /v1/workspaces/{workspaceId}/dynamics/{dynamicId}/prospects/{contactEmail}).
+    The MCP tool keys on videoId plus prospectId OR prospectEmail and returns
+    additional per-step resource diagnostics (audio cloning, screenshot,
+    lip-sync) that the REST response schema does not declare. Same capability,
+    different key and a richer payload.
+mcp_only:
+- tool: list_prospects
+  reason: >-
+    No public REST operation lists the prospects of a campaign. The published
+    OpenAPI can only fetch ONE prospect at a time, by email. The MCP surface
+    exposes a filtered, searchable, paginated prospect list with engagement
+    stats that REST consumers cannot reach.
+- tool: get_dynamic_campaign_analytics
+  reason: >-
+    No public REST operation returns campaign engagement analytics. Visits,
+    plays, CTA clicks, thumbs-up and the per-visitor breakdown (location,
+    device, watch percentage) are MCP-only reads. This is the largest surface
+    divergence in the provider: analytics is agent-readable but not
+    API-readable.
+rest_only:
+- capability: workspace identity
+  operations: [getWorkspaceByApiKey]
+  note: Resolves a workspace id from an API key pair — meaningless on the OAuth-authenticated MCP surface.
+- capability: webhook management
+  operations: [getWebhookListByWorkspaceId, postCreateWebhook, getWebhookById, patchModifyWebhook, deleteWebhookById]
+  note: The entire outbound-event subscription surface is REST-only; the read-only MCP server exposes no webhook tools.
+- capability: campaign creation and mutation
+  operations: [postDynamics, postDynamicsV2, patchDynamicsModifyV2]
+  note: Write path — excluded by design from a strictly read-only MCP server.
+- capability: campaign settings
+  operations: [getDynamicsSettings, patchDynamicModifySettings]
+  note: getDynamicsSettings is a READ with no MCP tool, so this is a genuine read-side gap, not just a write exclusion.
+- capability: prospect generation and bulk operations
+  operations: [postV1WorkspacesWorkspaceidDynamicsDynamicsidProspect, postDynamicsVideoBulk, postV1WorkspacesWorkspaceidDynamicsDynamicidBulk, postDynamicsProspectsBulkModify, patchDynamicsProspectsUrlsBulkUpdate]
+  note: Write path — video generation and bulk prospect mutation.
+- capability: DVM minute bundles
+  operations: [getDvmBundles, cancelDvmBundle, updateDvmBundle]
+  note: getDvmBundles is a READ (plan balance and available bundles) with no MCP tool — an agent cannot see remaining Dynamic Video minutes.
+coverage:
+  mcp_tools_named: 6
+  mcp_tools_bound_to_rest: 4
+  mcp_only_tools: 2
+  rest_operations_total: 23
+  rest_operations_with_a_tool: 4
+  rest_read_operations_total: 8
+  rest_read_operations_with_a_tool: 4
+  rest_operations_without_a_tool: 19
+findings:
+- >-
+  The two surfaces are non-identical projections in BOTH directions. MCP is the
+  only way to read prospect lists and campaign analytics; REST is the only way
+  to write anything, manage webhooks, or read campaign settings and DVM minute
+  balances.
+- >-
+  Four of the six MCP tools have a backing REST operation, but none is a pure
+  passthrough — every bound tool adds cursor pagination, search, or richer
+  diagnostics beyond what the published OpenAPI declares. The OpenAPI is
+  self-described as a draft scaffold, which is the most likely explanation.

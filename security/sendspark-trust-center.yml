@@ -1,0 +1,46 @@
+generated: '2026-08-13'
+method: probed
+probe: true
+url: https://security.sendspark.com/
+present: true
+certifications: []
+certifications_readable: false
+platform: Laika (trust-center SPA)
+evidence:
+- source: https://security.sendspark.com/
+  http_status: 200
+  content_type: text/html; charset=utf-8
+  title: Trust Center
+  bundle: https://laika-app-prod.s3.amazonaws.com/static/trust-center/assets/index.js
+  note: >-
+    An 814-byte HTML shell with a single <div id="root"> hydrated by the Laika
+    trust-center JavaScript bundle. The <title> is "Trust Center" and the asset
+    host is unambiguously a trust-center product, so the surface genuinely
+    exists on a subdomain Sendspark controls — but every certification, policy
+    and subprocessor listing is rendered client-side and returned no readable
+    text to an HTTP fetch.
+negative_probes:
+- {url: 'https://trust.sendspark.com', status: 0, note: DNS/connection failure — no such host}
+- {url: 'https://www.sendspark.com/security', status: 404}
+- {url: 'https://www.sendspark.com/trust', status: 404}
+- {url: 'https://www.sendspark.com/security-and-compliance', status: 404}
+- {url: 'https://www.sendspark.com/gdpr', status: 404}
+- {url: 'https://www.sendspark.com/legal', status: 404}
+- {url: 'https://www.sendspark.com/dpa', status: 404}
+- {url: 'https://www.sendspark.com/sub-processors', status: 404}
+findings:
+- >-
+  Sendspark operates a trust center at security.sendspark.com, but it is not
+  linked from the sendspark.com footer (which links only /privacy and /terms)
+  and it is not discoverable from the docs. A buyer or an agent looking for
+  Sendspark's compliance posture has no path to it from the public site.
+- >-
+  NO named certification (SOC 2, ISO 27001, PCI DSS, HIPAA, FedRAMP, GDPR, CSA
+  STAR) could be confirmed from any machine-readable surface. This artifact
+  records the presence of the trust center, NOT a compliance claim — no
+  `Compliance` pointer is emitted, because nothing verifiable was published in
+  a form a machine can read.
+remediation_for_provider:
+- Link security.sendspark.com from the sendspark.com footer and from help.sendspark.com.
+- Publish a server-rendered or JSON summary of certifications so the trust center is machine-readable.
+- Serve a /.well-known/security.txt (RFC 9116) — no Sendspark host serves one today.

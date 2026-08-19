@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sendspark DVM Bundles API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DVM Bundles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get available DVM minute bundles for workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/dvm-bundles",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns available DVM minute bundle packages for the workspace plan with current balance."
+        },
+        {
+          "info": {
+            "name": "Cancel recurring DVM bundle packs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/dvm-bundles/cancel",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Schedules bundle cancellation at the end of the current billing period. Bundle continues to contribute minutes until then. No refund."
+        },
+        {
+          "info": {
+            "name": "Add minutes to an existing custom DVM bundle",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api-gw.sendspark.com/v1/workspaces/:workspaceId/dvm-bundles/:bundleId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "bundleId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Increases the minute quantity of an active custom DVM bundle by addMinutes. The new total is validated against plan max/step. Stripe prorates the additional cost for the remaining billing period and invoices it immediately."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

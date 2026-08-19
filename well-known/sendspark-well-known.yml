@@ -1,16 +1,64 @@
-generated: '2026-07-21'
+generated: '2026-08-13'
 method: searched
-source: live probes of /.well-known/* on Sendspark hosts
+source: live probes of /.well-known/* on every Sendspark host
 hosts:
 - host: https://apiv2.sendspark.com
+  role: MCP server host
   documents:
   - path: /.well-known/oauth-authorization-server
     status: 200
     file: sendspark-oauth-authorization-server.json
     standard: RFC 8414 OAuth 2.0 Authorization Server Metadata
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    standard: RFC 9728 OAuth 2.0 Protected Resource Metadata
+  - path: /.well-known/oauth-protected-resource/api/mcp
+    status: 200
+    file: sendspark-oauth-protected-resource.json
+    standard: RFC 9728 OAuth 2.0 Protected Resource Metadata
+    note: >-
+      The exact resource-metadata URL advertised in the WWW-Authenticate header
+      returned by POST https://apiv2.sendspark.com/api/mcp.
   - path: /.well-known/openid-configuration
     status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://auth.sendspark.com
+  role: OAuth authorization server / issuer
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: sendspark-auth-openid-configuration.json
+    standard: OpenID Connect Discovery 1.0
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://help.sendspark.com
+  role: documentation host (Mintlify, source github.com/sendspark/docs)
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: ../a2a/sendspark-agent-card.json
+    standard: A2A Agent Card
+    note: See a2a/sendspark-a2a.yml for the graded manifest.
+  - path: /.well-known/agent-skills/sendspark/skill.md
+    status: 200
+    file: ../skills/sendspark-published-skill.md
+    standard: Agent Skill (markdown + frontmatter)
+    note: Provider-published Agent Skill referenced by the agent card's skills[0].url.
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
 - host: https://api-gw.sendspark.com
+  role: REST API host
   documents:
   - path: /.well-known/security.txt
     status: 404
@@ -18,12 +66,31 @@ hosts:
     status: 404
   - path: /.well-known/oauth-authorization-server
     status: 404
-- host: https://sendspark.com
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://www.sendspark.com
+  role: marketing site (HubSpot CMS)
   documents:
   - path: /.well-known/security.txt
     status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
 notes: >-
-  The MCP OAuth surface (auth.sendspark.com issuer, browser sign-in) publishes an
-  RFC 8414 authorization-server metadata document at apiv2.sendspark.com. The
-  REST API (api-gw.sendspark.com) itself uses x-api-key/x-api-secret header auth
-  and exposes no /.well-known documents.
+  Sendspark serves a real, non-empty /.well-known/ surface on three of its five
+  hosts. The MCP OAuth surface publishes RFC 8414 authorization-server metadata
+  and RFC 9728 protected-resource metadata at apiv2.sendspark.com, and the
+  issuer auth.sendspark.com publishes full OIDC discovery. The documentation
+  host publishes an A2A agent card and a linked Agent Skill. The REST API host
+  (api-gw.sendspark.com) — which uses x-api-key/x-api-secret header auth —
+  exposes no /.well-known documents at all, and no host anywhere serves a
+  security.txt.

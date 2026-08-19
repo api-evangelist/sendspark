@@ -1,0 +1,81 @@
+generated: '2026-08-13'
+method: probed
+source: https://help.sendspark.com/.well-known/agent-card.json
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: help.sendspark.com
+  note: >-
+    Served from Sendspark's own documentation host. Ownership is unambiguous:
+    help.sendspark.com is the Sendspark Help Center, built from the public
+    github.com/sendspark/docs repository (Mintlify), and the card's own
+    provider.organization is "Sendspark Help Center" with url
+    https://help.sendspark.com/. The card was NOT found on sendspark.com,
+    www.sendspark.com, api-gw.sendspark.com, apiv2.sendspark.com or
+    auth.sendspark.com (all 404 on both /.well-known/agent-card.json and the
+    legacy /.well-known/agent.json).
+conformance:
+  spec: A2A 1.0.0
+  grade: conformant
+  protocol_version: '0.3'
+  preferred_transport: HTTP+JSON
+  hard_checks:
+    capabilities_is_object: true
+    protocol_version_present: true
+    skills_is_array: true
+  optional_fields:
+    preferred_transport: true
+    default_input_modes: true
+    default_output_modes: true
+  deviations:
+  - id: supportedInterfaces-instead-of-additionalInterfaces
+    detail: >-
+      The card carries a `supportedInterfaces` array. A2A 1.0.0 names this field
+      `additionalInterfaces`; `supportedInterfaces` is the pre-1.0 spelling.
+  - id: protocol-version-not-full-semver
+    detail: protocolVersion is "0.3" rather than a full "0.3.0" semantic version.
+  - id: documentation-scope-not-api-scope
+    detail: >-
+      The card advertises the Help Center as the agent surface (url
+      https://help.sendspark.com/) with a single documentation-oriented skill.
+      It does not advertise the REST API (api-gw.sendspark.com) or the hosted
+      MCP server (apiv2.sendspark.com/api/mcp), both of which Sendspark
+      publishes elsewhere.
+card:
+  name: Sendspark Help Center
+  url: https://help.sendspark.com/
+  version: 1.0.0
+  protocol_version: '0.3'
+  preferred_transport: HTTP+JSON
+  provider:
+    organization: Sendspark Help Center
+    url: https://help.sendspark.com/
+  documentation_url: https://help.sendspark.com/
+  capabilities:
+    streaming: false
+    push_notifications: false
+  default_input_modes: [text/plain]
+  default_output_modes: [text/plain]
+  skills: 1
+  skill_ids: [sendspark]
+  file: sendspark-agent-card.json
+related:
+  published_agent_skill: skills/sendspark-published-skill.md
+  published_agent_skill_url: https://help.sendspark.com/.well-known/agent-skills/sendspark/skill.md
+  note: >-
+    The card's single skill points at a provider-published Agent Skill markdown
+    document, which was fetched and saved verbatim to skills/.
+x-evidence:
+  fetched: '2026-08-13'
+  url: https://help.sendspark.com/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+  negative_probes:
+  - {url: 'https://sendspark.com/.well-known/agent-card.json', status: 404}
+  - {url: 'https://sendspark.com/.well-known/agent.json', status: 404}
+  - {url: 'https://www.sendspark.com/.well-known/agent-card.json', status: 404}
+  - {url: 'https://www.sendspark.com/.well-known/agent.json', status: 404}
+  - {url: 'https://api-gw.sendspark.com/.well-known/agent-card.json', status: 404}
+  - {url: 'https://apiv2.sendspark.com/.well-known/agent-card.json', status: 404}
+  - {url: 'https://auth.sendspark.com/.well-known/agent-card.json', status: 404}
+  - {url: 'https://help.sendspark.com/.well-known/agent.json', status: 404}

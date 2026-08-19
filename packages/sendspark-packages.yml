@@ -1,0 +1,62 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  Registry metadata endpoints (registry.npmjs.org, pypi.org, rubygems.org,
+  repo.packagist.org, crates.io) plus the Sendspark docs
+  (https://help.sendspark.com/api-reference) and the public GitHub organization
+  (https://github.com/sendspark).
+summary:
+  official_count: 0
+  third_party_count: 3
+  note: >-
+    Sendspark publishes NO first-party client library in any public registry.
+    The documented integration path is direct HTTP against
+    https://api-gw.sendspark.com with the x-api-key + x-api-secret headers, or
+    the hosted read-only MCP server. The only public GitHub repository in the
+    sendspark organization is `docs` (the Mintlify documentation source) — there
+    is no SDK repository. Every package below is community/third-party and is
+    recorded as evidence of the integration ecosystem, not as a Sendspark SDK.
+packages: []
+third_party_packages:
+- language: javascript
+  registry: npm
+  name: n8n-nodes-sendspark
+  url: https://www.npmjs.com/package/n8n-nodes-sendspark
+  install: npm install n8n-nodes-sendspark
+  official: false
+  publisher: community n8n node author
+  version: 0.1.15
+  published: '2025-09-27'
+  note: Community n8n workflow node wrapping the Sendspark API.
+- language: javascript
+  registry: npm
+  name: "@pipedream/sendspark"
+  url: https://www.npmjs.com/package/@pipedream/sendspark
+  install: npm install @pipedream/sendspark
+  official: false
+  publisher: Pipedream
+  version: 0.2.0
+  published: '2026-05-29'
+  note: Pipedream integration component, published by Pipedream and not by Sendspark.
+- language: javascript
+  registry: npm
+  name: "@keystrokehq/sendspark"
+  url: https://www.npmjs.com/package/@keystrokehq/sendspark
+  install: npm install @keystrokehq/sendspark
+  official: false
+  publisher: Keystroke HQ
+  version: 0.1.6
+  published: '2026-07-18'
+  note: Third-party connector package.
+registries_checked:
+- {registry: npm, query: 'sendspark (name + text search)', first_party_hits: 0, status: 200}
+- {registry: npm, package: sendspark, status: 404}
+- {registry: npm, package: "@sendspark/sdk", status: 404}
+- {registry: npm, package: "@sendspark/mcp", status: 404}
+- {registry: npm, package: "@sendspark/api", status: 404}
+- {registry: pypi, package: sendspark, status: 404}
+- {registry: pypi, package: sendspark-api, status: 404}
+- {registry: rubygems, package: sendspark, status: 404}
+- {registry: packagist, package: sendspark/sendspark, status: 404}
+- {registry: crates.io, package: sendspark, status: 403, note: crates.io rejected the unauthenticated probe; no Rust crate is referenced anywhere in the Sendspark docs}
+- {registry: github, org: sendspark, status: 200, repos: [docs], note: only the documentation repository is public}

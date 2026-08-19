@@ -1,0 +1,83 @@
+generated: '2026-08-13'
+method: searched
+source:
+- https://help.sendspark.com/dynamic-video-campaign-limits.md
+- https://help.sendspark.com/linkedin-background-video-generation-limits.md
+- https://help.sendspark.com/mcp/tools.md
+- https://help.sendspark.com/api-reference
+- openapi/_original/sendspark-openapi-original.json
+request_rate_limits_documented: false
+limit_count: 6
+response_headers: []
+exhaustion_status_code: null
+summary: >-
+  Sendspark publishes NO request-rate limit for its REST API: no requests-per-
+  second/minute/hour figure, no burst allowance, no X-RateLimit-* or RateLimit-*
+  response headers, no Retry-After contract, and no 429 response anywhere in the
+  published OpenAPI (the spec declares only 200, 204, 400, 403, 404 and 503).
+  What Sendspark does publish are VOLUME QUOTAS — per-campaign and per-batch
+  caps on video/lead generation, MCP page-size ceilings, and an advisory
+  third-party throughput ceiling for LinkedIn-backed backgrounds. Those are
+  recorded below and are plan-scoped, not request-scoped. An agent integrating
+  Sendspark has no runtime rate-limit signal to back off against.
+limits:
+- id: campaign-leads-solo
+  kind: quota
+  scope: per-campaign
+  plan: Solo
+  window: null
+  limit: 4000
+  unit: leads or videos per campaign
+  source: https://help.sendspark.com/dynamic-video-campaign-limits.md
+- id: batch-videos-solo
+  kind: quota
+  scope: per-batch
+  plan: Solo
+  window: null
+  limit: 2000
+  unit: videos per generation batch
+  source: https://help.sendspark.com/dynamic-video-campaign-limits.md
+- id: campaign-leads-growth-team
+  kind: quota
+  scope: per-campaign
+  plan: Growth, Team
+  window: null
+  limit: 10000
+  unit: leads or videos per campaign
+  source: https://help.sendspark.com/dynamic-video-campaign-limits.md
+- id: linkedin-background-generation
+  kind: advisory-throughput
+  scope: per-account
+  window: 1 day
+  limit: 30
+  limit_range: 20-30
+  unit: videos per day using LinkedIn profile backgrounds
+  enforced_by: LinkedIn (third party), not Sendspark
+  on_exhaustion: >-
+    LinkedIn temporarily blocks profile fetches; video generation fails or is
+    rejected. Docs advise waiting 24-48 hours and resetting the cookie/session
+    before retrying.
+  source: https://help.sendspark.com/linkedin-background-video-generation-limits.md
+- id: mcp-page-size-workspaces-campaigns-analytics
+  kind: page-size-ceiling
+  scope: per-request
+  surface: mcp
+  window: null
+  limit: 50
+  unit: items per call (default 20; analytics default 25)
+  source: https://help.sendspark.com/mcp/tools.md
+- id: mcp-page-size-prospects
+  kind: page-size-ceiling
+  scope: per-request
+  surface: mcp
+  window: null
+  limit: 100
+  unit: prospects per call (default 20)
+  source: https://help.sendspark.com/mcp/tools.md
+gaps:
+- No X-RateLimit-*, RateLimit-* or Retry-After header is documented on any surface.
+- No 429 Too Many Requests response is declared in the published OpenAPI.
+- No per-API-key or per-workspace request budget is published.
+related:
+  plans: plans/sendspark-plans-pricing.yml
+  conventions: conventions/sendspark-conventions.yml

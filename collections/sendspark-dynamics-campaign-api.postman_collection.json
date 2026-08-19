@@ -1,0 +1,4798 @@
+{
+  "item": [
+    {
+      "id": "01397b78-334f-4ac8-a934-05080c384bad",
+      "name": "Dynamics Campaign",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e6cf0d5b-9b27-414b-bf31-84d39cd2687f",
+          "name": "Get the list of Dynamic Campaigns by workspace",
+          "request": {
+            "name": "Get the list of Dynamic Campaigns by workspace",
+            "description": {
+              "content": "Get the list of Dynamic Campaigns by workspace",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "dynamics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "dropdownRendering",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "projectionType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "prospectOnly",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "43ad6fa3-77d2-40ec-b5cd-ab2eb5943775",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "filters",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dropdownRendering",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "projectionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prospectOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"code\": \"S400-AHVE\",\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid request payload input\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c0ab62b-9573-4da8-b236-a75b8e9b4920",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "filters",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dropdownRendering",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "projectionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prospectOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Resource not found or invalid access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da08d8e3-ddde-48ce-8cd3-5f7b8db77a7e",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "filters",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dropdownRendering",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "projectionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prospectOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\",\n  \"message\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "719f475b-37a1-484d-9b6f-598f12d645fa",
+          "name": "Create Dynamics Campaign",
+          "request": {
+            "name": "Create Dynamics Campaign",
+            "description": {
+              "content": "Create Dynamics Campaign in folder",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "dynamics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "47f7752a-5074-4252-998a-2069c7f23a99",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Dynamic Campaign\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"combinedVideo\": false,\n  \"dynamicBackground\": false,\n  \"status\": \"pending\",\n  \"creator\": \"okn4ra9qjlpzhs2zpuni426jizysbdcp\",\n  \"folder\": \"ibdls2hjvaebvg0k4mz0zgvndbai9th7\",\n  \"workspace\": \"3vwdfm4jmhfyzt1yqp0r8v3qgaocrczb\",\n  \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n  \"createdAt\": \"1978-06-09\",\n  \"name\": \"My Dynamic Campaign\",\n  \"videoProperties\": {\n    \"sharePage\": {\n      \"title\": \"Hello there!\",\n      \"message\": \"welcome to my dynamic campaign\",\n      \"buttons\": [\n        \"string\",\n        \"string\"\n      ],\n      \"calendar\": {\n        \"provider\": \"string\",\n        \"link\": \"string\"\n      },\n      \"layout\": \"layout-default\",\n      \"transcriptionsViewEnabled\": false\n    }\n  },\n  \"metadata\": {\n    \"version\": 1,\n    \"migrated\": \"1999-05-24\"\n  },\n  \"videosAssets\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6db586ed-d170-4b9b-9d7b-5f33ad4d698b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Dynamic Campaign\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"code\": \"S400-AHVE\",\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid request payload input\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c42ebfc9-69e1-4149-a40b-dee4217a2113",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Dynamic Campaign\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 403,\n  \"code\": \"S403-UPLD\",\n  \"error\": \"Forbidden\",\n  \"message\": \"Invalid request payload input / Any error from provider\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12d63e85-23f8-4993-ac8c-0debececbb81",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Dynamic Campaign\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Resource not found or invalid access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e0b9c24-b73c-45a6-9fd8-173c5c34a908",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Dynamic Campaign\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\",\n  \"message\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37a754f1-2a21-40d9-a773-17d6ae3973af",
+          "name": "Get workspace dynamic campaign",
+          "request": {
+            "name": "Get workspace dynamic campaign",
+            "description": {
+              "content": "Get workspace dynamic campaign",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "dynamics",
+                ":dynamicId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dynamicId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8829db1b-f897-4727-ba37-1b46485c5e85",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9d98a4d-a9a6-475d-9836-ee2c0ec19074",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"code\": \"S400-AHVE\",\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid request payload input\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6eb675c7-7bb4-4c67-b453-5a71937c7f93",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Resource not found or invalid access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9974229-2e29-47cd-87dd-c5a827787cba",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\",\n  \"message\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b438df9d-aed3-46d7-b8fc-9340c25964ca",
+          "name": "Get dynamics settings",
+          "request": {
+            "name": "Get dynamics settings",
+            "description": {
+              "content": "Get dynamics settings",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "dynamics",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc7bc8dc-b946-4679-a517-ceaa4e06153e",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"languages\": {\n    \"en\": {\n      \"name\": \"English\",\n      \"placeholders\": [\n        {\n          \"word\": \"watermelon\",\n          \"replace\": \"{{firstname | there}}\"\n        },\n        {\n          \"word\": \"watermelon\",\n          \"replace\": \"{{firstname | there}}\"\n        }\n      ],\n      \"fallbacks\": [\n        \"there\",\n        \"there\"\n      ]\n    },\n    \"es\": {\n      \"name\": \"English\",\n      \"placeholders\": [\n        {\n          \"word\": \"watermelon\",\n          \"replace\": \"{{firstname | there}}\"\n        },\n        {\n          \"word\": \"watermelon\",\n          \"replace\": \"{{firstname | there}}\"\n        }\n      ],\n      \"fallbacks\": [\n        \"there\",\n        \"there\"\n      ]\n    },\n    \"de\": {\n      \"name\": \"English\",\n      \"placeholders\": [\n        {\n          \"word\": \"watermelon\",\n          \"replace\": \"{{firstname | there}}\"\n        },\n        {\n          \"word\": \"watermelon\",\n          \"replace\": \"{{firstname | there}}\"\n        }\n      ],\n      \"fallbacks\": [\n        \"there\",\n        \"there\"\n      ]\n    }\n  },\n  \"multivariableLanguages\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9b6883a-6085-4b8e-a3e1-8549800e9eb2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"code\": \"S400-AHVE\",\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid request payload input\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5539fd5-2439-4a2b-a551-41f9693b1147",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Resource not found or invalid access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71c72c36-8934-413c-8a98-f0ffc11a5df6",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\",\n  \"message\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28529f8c-7161-4cf7-9d14-432865b1364f",
+          "name": "Get prospect data from prospect email",
+          "request": {
+            "name": "Get prospect data from prospect email",
+            "description": {
+              "content": "Get prospect data from prospect email",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "dynamics",
+                ":dynamicId",
+                "prospects",
+                ":contactEmail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Comma-separated list of additional fields to include in the response (emailEmbedHTML, fields)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dynamicId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactEmail",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f30d3a8-d6a4-4389-932a-1d65262acaa1",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "prospects",
+                    ":contactEmail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactEmail",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"contactEmail\": \"Contact Email, Example: john@example.com\",\n  \"backgroundUrl\": \"Backgound URL, Example: https://example.com\",\n  \"originalBackgroundUrl\": \"Backgound URL, Example: https://example.com\",\n  \"status\": \"Current prospect status, Example: saved, billed, errored, processing, uploaded, completed\",\n  \"deletedAt\": \"1977-06-25\",\n  \"valid\": true,\n  \"createdAt\": \"1957-05-07\",\n  \"updatedAt\": \"1986-05-11\",\n  \"validationDetails\": [\n    {\n      \"validationField\": \"Show field with errors, Example: contactEmail\",\n      \"validationMessage\": \"Show error detail related with field with error, example: Invalid email\",\n      \"validationCode\": \"Show error code related with field with error, example: 400\"\n    },\n    {\n      \"validationField\": \"Show field with errors, Example: contactEmail\",\n      \"validationMessage\": \"Show error detail related with field with error, example: Invalid email\",\n      \"validationCode\": \"Show error code related with field with error, example: 400\"\n    }\n  ],\n  \"contactName\": \"Contact Name, example: John Doe\",\n  \"company\": \"Company Name, example: Sendspark\",\n  \"jobTitle\": \"Job Title, example: Software Engineer\",\n  \"id\": \"Internal prospect ID, example: 997f191e810c19729de860fd\",\n  \"shareUrl\": \"Public URL to share the final video, example: https://sendspark.com/share/997f191e81\",\n  \"emailEmbedHTML\": \"string\",\n  \"fields\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77feef64-7fde-4b71-bd83-2d5992cf2192",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "prospects",
+                    ":contactEmail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactEmail",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"code\": \"S400-AHVE\",\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid request payload input\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e397c39c-6151-4e99-a443-89f06ee78499",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "prospects",
+                    ":contactEmail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactEmail",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Resource not found or invalid access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b853d783-71de-4b0e-871b-77d85d86fcee",
+          "name": "Create Dynamics Campaign for the DV by steps UI",
+          "request": {
+            "name": "Create Dynamics Campaign for the DV by steps UI",
+            "description": {
+              "content": "Create Dynamics Campaign in folder for the DV by steps UI",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "workspaces",
+                ":workspaceId",
+                "dynamics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"voiceCloning\": \"<boolean>\",\n  \"languageCode\": \"<string>\",\n  \"videoUrl\": \"<string>\",\n  \"version\": \"<number>\",\n  \"multivariable\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2a7ab60a-145a-49a5-a743-419b2ae48632",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Dynamic Campaign\",\n  \"voiceCloning\": false,\n  \"languageCode\": \"en\",\n  \"videoUrl\": \"https://ssoven341-d3vz.com/share/9up29v11k16cqtyie1hx74cmhva5yutz\",\n  \"version\": 1,\n  \"multivariable\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"combinedVideo\": false,\n  \"dynamicBackground\": false,\n  \"status\": \"pending\",\n  \"creator\": \"okn4ra9qjlpzhs2zpuni426jizysbdcp\",\n  \"folder\": \"ibdls2hjvaebvg0k4mz0zgvndbai9th7\",\n  \"workspace\": \"3vwdfm4jmhfyzt1yqp0r8v3qgaocrczb\",\n  \"id\": \"63f6a4145a5e755e2e8fe19d\",\n  \"createdAt\": \"2001-08-05\",\n  \"name\": \"My Dynamic Campaign\",\n  \"languageCode\": \"en\",\n  \"videoProperties\": {\n    \"sharePage\": {\n      \"title\": \"Hello there!\",\n      \"message\": \"welcome to my dynamic campaign\",\n      \"buttons\": [\n        \"string\",\n        \"string\"\n      ],\n      \"calendar\": {\n        \"provider\": \"string\",\n        \"link\": \"string\"\n      },\n      \"layout\": \"layout-default\",\n      \"transcriptionsViewEnabled\": false\n    }\n  },\n  \"metadata\": {\n    \"version\": 1,\n    \"migrated\": \"1985-09-11\"\n  },\n  \"videosAssets\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b572abf-f026-48e9-ae76-6339f37c1088",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Dynamic Campaign\",\n  \"voiceCloning\": false,\n  \"languageCode\": \"en\",\n  \"videoUrl\": \"https://ssoven341-d3vz.com/share/9up29v11k16cqtyie1hx74cmhva5yutz\",\n  \"version\": 1,\n  \"multivariable\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"code\": \"S400-AHVE\",\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid request payload input\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac5cd46c-f250-4549-a83a-9febccec50b3",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Dynamic Campaign\",\n  \"voiceCloning\": false,\n  \"languageCode\": \"en\",\n  \"videoUrl\": \"https://ssoven341-d3vz.com/share/9up29v11k16cqtyie1hx74cmhva5yutz\",\n  \"version\": 1,\n  \"multivariable\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 403,\n  \"code\": \"S403-UPLD\",\n  \"error\": \"Forbidden\",\n  \"message\": \"Invalid request payload input / Any error from provider\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb5dbff2-be74-427f-9d0d-964d02128db1",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Dynamic Campaign\",\n  \"voiceCloning\": false,\n  \"languageCode\": \"en\",\n  \"videoUrl\": \"https://ssoven341-d3vz.com/share/9up29v11k16cqtyie1hx74cmhva5yutz\",\n  \"version\": 1,\n  \"multivariable\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Resource not found or invalid access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37ec169f-3bc9-47b4-801e-2d8c08e24c21",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Dynamic Campaign\",\n  \"voiceCloning\": false,\n  \"languageCode\": \"en\",\n  \"videoUrl\": \"https://ssoven341-d3vz.com/share/9up29v11k16cqtyie1hx74cmhva5yutz\",\n  \"version\": 1,\n  \"multivariable\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\",\n  \"message\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8303154-8469-4f5a-ac65-942cd23190c9",
+          "name": "Generate videos for Dynamics Campaign prospect list",
+          "request": {
+            "name": "Generate videos for Dynamics Campaign prospect list",
+            "description": {
+              "content": "Generate videos for Dynamics Campaign prospect list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dv-v2",
+                "workspaces",
+                ":workspaceId",
+                "dynamics",
+                ":dynamicId",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dynamicId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22e80a81-1afd-4fab-96fe-b1afd36d1fc2",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dv-v2",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "713d8272-bb03-4128-ad7e-671589245e88",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dv-v2",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"code\": \"S400-AHVE\",\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid request payload input\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae8d9d58-9252-43b0-8c39-e7f98ec7d04e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dv-v2",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 403,\n  \"code\": \"S403-UPLD\",\n  \"error\": \"Forbidden\",\n  \"message\": \"Invalid request payload input / Any error from provider\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f72d9f7-ccf6-4812-92c8-0b8dec779f82",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dv-v2",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Resource not found or invalid access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae1583cd-ecdc-44b3-a8f3-5f6b031ee863",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dv-v2",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\",\n  \"message\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb746a7d-fc84-48ae-a48a-a260faf8cdbe",
+          "name": "Generate videos for Dynamics Campaign prospect list",
+          "request": {
+            "name": "Generate videos for Dynamics Campaign prospect list",
+            "description": {
+              "content": "Generate videos for Dynamics Campaign prospect list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "dynamics",
+                ":dynamicId",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dynamicId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae3630b3-2651-4cb3-b3eb-f658da73aed4",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19b71bc5-2c27-42ab-b4c6-ac0f5e597903",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"code\": \"S400-AHVE\",\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid request payload input\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "867efd40-78bf-4df9-8d7c-f1851613a945",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 403,\n  \"code\": \"S403-UPLD\",\n  \"error\": \"Forbidden\",\n  \"message\": \"Invalid request payload input / Any error from provider\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2912948c-a2e3-4180-a7bd-243b709c6677",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Resource not found or invalid access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c1621c6-9db7-4a7b-8f6c-bc5906f2c3df",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\",\n  \"message\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3d89ac5-2395-47f0-a8ae-ffdb2966ed14",
+          "name": "Add prospect to Dynamics Campaign and process video.",
+          "request": {
+            "name": "Add prospect to Dynamics Campaign and process video.",
+            "description": {
+              "content": "API Gateway only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "dynamics",
+                ":dynamicsId",
+                "prospect"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dynamicsId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prospect\": {\n    \"_id\": \"<string>\",\n    \"contactName\": \"<string>\",\n    \"contactEmail\": \"<string>\",\n    \"company\": \"<string>\",\n    \"jobTitle\": \"<string>\",\n    \"customField\": \"<string>\",\n    \"backgroundUrl\": \"<string>\",\n    \"originalBackgroundUrl\": \"<string>\",\n    \"screenshotUrl\": \"<string>\",\n    \"webhookUrl\": \"<string>\",\n    \"webhookEvents\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"audioUrl\": \"<string>\",\n    \"valid\": \"<boolean>\",\n    \"fallbackDataUsed\": \"<boolean>\",\n    \"fields\": \"<object>\",\n    \"hash\": \"<string>\"\n  },\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": \"<boolean>\",\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": \"<boolean>\",\n  \"fallbackToEmailDomainForBackground\": \"<boolean>\",\n  \"callbackId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "acbc67ab-052d-4218-a372-fcad2a2a60ce",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId",
+                    "prospect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prospect\": {\n    \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n    \"contactName\": \"John Doe\",\n    \"contactEmail\": \"johndoe@example.com\",\n    \"company\": \"Example Company\",\n    \"jobTitle\": \"Example jobTitle\",\n    \"customField\": \"Example Custom Field\",\n    \"backgroundUrl\": \"https://example.com\",\n    \"originalBackgroundUrl\": \"https://example.com\",\n    \"screenshotUrl\": \"https://sendspark.com\",\n    \"webhookUrl\": \"https://sendspark.com\",\n    \"webhookEvents\": [\n      \"video_generated_dv\",\n      \"video_watched\",\n      \"video_played\",\n      \"video_cta_clicked\",\n      \"video_viewed\",\n      \"video_liked\"\n    ],\n    \"audioUrl\": \"https://sendspark.com\",\n    \"valid\": false,\n    \"fallbackDataUsed\": false,\n    \"fields\": \"<object>\",\n    \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n  },\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": false,\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": false,\n  \"fallbackToEmailDomainForBackground\": false,\n  \"callbackId\": \"63f6a4145a5e755e2e8fe19d\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"combinedVideo\": false,\n  \"dynamicBackground\": false,\n  \"status\": \"pending\",\n  \"creator\": \"okn4ra9qjlpzhs2zpuni426jizysbdcp\",\n  \"folder\": \"ibdls2hjvaebvg0k4mz0zgvndbai9th7\",\n  \"workspace\": \"3vwdfm4jmhfyzt1yqp0r8v3qgaocrczb\",\n  \"createdAt\": \"1997-07-15\",\n  \"name\": \"My Dynamic Campaign\",\n  \"videoProperties\": {\n    \"sharePage\": {\n      \"title\": \"Hello there!\",\n      \"message\": \"welcome to my dynamic campaign\",\n      \"buttons\": [\n        {\n          \"position\": 8881.219073748507,\n          \"label\": \"string\",\n          \"link\": \"http://www.sendspark.com/\"\n        },\n        {\n          \"position\": 214.68126223429417,\n          \"label\": \"string\",\n          \"link\": \"http://www.sendspark.com/\"\n        }\n      ],\n      \"calendar\": {\n        \"provider\": \"string\",\n        \"link\": \"string\"\n      },\n      \"layout\": \"layout-default\",\n      \"transcriptionsViewEnabled\": false\n    }\n  },\n  \"metadata\": {\n    \"version\": 1,\n    \"migrated\": \"1977-10-30\"\n  },\n  \"videosAssets\": [\n    \"string\",\n    \"string\"\n  ],\n  \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n  \"deletedAt\": \"1979-07-19\",\n  \"prospectList\": [\n    {\n      \"status\": \"saved\",\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"campaign\": \"okn4ra9qjl3fs2zpuni426jizysbdcp\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"trimMuxId\": \"string\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"webhookPaused\": false,\n      \"audioUrl\": \"https://sendspark.com\",\n      \"videoLipSyncUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"bulkId\": \"63f6a4145a5e755e2e8fe19d\",\n      \"createdAt\": \"1991-08-06\",\n      \"updatedAt\": \"1976-10-20\",\n      \"deletedAt\": \"1989-12-01\",\n      \"validationDetails\": \"string\",\n      \"resourcesStatus\": {},\n      \"isNotified\": false,\n      \"fallback\": false,\n      \"regenerationCount\": 0,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    },\n    {\n      \"status\": \"saved\",\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"campaign\": \"okn4ra9qjl3fs2zpuni426jizysbdcp\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"trimMuxId\": \"string\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"webhookPaused\": false,\n      \"audioUrl\": \"https://sendspark.com\",\n      \"videoLipSyncUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"bulkId\": \"63f6a4145a5e755e2e8fe19d\",\n      \"createdAt\": \"1996-02-14\",\n      \"updatedAt\": \"1985-06-21\",\n      \"deletedAt\": \"1962-07-23\",\n      \"validationDetails\": \"string\",\n      \"resourcesStatus\": {},\n      \"isNotified\": false,\n      \"fallback\": false,\n      \"regenerationCount\": 0,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1efeb16-e4f2-4501-aa1c-a51025a2a0f9",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId",
+                    "prospect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prospect\": {\n    \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n    \"contactName\": \"John Doe\",\n    \"contactEmail\": \"johndoe@example.com\",\n    \"company\": \"Example Company\",\n    \"jobTitle\": \"Example jobTitle\",\n    \"customField\": \"Example Custom Field\",\n    \"backgroundUrl\": \"https://example.com\",\n    \"originalBackgroundUrl\": \"https://example.com\",\n    \"screenshotUrl\": \"https://sendspark.com\",\n    \"webhookUrl\": \"https://sendspark.com\",\n    \"webhookEvents\": [\n      \"video_generated_dv\",\n      \"video_watched\",\n      \"video_played\",\n      \"video_cta_clicked\",\n      \"video_viewed\",\n      \"video_liked\"\n    ],\n    \"audioUrl\": \"https://sendspark.com\",\n    \"valid\": false,\n    \"fallbackDataUsed\": false,\n    \"fields\": \"<object>\",\n    \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n  },\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": false,\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": false,\n  \"fallbackToEmailDomainForBackground\": false,\n  \"callbackId\": \"63f6a4145a5e755e2e8fe19d\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"code\": \"S400-AHVE\",\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid request payload input\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47d71852-516c-4383-977f-8e4e60c565fb",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId",
+                    "prospect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prospect\": {\n    \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n    \"contactName\": \"John Doe\",\n    \"contactEmail\": \"johndoe@example.com\",\n    \"company\": \"Example Company\",\n    \"jobTitle\": \"Example jobTitle\",\n    \"customField\": \"Example Custom Field\",\n    \"backgroundUrl\": \"https://example.com\",\n    \"originalBackgroundUrl\": \"https://example.com\",\n    \"screenshotUrl\": \"https://sendspark.com\",\n    \"webhookUrl\": \"https://sendspark.com\",\n    \"webhookEvents\": [\n      \"video_generated_dv\",\n      \"video_watched\",\n      \"video_played\",\n      \"video_cta_clicked\",\n      \"video_viewed\",\n      \"video_liked\"\n    ],\n    \"audioUrl\": \"https://sendspark.com\",\n    \"valid\": false,\n    \"fallbackDataUsed\": false,\n    \"fields\": \"<object>\",\n    \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n  },\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": false,\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": false,\n  \"fallbackToEmailDomainForBackground\": false,\n  \"callbackId\": \"63f6a4145a5e755e2e8fe19d\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 403,\n  \"code\": \"S403-UPLD\",\n  \"error\": \"Forbidden\",\n  \"message\": \"Invalid request payload input / Any error from provider\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "487e604d-3776-4876-8b4b-8f5e79e4dff0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId",
+                    "prospect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prospect\": {\n    \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n    \"contactName\": \"John Doe\",\n    \"contactEmail\": \"johndoe@example.com\",\n    \"company\": \"Example Company\",\n    \"jobTitle\": \"Example jobTitle\",\n    \"customField\": \"Example Custom Field\",\n    \"backgroundUrl\": \"https://example.com\",\n    \"originalBackgroundUrl\": \"https://example.com\",\n    \"screenshotUrl\": \"https://sendspark.com\",\n    \"webhookUrl\": \"https://sendspark.com\",\n    \"webhookEvents\": [\n      \"video_generated_dv\",\n      \"video_watched\",\n      \"video_played\",\n      \"video_cta_clicked\",\n      \"video_viewed\",\n      \"video_liked\"\n    ],\n    \"audioUrl\": \"https://sendspark.com\",\n    \"valid\": false,\n    \"fallbackDataUsed\": false,\n    \"fields\": \"<object>\",\n    \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n  },\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": false,\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": false,\n  \"fallbackToEmailDomainForBackground\": false,\n  \"callbackId\": \"63f6a4145a5e755e2e8fe19d\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Resource not found or invalid access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21960905-702f-4817-add0-2cd2d323114e",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId",
+                    "prospect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prospect\": {\n    \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n    \"contactName\": \"John Doe\",\n    \"contactEmail\": \"johndoe@example.com\",\n    \"company\": \"Example Company\",\n    \"jobTitle\": \"Example jobTitle\",\n    \"customField\": \"Example Custom Field\",\n    \"backgroundUrl\": \"https://example.com\",\n    \"originalBackgroundUrl\": \"https://example.com\",\n    \"screenshotUrl\": \"https://sendspark.com\",\n    \"webhookUrl\": \"https://sendspark.com\",\n    \"webhookEvents\": [\n      \"video_generated_dv\",\n      \"video_watched\",\n      \"video_played\",\n      \"video_cta_clicked\",\n      \"video_viewed\",\n      \"video_liked\"\n    ],\n    \"audioUrl\": \"https://sendspark.com\",\n    \"valid\": false,\n    \"fallbackDataUsed\": false,\n    \"fields\": \"<object>\",\n    \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n  },\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": false,\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": false,\n  \"fallbackToEmailDomainForBackground\": false,\n  \"callbackId\": \"63f6a4145a5e755e2e8fe19d\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\",\n  \"message\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "538b173c-2966-4526-a27e-e1d163e8916f",
+          "name": "Bulk add and process prospects to a dynamics campaign.",
+          "request": {
+            "name": "Bulk add and process prospects to a dynamics campaign.",
+            "description": {
+              "content": "Listed in API Gateway only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "dynamics",
+                ":dynamicsId",
+                "prospects",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dynamicsId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prospectList\": [\n    {\n      \"_id\": \"<string>\",\n      \"contactName\": \"<string>\",\n      \"contactEmail\": \"<string>\",\n      \"company\": \"<string>\",\n      \"jobTitle\": \"<string>\",\n      \"customField\": \"<string>\",\n      \"backgroundUrl\": \"<string>\",\n      \"originalBackgroundUrl\": \"<string>\",\n      \"screenshotUrl\": \"<string>\",\n      \"webhookUrl\": \"<string>\",\n      \"webhookEvents\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"audioUrl\": \"<string>\",\n      \"valid\": \"<boolean>\",\n      \"fallbackDataUsed\": \"<boolean>\",\n      \"fields\": \"<object>\",\n      \"hash\": \"<string>\"\n    }\n  ],\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": \"<boolean>\",\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": \"<boolean>\",\n  \"callbackId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9bcbee80-a4e1-42fa-aa7b-c8de0becc0f4",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId",
+                    "prospects",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prospectList\": [\n    {\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"customField\": \"Example Custom Field\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"audioUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    }\n  ],\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": false,\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": false,\n  \"callbackId\": \"63f6a4145a5e755e2e8fe19d\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"combinedVideo\": false,\n  \"dynamicBackground\": false,\n  \"status\": \"pending\",\n  \"creator\": \"okn4ra9qjlpzhs2zpuni426jizysbdcp\",\n  \"folder\": \"ibdls2hjvaebvg0k4mz0zgvndbai9th7\",\n  \"workspace\": \"3vwdfm4jmhfyzt1yqp0r8v3qgaocrczb\",\n  \"createdAt\": \"2000-11-29\",\n  \"name\": \"My Dynamic Campaign\",\n  \"videoProperties\": {\n    \"sharePage\": {\n      \"title\": \"Hello there!\",\n      \"message\": \"welcome to my dynamic campaign\",\n      \"buttons\": [\n        {\n          \"position\": 2398.9751085795474,\n          \"label\": \"string\",\n          \"link\": \"http://www.sendspark.com/\"\n        },\n        {\n          \"position\": 4927.257940573412,\n          \"label\": \"string\",\n          \"link\": \"http://www.sendspark.com/\"\n        }\n      ],\n      \"calendar\": {\n        \"provider\": \"string\",\n        \"link\": \"string\"\n      },\n      \"layout\": \"layout-default\",\n      \"transcriptionsViewEnabled\": false\n    }\n  },\n  \"metadata\": {\n    \"version\": 1,\n    \"migrated\": \"1951-06-17\"\n  },\n  \"videosAssets\": [\n    \"string\",\n    \"string\"\n  ],\n  \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n  \"deletedAt\": \"2005-08-21\",\n  \"prospectList\": [\n    {\n      \"status\": \"saved\",\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"campaign\": \"okn4ra9qjl3fs2zpuni426jizysbdcp\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"trimMuxId\": \"string\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"webhookPaused\": false,\n      \"audioUrl\": \"https://sendspark.com\",\n      \"videoLipSyncUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"bulkId\": \"63f6a4145a5e755e2e8fe19d\",\n      \"createdAt\": \"1994-03-13\",\n      \"updatedAt\": \"2009-07-01\",\n      \"deletedAt\": \"2008-08-14\",\n      \"validationDetails\": \"string\",\n      \"resourcesStatus\": {},\n      \"isNotified\": false,\n      \"fallback\": false,\n      \"regenerationCount\": 0,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    },\n    {\n      \"status\": \"saved\",\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"campaign\": \"okn4ra9qjl3fs2zpuni426jizysbdcp\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"trimMuxId\": \"string\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"webhookPaused\": false,\n      \"audioUrl\": \"https://sendspark.com\",\n      \"videoLipSyncUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"bulkId\": \"63f6a4145a5e755e2e8fe19d\",\n      \"createdAt\": \"1986-06-15\",\n      \"updatedAt\": \"1968-07-26\",\n      \"deletedAt\": \"2008-02-09\",\n      \"validationDetails\": \"string\",\n      \"resourcesStatus\": {},\n      \"isNotified\": false,\n      \"fallback\": false,\n      \"regenerationCount\": 0,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a0b01ee-2e9b-419d-8755-9189044f125f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId",
+                    "prospects",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prospectList\": [\n    {\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"customField\": \"Example Custom Field\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"audioUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    }\n  ],\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": false,\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": false,\n  \"callbackId\": \"63f6a4145a5e755e2e8fe19d\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"code\": \"S400-AHVE\",\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid request payload input\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9017d478-2d49-4cb4-b1c8-60df8b4cd90d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId",
+                    "prospects",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prospectList\": [\n    {\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"customField\": \"Example Custom Field\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"audioUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    }\n  ],\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": false,\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": false,\n  \"callbackId\": \"63f6a4145a5e755e2e8fe19d\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 403,\n  \"code\": \"S403-UPLD\",\n  \"error\": \"Forbidden\",\n  \"message\": \"Invalid request payload input / Any error from provider\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1883c748-3831-421c-a440-117445a73703",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId",
+                    "prospects",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prospectList\": [\n    {\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"customField\": \"Example Custom Field\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"audioUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    }\n  ],\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": false,\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": false,\n  \"callbackId\": \"63f6a4145a5e755e2e8fe19d\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Resource not found or invalid access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a558b308-56e9-4de8-9a34-66166b04e39d",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId",
+                    "prospects",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prospectList\": [\n    {\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"customField\": \"Example Custom Field\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"audioUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    }\n  ],\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": false,\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": false,\n  \"callbackId\": \"63f6a4145a5e755e2e8fe19d\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\",\n  \"message\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "894bab4b-e4fa-418b-a89e-261bb96ffe38",
+          "name": "Persisting Prospect Lists",
+          "request": {
+            "name": "Persisting Prospect Lists",
+            "description": {
+              "content": "Persisting Prospect Lists",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "workspaces",
+                ":workspaceId",
+                "dynamics",
+                ":dynamicsId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dynamicsId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"videoUrl\": \"<string>\",\n  \"name\": \"<string>\",\n  \"title\": \"<string>\",\n  \"message\": \"<string>\",\n  \"buttons\": [\n    {\n      \"position\": \"<number>\",\n      \"label\": \"<string>\",\n      \"link\": \"<string>\"\n    },\n    {\n      \"position\": \"<number>\",\n      \"label\": \"<string>\",\n      \"link\": \"<string>\"\n    }\n  ],\n  \"calendar\": {\n    \"provider\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"prospectList\": [\n    {\n      \"_id\": \"<string>\",\n      \"contactName\": \"<string>\",\n      \"contactEmail\": \"<string>\",\n      \"company\": \"<string>\",\n      \"jobTitle\": \"<string>\",\n      \"customField\": \"<string>\",\n      \"backgroundUrl\": \"<string>\",\n      \"originalBackgroundUrl\": \"<string>\",\n      \"screenshotUrl\": \"<string>\",\n      \"webhookUrl\": \"<string>\",\n      \"webhookEvents\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"audioUrl\": \"<string>\",\n      \"valid\": \"<boolean>\",\n      \"fallbackDataUsed\": \"<boolean>\",\n      \"fields\": \"<object>\",\n      \"hash\": \"<string>\"\n    }\n  ],\n  \"voiceCloning\": \"<object>\",\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": \"<boolean>\",\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": \"<boolean>\",\n  \"callbackId\": \"<string>\",\n  \"fields\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a5d4df30-8bd9-41a7-8bb5-88f2813d28b1",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"videoUrl\": \"https://stg341.sendspark.com/share/i5hu8v1ctjt5surn\",\n  \"name\": \"My Dynamic Campaign\",\n  \"title\": \"Hello there!\",\n  \"message\": \"welcome to my dynamic campaign\",\n  \"buttons\": [\n    {\n      \"position\": \"<number>\",\n      \"label\": \"<string>\",\n      \"link\": \"http://www.sendspark.com/\"\n    },\n    {\n      \"position\": \"<number>\",\n      \"label\": \"<string>\",\n      \"link\": \"http://www.sendspark.com/\"\n    }\n  ],\n  \"calendar\": {\n    \"provider\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"prospectList\": [\n    {\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"customField\": \"Example Custom Field\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"audioUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    }\n  ],\n  \"voiceCloning\": \"<object>\",\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": false,\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": false,\n  \"callbackId\": \"63f6a4145a5e755e2e8fe19d\",\n  \"fields\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"combinedVideo\": false,\n  \"dynamicBackground\": false,\n  \"status\": \"pending\",\n  \"creator\": \"okn4ra9qjlpzhs2zpuni426jizysbdcp\",\n  \"folder\": \"ibdls2hjvaebvg0k4mz0zgvndbai9th7\",\n  \"workspace\": \"3vwdfm4jmhfyzt1yqp0r8v3qgaocrczb\",\n  \"createdAt\": \"2010-04-30\",\n  \"name\": \"My Dynamic Campaign\",\n  \"videoProperties\": {\n    \"sharePage\": {\n      \"title\": \"Hello there!\",\n      \"message\": \"welcome to my dynamic campaign\",\n      \"buttons\": [\n        {\n          \"position\": \"<number>\",\n          \"label\": \"<string>\",\n          \"link\": \"http://www.sendspark.com/\"\n        },\n        {\n          \"position\": \"<number>\",\n          \"label\": \"<string>\",\n          \"link\": \"http://www.sendspark.com/\"\n        }\n      ],\n      \"calendar\": {\n        \"provider\": \"<string>\",\n        \"link\": \"<string>\"\n      },\n      \"layout\": \"layout-default\",\n      \"transcriptionsViewEnabled\": false\n    }\n  },\n  \"metadata\": {\n    \"version\": 1,\n    \"migrated\": \"2009-10-05\"\n  },\n  \"videosAssets\": [\n    \"string\",\n    \"string\"\n  ],\n  \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n  \"deletedAt\": \"1984-08-15\",\n  \"prospectList\": [\n    {\n      \"status\": \"saved\",\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"campaign\": \"okn4ra9qjl3fs2zpuni426jizysbdcp\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"trimMuxId\": \"string\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"webhookPaused\": false,\n      \"audioUrl\": \"https://sendspark.com\",\n      \"videoLipSyncUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"bulkId\": \"63f6a4145a5e755e2e8fe19d\",\n      \"createdAt\": \"1968-07-14\",\n      \"updatedAt\": \"1956-09-19\",\n      \"deletedAt\": \"2006-01-18\",\n      \"validationDetails\": \"string\",\n      \"resourcesStatus\": {},\n      \"isNotified\": false,\n      \"fallback\": false,\n      \"regenerationCount\": 0,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    },\n    {\n      \"status\": \"saved\",\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"campaign\": \"okn4ra9qjl3fs2zpuni426jizysbdcp\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"trimMuxId\": \"string\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"webhookPaused\": false,\n      \"audioUrl\": \"https://sendspark.com\",\n      \"videoLipSyncUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"bulkId\": \"63f6a4145a5e755e2e8fe19d\",\n      \"createdAt\": \"1975-10-17\",\n      \"updatedAt\": \"1961-03-29\",\n      \"deletedAt\": \"2002-11-11\",\n      \"validationDetails\": \"string\",\n      \"resourcesStatus\": {},\n      \"isNotified\": false,\n      \"fallback\": false,\n      \"regenerationCount\": 0,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "241e6342-0d42-4fe7-9f06-0ce8ecc8119a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"videoUrl\": \"https://stg341.sendspark.com/share/i5hu8v1ctjt5surn\",\n  \"name\": \"My Dynamic Campaign\",\n  \"title\": \"Hello there!\",\n  \"message\": \"welcome to my dynamic campaign\",\n  \"buttons\": [\n    {\n      \"position\": \"<number>\",\n      \"label\": \"<string>\",\n      \"link\": \"http://www.sendspark.com/\"\n    },\n    {\n      \"position\": \"<number>\",\n      \"label\": \"<string>\",\n      \"link\": \"http://www.sendspark.com/\"\n    }\n  ],\n  \"calendar\": {\n    \"provider\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"prospectList\": [\n    {\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"customField\": \"Example Custom Field\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"audioUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    }\n  ],\n  \"voiceCloning\": \"<object>\",\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": false,\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": false,\n  \"callbackId\": \"63f6a4145a5e755e2e8fe19d\",\n  \"fields\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"code\": \"S400-AHVE\",\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid request payload input\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a18292eb-7bb0-498f-adbe-0903d0cc88d3",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"videoUrl\": \"https://stg341.sendspark.com/share/i5hu8v1ctjt5surn\",\n  \"name\": \"My Dynamic Campaign\",\n  \"title\": \"Hello there!\",\n  \"message\": \"welcome to my dynamic campaign\",\n  \"buttons\": [\n    {\n      \"position\": \"<number>\",\n      \"label\": \"<string>\",\n      \"link\": \"http://www.sendspark.com/\"\n    },\n    {\n      \"position\": \"<number>\",\n      \"label\": \"<string>\",\n      \"link\": \"http://www.sendspark.com/\"\n    }\n  ],\n  \"calendar\": {\n    \"provider\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"prospectList\": [\n    {\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"customField\": \"Example Custom Field\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"audioUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    }\n  ],\n  \"voiceCloning\": \"<object>\",\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": false,\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": false,\n  \"callbackId\": \"63f6a4145a5e755e2e8fe19d\",\n  \"fields\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 403,\n  \"code\": \"S403-UPLD\",\n  \"error\": \"Forbidden\",\n  \"message\": \"Invalid request payload input / Any error from provider\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94a5aab6-b18d-43b4-8176-9ba79657fa23",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"videoUrl\": \"https://stg341.sendspark.com/share/i5hu8v1ctjt5surn\",\n  \"name\": \"My Dynamic Campaign\",\n  \"title\": \"Hello there!\",\n  \"message\": \"welcome to my dynamic campaign\",\n  \"buttons\": [\n    {\n      \"position\": \"<number>\",\n      \"label\": \"<string>\",\n      \"link\": \"http://www.sendspark.com/\"\n    },\n    {\n      \"position\": \"<number>\",\n      \"label\": \"<string>\",\n      \"link\": \"http://www.sendspark.com/\"\n    }\n  ],\n  \"calendar\": {\n    \"provider\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"prospectList\": [\n    {\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"customField\": \"Example Custom Field\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"audioUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    }\n  ],\n  \"voiceCloning\": \"<object>\",\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": false,\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": false,\n  \"callbackId\": \"63f6a4145a5e755e2e8fe19d\",\n  \"fields\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Resource not found or invalid access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58bc62d4-5637-4e0b-b29b-3ca79e0123b2",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"videoUrl\": \"https://stg341.sendspark.com/share/i5hu8v1ctjt5surn\",\n  \"name\": \"My Dynamic Campaign\",\n  \"title\": \"Hello there!\",\n  \"message\": \"welcome to my dynamic campaign\",\n  \"buttons\": [\n    {\n      \"position\": \"<number>\",\n      \"label\": \"<string>\",\n      \"link\": \"http://www.sendspark.com/\"\n    },\n    {\n      \"position\": \"<number>\",\n      \"label\": \"<string>\",\n      \"link\": \"http://www.sendspark.com/\"\n    }\n  ],\n  \"calendar\": {\n    \"provider\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"prospectList\": [\n    {\n      \"_id\": \"63f6a4145a5e755e2e8fe19d\",\n      \"contactName\": \"John Doe\",\n      \"contactEmail\": \"johndoe@example.com\",\n      \"company\": \"Example Company\",\n      \"jobTitle\": \"Example jobTitle\",\n      \"customField\": \"Example Custom Field\",\n      \"backgroundUrl\": \"https://example.com\",\n      \"originalBackgroundUrl\": \"https://example.com\",\n      \"screenshotUrl\": \"https://sendspark.com\",\n      \"webhookUrl\": \"https://sendspark.com\",\n      \"webhookEvents\": [\n        \"video_generated_dv\",\n        \"video_watched\",\n        \"video_played\",\n        \"video_cta_clicked\",\n        \"video_viewed\",\n        \"video_liked\"\n      ],\n      \"audioUrl\": \"https://sendspark.com\",\n      \"valid\": false,\n      \"fallbackDataUsed\": false,\n      \"fields\": \"<object>\",\n      \"hash\": \"63f6a4145a5e755e2e8fe19d\"\n    }\n  ],\n  \"voiceCloning\": \"<object>\",\n  \"prospectDepurationConfig\": {\n    \"forceCreation\": false,\n    \"payloadDepurationStrategy\": \"<string>\"\n  },\n  \"processAndAuthorizeCharge\": false,\n  \"callbackId\": \"63f6a4145a5e755e2e8fe19d\",\n  \"fields\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\",\n  \"message\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5144caa5-f9e7-4052-a141-5c449335acd7",
+          "name": "Update settings in Dynamics Campaign",
+          "request": {
+            "name": "Update settings in Dynamics Campaign",
+            "description": {
+              "content": "Update settings in Dynamics Campaign",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "dynamics",
+                ":dynamicId",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dynamicId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"useFallbackData\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e9889238-9d4d-4cc4-abc2-9ce7af9be3b2",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"useFallbackData\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa3a5593-4013-492a-be9b-f59bbc9984f9",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"useFallbackData\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"code\": \"S400-AHVE\",\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid request payload input\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c3882bd-029b-42a0-a046-9e56ea0ad387",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"useFallbackData\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Resource not found or invalid access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47024ff8-01c8-4fa0-847c-9cc20c649064",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicId",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"useFallbackData\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\",\n  \"message\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e7cbef7-1cf6-4aa9-890a-c23ebd431ccc",
+          "name": "Bulk update prospect background URLs based on email domains.",
+          "request": {
+            "name": "Bulk update prospect background URLs based on email domains.",
+            "description": {
+              "content": "This endpoint is used to bulk update prospect background URLs based on email domains.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "dynamics",
+                ":dynamicsId",
+                "prospects",
+                "urls",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dynamicsId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"extractUrlFromEmail\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "23fb9805-64a5-4d6d-86a6-971888d94717",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId",
+                    "prospects",
+                    "urls",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"extractUrlFromEmail\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"updatedCount\": 1055.8898986122356,\n  \"totalCount\": 3769.5613427322182\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9803c81c-5139-4fea-9ca6-0759e197d228",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId",
+                    "prospects",
+                    "urls",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"extractUrlFromEmail\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"code\": \"S400-AHVE\",\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid request payload input\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dcbc5804-cfbd-40ee-9bd6-6b613082a650",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId",
+                    "prospects",
+                    "urls",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"extractUrlFromEmail\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 403,\n  \"code\": \"S403-UPLD\",\n  \"error\": \"Forbidden\",\n  \"message\": \"Invalid request payload input / Any error from provider\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "131d4005-27db-4a1d-be2a-31586ba6ed3e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId",
+                    "prospects",
+                    "urls",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"extractUrlFromEmail\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Resource not found or invalid access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03a7a146-c93f-4941-8c57-add2605b53ad",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "dynamics",
+                    ":dynamicsId",
+                    "prospects",
+                    "urls",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dynamicsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"extractUrlFromEmail\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\",\n  \"message\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-gw.sendspark.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "39b6ba80-93df-4c3c-81a9-5989f747f7ea",
+    "name": "Sendspark DVM Bundles Dynamics Campaign API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public Sendspark API. DRAFT scaffold generated from the internal API v2 spec — endpoint selection and authentication are pending engineering review before publishing.",
+      "type": "text/plain"
+    }
+  }
+}

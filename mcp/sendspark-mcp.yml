@@ -1,7 +1,13 @@
-generated: '2026-07-21'
+generated: '2026-08-13'
 method: searched
 status: published
 source: https://help.sendspark.com/mcp/overview
+sources:
+- https://help.sendspark.com/mcp/overview.md
+- https://help.sendspark.com/mcp/tools.md
+- https://help.sendspark.com/connect-ai-apps-mcp.md
+- https://apiv2.sendspark.com/.well-known/oauth-protected-resource/api/mcp
+- well-known/sendspark-oauth-authorization-server.json
 server:
   name: sendspark
   transport: http
@@ -11,37 +17,114 @@ server:
     style: browser-sign-in
     issuer: https://auth.sendspark.com
     metadata: https://apiv2.sendspark.com/.well-known/oauth-authorization-server
+    protected_resource_metadata: https://apiv2.sendspark.com/.well-known/oauth-protected-resource/api/mcp
+    bearer_methods_supported: [header]
     notes: >-
       Connects over remote/HTTP with OAuth via browser sign-in — no API keys or
       tokens to copy. Access is scoped to the workspaces the authenticated user
-      belongs to.
+      belongs to. This is a different credential from the REST API's
+      x-api-key/x-api-secret header pair.
+deployment:
+  mode: remote
+  endpoint: https://apiv2.sendspark.com/api/mcp
+  auth: oauth
+  verified: probed
+  probe:
+    method: 'POST tools/list (jsonrpc 2.0)'
+    http_status: 401
+    body: '{"statusCode":401,"error":"Unauthorized","message":"Bearer token required"}'
+    www_authenticate: 'Bearer resource_metadata="https://apiv2.sendspark.com/.well-known/oauth-protected-resource/api/mcp"'
+    result: gated
+    checked: '2026-08-13'
+    note: >-
+      The endpoint answered with a spec-correct RFC 9728 OAuth challenge rather
+      than a 404, which confirms a live remote MCP server behind OAuth. The live
+      tools/list inputSchema could not be read anonymously; the tool contracts
+      below are transcribed from the provider's own published tool reference at
+      https://help.sendspark.com/mcp/tools.md, not guessed.
 access: read-only
 constraints: >-
   Strictly read-only — the MCP server cannot create, edit, or delete campaigns,
-  prospects, or settings.
+  prospects, or settings, and never exposes billing, passwords, or other users'
+  private data.
 prerequisites:
-- Growth, Business, or Scale Sendspark plan (free/trial plans excluded)
+- Growth, Team, or Business Sendspark plan with an active subscription (Free, trial and Solo workspaces excluded)
 - An AI assistant that supports custom remote MCP connectors
+distribution:
+  marketplace_listed: false
+  note: >-
+    Docs state the connector is added manually today and that Sendspark is being
+    submitted to the official connector marketplaces of the major AI providers.
 supported_clients:
-- Claude
-- ChatGPT
-- Mistral Le Chat
-- Perplexity
-- Grok
+- {client: Claude (web & desktop), transport: remote-http, auth: oauth-browser-sign-in}
+- {client: ChatGPT, transport: remote-http, auth: oauth-browser-sign-in}
+- {client: Mistral Le Chat, transport: remote-http, auth: oauth-browser-sign-in}
+- {client: Perplexity, transport: remote-http, auth: oauth-browser-sign-in}
+- {client: Grok (xAI), transport: remote-http, auth: oauth-browser-sign-in}
+tool_count: 6
 tools:
 - name: list_workspaces
-  description: Retrieve the workspaces the authenticated user can access.
-  source_operation: openapi/sendspark-openapi-original.json#getWorkspaces
+  description: Lists the Sendspark workspaces you belong to, newest id first. Returns each workspace's id, slug, and your role.
+  inputs:
+  - {name: limit, required: false, description: 'Max workspaces to return (1-50, default 20).'}
+  - {name: cursor, required: false, description: Pagination cursor from a previous call.}
+  source_operation: openapi/sendspark-workspace-api-openapi.yml#getWorkspaces
 - name: list_dynamic_campaigns
-  description: View Dynamic Video campaigns in a workspace.
-  source_operation: openapi/sendspark-openapi-original.json#getDynamicsList
+  description: Lists Dynamic Video campaigns in a workspace, newest first, with optional name search. Returns id, name, and status.
+  inputs:
+  - {name: workspaceId, required: true, description: Workspace to list campaigns from.}
+  - {name: query, required: false, description: Case-insensitive campaign-name search.}
+  - {name: limit, required: false, description: 'Max items (1-50, default 20).'}
+  - {name: cursor, required: false, description: Pagination cursor.}
+  source_operation: openapi/sendspark-dynamics-campaign-api-openapi.yml#getDynamicsList
 - name: get_dynamic_campaign
-  description: Fetch a Dynamic Video campaign's configuration details.
-  source_operation: openapi/sendspark-openapi-original.json#getWorkspaceDynamics
-- name: get_dynamic_campaign_analytics
-  description: Retrieve performance and engagement metrics for a campaign.
+  description: >-
+    Returns the full configuration of one Dynamic Video campaign — folder,
+    share-page customization (title, message, layout, CTA buttons, calendar) and
+    the dynamic-background flag.
+  inputs:
+  - {name: workspaceId, required: true, description: Workspace that contains the campaign.}
+  - {name: dynamicId, required: true, description: 'Campaign id (from list_dynamic_campaigns).'}
+  source_operation: openapi/sendspark-dynamics-campaign-api-openapi.yml#getWorkspaceDynamics
 - name: list_prospects
-  description: Query prospects with filtering capabilities.
+  description: >-
+    Lists prospects inside a Dynamic Video campaign, newest first, with status
+    filters and search. Completed prospects include public share/embed URLs and
+    engagement stats (views, plays, responses, CTAs, thumbs-up).
+  inputs:
+  - {name: workspaceId, required: true, description: Workspace that owns the campaign.}
+  - {name: dynamicId, required: true, description: Campaign whose prospects to list.}
+  - {name: statuses, required: false, description: 'Any of completed, pending, errored, processing. Omit for all.'}
+  - {name: search, required: false, description: Case-insensitive match on prospect email or name.}
+  - {name: limit, required: false, description: 'Max prospects (1-100, default 20).'}
+  - {name: cursor, required: false, description: Pagination cursor.}
+  source_operation: null
 - name: get_prospect_status
-  description: Check an individual prospect's video processing status.
-  source_operation: openapi/sendspark-openapi-original.json#getProspectDynamicsVideos
+  description: >-
+    Returns the full per-prospect state for one prospect, including regeneration
+    count, validation details, and per-step resource status (audio cloning,
+    screenshot, lip-sync, campaign, video) for diagnosing stuck or failed videos.
+  inputs:
+  - {name: workspaceId, required: true, description: Workspace that contains the video.}
+  - {name: videoId, required: true, description: Dynamic video id.}
+  - {name: prospectId, required: conditional, description: 'Identify the prospect by id (preferred) — prospectId OR prospectEmail is required.'}
+  - {name: prospectEmail, required: conditional, description: 'Identify the prospect by email — prospectId OR prospectEmail is required.'}
+  source_operation: openapi/sendspark-dynamics-campaign-api-openapi.yml#getProspectDynamicsVideos
+- name: get_dynamic_campaign_analytics
+  description: >-
+    Returns the lifetime engagement view for a Dynamic Video campaign — the same
+    data as the Sendspark Analytics modal: aggregate counts (visits, plays, CTA
+    clicks, thumbs-up) plus a per-visitor breakdown with location, device and
+    watch percentage.
+  inputs:
+  - {name: workspaceId, required: true, description: Workspace the campaign belongs to.}
+  - {name: dynamicId, required: true, description: Campaign to get analytics for.}
+  - {name: limit, required: false, description: 'Max visitors per page (1-50, default 25).'}
+  - {name: cursor, required: false, description: Pagination cursor for the visitor list.}
+  source_operation: null
+  plan_gating: >-
+    On Free-tier workspaces the aggregate summary is returned but the per-visitor
+    breakdown is empty and marked locked; the full breakdown requires Growth,
+    Team or Business.
+crosswalk: mcp/sendspark-tool-crosswalk.yml
+docs_last_updated: '2026-08'
