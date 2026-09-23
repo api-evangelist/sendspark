@@ -1,10 +1,7 @@
 {
   "provider": "sendspark",
   "sources": [
-    "sendspark-dvm-bundles-api-openapi.yml",
-    "sendspark-dynamics-campaign-api-openapi.yml",
-    "sendspark-webhook-api-openapi.yml",
-    "sendspark-workspace-api-openapi.yml"
+    "_original/sendspark-openapi-original.json"
   ],
   "outputs": [
     "sendspark-dvm-bundles-api-openapi.yml",
@@ -15,6 +12,19 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sendspark-openapi-original.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "sendspark-openapi-original.json: declared missing tag: DVM Bundles",
+    "sendspark-openapi-original.json: declared missing tag: Dynamics Campaign",
+    "sendspark-openapi-original.json: declared missing tag: Webhook",
+    "sendspark-openapi-original.json: declared missing tag: Workspace",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "sendspark-dvm-bundles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sendspark-dynamics-campaign-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sendspark-webhook-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sendspark-workspace-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

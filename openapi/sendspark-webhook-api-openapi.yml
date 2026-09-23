@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Sendspark DVM Bundles Webhook API
+  title: Sendspark Webhook API
   version: 1.2.0
   description: Public Sendspark API. DRAFT scaffold generated from the internal API v2 spec — endpoint selection and authentication are pending engineering review before publishing.
 servers:
@@ -16,7 +16,6 @@ paths:
     get:
       summary: Get Webhook list by workspace ID
       operationId: getWebhookListByWorkspaceId
-      description: Get Webhook list by workspace ID
       parameters:
       - name: workspaceId
         in: path
@@ -43,7 +42,6 @@ paths:
     post:
       summary: Create new Webhook
       operationId: postCreateWebhook
-      description: Create new Webhook
       parameters:
       - name: workspaceId
         in: path
@@ -80,7 +78,6 @@ paths:
     get:
       summary: Get Webhook by ID
       operationId: getWebhookById
-      description: Get Webhook by ID
       parameters:
       - name: workspaceId
         in: path
@@ -112,7 +109,6 @@ paths:
     delete:
       summary: Delete Webhook by ID
       operationId: deleteWebhookById
-      description: Delete Webhook by ID
       parameters:
       - name: workspaceId
         in: path
@@ -144,7 +140,6 @@ paths:
     patch:
       summary: Modify Webhook
       operationId: patchModifyWebhook
-      description: Modify Webhook
       parameters:
       - name: workspaceId
         in: path
@@ -184,20 +179,60 @@ paths:
                 $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
 components:
   schemas:
-    WebhookVideoEventsSchema:
+    ResourceNotFoundOrInvalidAccess:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 404
+        error:
+          type: string
+          example: Not Found
+        message:
+          type: string
+          example: Resource not found or invalid access
+    extraHeaders:
       type: array
       example:
-      - video_watched
-      - video_played
-      - video_cta_clicked
-      - video_viewed
-      - video_liked
-      - video_request_received
-      - video_generated_dv
-      - video_mp4_ready
-      - video_generated_error
+      - Authorization
+      - Content-Type
       items:
-        $ref: '#/components/schemas/Model143'
+        type: string
+    CreateWebhookRequestPayloadSchema:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Production Webhook
+        description:
+          type: string
+          example: Webhook for production environment
+        extraHeaders:
+          $ref: '#/components/schemas/extraHeaders'
+        url:
+          type: string
+          example: https://example.com/webhook
+          x-format:
+            uri: true
+        module:
+          $ref: '#/components/schemas/module'
+        identifiers:
+          $ref: '#/components/schemas/identifiers'
+        events:
+          $ref: '#/components/schemas/WebhookVideoEventsSchema'
+        metadata:
+          $ref: '#/components/schemas/WebhookMetadataSchema'
+      required:
+      - name
+      - url
+      - module
+    WebhookMetadataSchema:
+      type: object
+      properties:
+        automation:
+          $ref: '#/components/schemas/automation'
+      required:
+      - automation
     Model143:
       type: string
       enum:
@@ -210,25 +245,26 @@ components:
       - video_generated_dv
       - video_mp4_ready
       - video_generated_error
-    WebhookMetadataSchema:
-      type: object
-      properties:
-        automation:
-          $ref: '#/components/schemas/automation'
-      required:
-      - automation
+    events:
+      type: array
+      example:
+      - video_watched
+      - video_played
+      - video_cta_clicked
+      - video_viewed
+      - video_liked
+      - video_request_received
+      - video_generated_dv
+      - video_mp4_ready
+      - video_generated_error
+      items:
+        $ref: '#/components/schemas/Model217'
     identifiers:
       type: array
       items:
         type: string
         example: sdfgh2345werty345678dfghj
-    module:
-      type: string
-      example: global | dynamics
-      enum:
-      - global
-      - dynamics
-    ModifyWebhookResponseSchema:
+    CreateWebhookResponseSchema:
       type: object
     BadRequest:
       type: object
@@ -270,41 +306,31 @@ components:
         enabled:
           type: boolean
           example: true
-    extraHeaders:
-      type: array
-      example:
-      - Authorization
-      - Content-Type
-      items:
-        type: string
-    CreateWebhookRequestPayloadSchema:
+    automation:
       type: object
       properties:
-        name:
+        workflowId:
+          type: number
+        provider:
           type: string
-          example: Production Webhook
-        description:
-          type: string
-          example: Webhook for production environment
-        extraHeaders:
-          $ref: '#/components/schemas/extraHeaders'
-        url:
-          type: string
-          example: https://example.com/webhook
-          x-format:
-            uri: true
-        module:
-          $ref: '#/components/schemas/module'
-        identifiers:
-          $ref: '#/components/schemas/identifiers'
-        events:
-          $ref: '#/components/schemas/WebhookVideoEventsSchema'
-        metadata:
-          $ref: '#/components/schemas/WebhookMetadataSchema'
       required:
-      - name
-      - url
-      - module
+      - provider
+    WebhookVideoEventsSchema:
+      type: array
+      example:
+      - video_watched
+      - video_played
+      - video_cta_clicked
+      - video_viewed
+      - video_liked
+      - video_request_received
+      - video_generated_dv
+      - video_mp4_ready
+      - video_generated_error
+      items:
+        $ref: '#/components/schemas/Model143'
+    ModifyWebhookResponseSchema:
+      type: object
     Model217:
       type: string
       enum:
@@ -317,43 +343,12 @@ components:
       - video_generated_dv
       - video_mp4_ready
       - video_generated_error
-    events:
-      type: array
-      example:
-      - video_watched
-      - video_played
-      - video_cta_clicked
-      - video_viewed
-      - video_liked
-      - video_request_received
-      - video_generated_dv
-      - video_mp4_ready
-      - video_generated_error
-      items:
-        $ref: '#/components/schemas/Model217'
-    automation:
-      type: object
-      properties:
-        workflowId:
-          type: number
-        provider:
-          type: string
-      required:
-      - provider
-    ResourceNotFoundOrInvalidAccess:
-      type: object
-      properties:
-        statusCode:
-          type: number
-          example: 404
-        error:
-          type: string
-          example: Not Found
-        message:
-          type: string
-          example: Resource not found or invalid access
-    CreateWebhookResponseSchema:
-      type: object
+    module:
+      type: string
+      example: global | dynamics
+      enum:
+      - global
+      - dynamics
   securitySchemes:
     apiKey:
       type: apiKey

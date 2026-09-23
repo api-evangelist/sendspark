@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: Sendspark DVM Bundles API
   version: 1.2.0
@@ -143,18 +143,117 @@ paths:
                 $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
 components:
   schemas:
-    VolumeTierSchema:
+    ResourceNotFoundOrInvalidAccess:
       type: object
       properties:
-        upTo:
+        statusCode:
+          type: number
+          example: 404
+        error:
+          type: string
+          example: Not Found
+        message:
+          type: string
+          example: Resource not found or invalid access
+    BundlesGetResponseSchema:
+      type: object
+      properties:
+        bundles:
+          $ref: '#/components/schemas/Model45'
+        customBundleConfig:
+          $ref: '#/components/schemas/CustomBundleConfigSchema'
+        activeBundles:
+          $ref: '#/components/schemas/activeBundles'
+        balance:
+          $ref: '#/components/schemas/balance'
+      required:
+      - bundles
+      - balance
+    tiers:
+      type: array
+      minItems: 1
+      items:
+        $ref: '#/components/schemas/VolumeTierSchema'
+    BadRequest:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 400
+        code:
+          type: string
+          example: S400-AHVE
+        error:
+          type: string
+          example: Bad Request
+        message:
+          type: string
+          example: Invalid request payload input
+    BundlesCancelPayloadSchema:
+      type: object
+      properties:
+        subscriptionItemId:
+          type: string
+          example: si_UKraMwyWFL7t4w
+      required:
+      - subscriptionItemId
+    Model45:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model44'
+    BundlesUpdatePayloadSchema:
+      type: object
+      properties:
+        addMinutes:
           type: integer
-        unitAmountCents:
+          example: 50
+          x-constraint:
+            sign: positive
+      required:
+      - addMinutes
+    UpdatedBundleResult:
+      type: object
+      properties:
+        bundleId:
+          type: string
+        subscriptionItemId:
+          type: string
+        minutesPerBundle:
+          type: number
+        label:
+          type: string
+        unitPriceCents:
+          type: number
+        totalPriceCents:
           type: number
       required:
-      - upTo
-      - unitAmountCents
-    balance:
+      - bundleId
+      - subscriptionItemId
+      - minutesPerBundle
+      - label
+      - unitPriceCents
+      - totalPriceCents
+    BundlesUpdateResponseSchema:
       type: object
+      properties:
+        bundle:
+          $ref: '#/components/schemas/UpdatedBundleResult'
+        addedMinutes:
+          type: integer
+        previousTotalMinutes:
+          type: integer
+        newTotalMinutes:
+          type: integer
+        additionalChargeCents:
+          type: integer
+        balance:
+          type: string
+      required:
+      - bundle
+      - addedMinutes
+      - previousTotalMinutes
+      - newTotalMinutes
+      - additionalChargeCents
     CustomBundleConfigSchema:
       type: object
       properties:
@@ -197,6 +296,17 @@ components:
       - label
       - recurring
       - interval
+    Model47:
+      type: string
+      enum:
+      - active
+      - canceling
+      - canceled
+    tiersMode:
+      type: string
+      enum:
+      - volume
+      - graduated
     Forbidden:
       type: object
       properties:
@@ -212,37 +322,8 @@ components:
         message:
           type: string
           example: Invalid request payload input / Any error from provider
-    Model48:
-      type: string
-      enum:
-      - month
-      - year
-    BadRequest:
+    balance:
       type: object
-      properties:
-        statusCode:
-          type: number
-          example: 400
-        code:
-          type: string
-          example: S400-AHVE
-        error:
-          type: string
-          example: Bad Request
-        message:
-          type: string
-          example: Invalid request payload input
-    tiersMode:
-      type: string
-      enum:
-      - volume
-      - graduated
-    Model49:
-      type: string
-      enum:
-      - one-time
-      - recurring
-      - custom
     ActiveBundleSchema:
       type: object
       properties:
@@ -302,80 +383,6 @@ components:
       - priceId
       - subscriptionItemId
       - status
-    BundlesCancelResponseSchema:
-      type: object
-      properties:
-        status:
-          type: string
-          example: canceling
-        endsAt:
-          type: string
-          format: date
-        message:
-          type: string
-      required:
-      - status
-      - message
-    ResourceNotFoundOrInvalidAccess:
-      type: object
-      properties:
-        statusCode:
-          type: number
-          example: 404
-        error:
-          type: string
-          example: Not Found
-        message:
-          type: string
-          example: Resource not found or invalid access
-    BundlesUpdateResponseSchema:
-      type: object
-      properties:
-        bundle:
-          $ref: '#/components/schemas/UpdatedBundleResult'
-        addedMinutes:
-          type: integer
-        previousTotalMinutes:
-          type: integer
-        newTotalMinutes:
-          type: integer
-        additionalChargeCents:
-          type: integer
-        balance:
-          type: string
-      required:
-      - bundle
-      - addedMinutes
-      - previousTotalMinutes
-      - newTotalMinutes
-      - additionalChargeCents
-    BundlesUpdatePayloadSchema:
-      type: object
-      properties:
-        addMinutes:
-          type: integer
-          example: 50
-          x-constraint:
-            sign: positive
-      required:
-      - addMinutes
-    quickPicks:
-      type: array
-      items:
-        type: integer
-        x-constraint:
-          sign: positive
-    Model47:
-      type: string
-      enum:
-      - active
-      - canceling
-      - canceled
-    tiers:
-      type: array
-      minItems: 1
-      items:
-        $ref: '#/components/schemas/VolumeTierSchema'
     Model46:
       type: string
       enum:
@@ -385,32 +392,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/ActiveBundleSchema'
-    UpdatedBundleResult:
-      type: object
-      properties:
-        bundleId:
-          type: string
-        subscriptionItemId:
-          type: string
-        minutesPerBundle:
-          type: number
-        label:
-          type: string
-        unitPriceCents:
-          type: number
-        totalPriceCents:
-          type: number
-      required:
-      - bundleId
-      - subscriptionItemId
-      - minutesPerBundle
-      - label
-      - unitPriceCents
-      - totalPriceCents
-    Model45:
-      type: array
-      items:
-        $ref: '#/components/schemas/Model44'
     Model44:
       type: object
       properties:
@@ -446,28 +427,47 @@ components:
       - unitPriceCents
       - totalPriceCents
       - sortOrder
-    BundlesCancelPayloadSchema:
+    Model48:
+      type: string
+      enum:
+      - month
+      - year
+    quickPicks:
+      type: array
+      items:
+        type: integer
+        x-constraint:
+          sign: positive
+    BundlesCancelResponseSchema:
       type: object
       properties:
-        subscriptionItemId:
+        status:
           type: string
-          example: si_UKraMwyWFL7t4w
+          example: canceling
+        endsAt:
+          type: string
+          format: date
+        message:
+          type: string
       required:
-      - subscriptionItemId
-    BundlesGetResponseSchema:
+      - status
+      - message
+    Model49:
+      type: string
+      enum:
+      - one-time
+      - recurring
+      - custom
+    VolumeTierSchema:
       type: object
       properties:
-        bundles:
-          $ref: '#/components/schemas/Model45'
-        customBundleConfig:
-          $ref: '#/components/schemas/CustomBundleConfigSchema'
-        activeBundles:
-          $ref: '#/components/schemas/activeBundles'
-        balance:
-          $ref: '#/components/schemas/balance'
+        upTo:
+          type: integer
+        unitAmountCents:
+          type: number
       required:
-      - bundles
-      - balance
+      - upTo
+      - unitAmountCents
   securitySchemes:
     apiKey:
       type: apiKey

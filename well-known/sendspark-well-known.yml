@@ -1,4 +1,4 @@
-generated: '2026-08-13'
+generated: '2026-09-19'
 method: searched
 source: live probes of /.well-known/* on every Sendspark host
 hosts:
@@ -16,9 +16,7 @@ hosts:
     status: 200
     file: sendspark-oauth-protected-resource.json
     standard: RFC 9728 OAuth 2.0 Protected Resource Metadata
-    note: >-
-      The exact resource-metadata URL advertised in the WWW-Authenticate header
-      returned by POST https://apiv2.sendspark.com/api/mcp.
+    note: The exact resource-metadata URL advertised in the WWW-Authenticate header returned by POST https://apiv2.sendspark.com/api/mcp.
   - path: /.well-known/openid-configuration
     status: 404
   - path: /.well-known/agent-card.json
@@ -36,6 +34,11 @@ hosts:
     status: 404
   - path: /.well-known/agent.json
     status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: sendspark-auth-oauth-authorization-server.json
+    bytes: 883
+  path_echo_control: passed
 - host: https://help.sendspark.com
   role: documentation host (Mintlify, source github.com/sendspark/docs)
   documents:
@@ -85,12 +88,22 @@ hosts:
     status: 404
   - path: /.well-known/agent.json
     status: 404
-notes: >-
-  Sendspark serves a real, non-empty /.well-known/ surface on three of its five
-  hosts. The MCP OAuth surface publishes RFC 8414 authorization-server metadata
-  and RFC 9728 protected-resource metadata at apiv2.sendspark.com, and the
-  issuer auth.sendspark.com publishes full OIDC discovery. The documentation
-  host publishes an A2A agent card and a linked Agent Skill. The REST API host
-  (api-gw.sendspark.com) — which uses x-api-key/x-api-secret header auth —
-  exposes no /.well-known documents at all, and no host anywhere serves a
-  security.txt.
+notes: Sendspark serves a real, non-empty /.well-known/ surface on three of its five hosts. The MCP OAuth
+  surface publishes RFC 8414 authorization-server metadata and RFC 9728 protected-resource metadata at
+  apiv2.sendspark.com, and the issuer auth.sendspark.com publishes full OIDC discovery. The documentation
+  host publishes an A2A agent card and a linked Agent Skill. The REST API host (api-gw.sendspark.com)
+  — which uses x-api-key/x-api-secret header auth — exposes no /.well-known documents at all, and no host
+  anywhere serves a security.txt.
+x-mcp-probe:
+  probed: '2026-09-19'
+  issue: roadmap#321, roadmap#337
+  documents:
+  - host: https://auth.sendspark.com
+    path: /.well-known/oauth-authorization-server
+    file: sendspark-auth-oauth-authorization-server.json
+  validated_on: resource (RFC 9728) / issuer (RFC 8414, OIDC)
+  negative_control: one per host; a 2xx JSON object at an impossible path discards the host
+note: 'MCP-host OAuth discovery added 2026-09-19 (roadmap#321/#337): the harvest visits a provider''s
+  primary hosts, and RFC 9728 protected-resource metadata lives on the MCP host, so these documents existed
+  and were invisible to the scorer. Fetched live and validated on `resource`/`issuer`; one negative control
+  per host.'
