@@ -58,6 +58,11 @@ paths:
                 $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
 components:
   schemas:
+    WorspacesResponseSchema:
+      type: object
+      properties:
+        workspaces:
+          $ref: '#/components/schemas/Workspaces'
     ResourceNotFoundOrInvalidAccess:
       type: object
       properties:
@@ -70,6 +75,10 @@ components:
         message:
           type: string
           example: Resource not found or invalid access
+    Workspaces:
+      type: array
+      items:
+        $ref: '#/components/schemas/WorkspaceResponseSchemadropdownRendering'
     WorkspaceResponseSchemadropdownRendering:
       type: object
       properties:
@@ -80,11 +89,6 @@ components:
       required:
       - _id
       - name
-    WorspacesResponseSchema:
-      type: object
-      properties:
-        workspaces:
-          $ref: '#/components/schemas/Workspaces'
     GetWorkspaceIdByApiKeyResponseSchema:
       type: object
       properties:
@@ -108,10 +112,6 @@ components:
         message:
           type: string
           example: Invalid request payload input
-    Workspaces:
-      type: array
-      items:
-        $ref: '#/components/schemas/WorkspaceResponseSchemadropdownRendering'
   securitySchemes:
     apiKey:
       type: apiKey

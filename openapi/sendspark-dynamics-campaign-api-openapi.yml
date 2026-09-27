@@ -675,116 +675,7 @@ paths:
                 $ref: '#/components/schemas/ServiceUnavailable'
 components:
   schemas:
-    ResponseDynamicsVideoAddSchema:
-      type: object
-    ResourceNotFoundOrInvalidAccess:
-      type: object
-      properties:
-        statusCode:
-          type: number
-          example: 404
-        error:
-          type: string
-          example: Not Found
-        message:
-          type: string
-          example: Resource not found or invalid access
-    Model221:
-      type: object
-    Model144:
-      type: object
-      properties:
-        name:
-          type: string
-          example: My Dynamic Campaign
-        voiceCloning:
-          type: boolean
-          example: false
-        languageCode:
-          type: string
-          example: en
-        videoUrl:
-          type: string
-          example: https://ssoven341-d3vz.com/share/9up29v11k16cqtyie1hx74cmhva5yutz
-        version:
-          type: number
-          example: 1
-        multivariable:
-          type: boolean
-          example: false
-      required:
-      - name
-    RequestPayloadAddProspectsDynamicsCampaignsSchema:
-      type: object
-      properties:
-        prospect:
-          $ref: '#/components/schemas/requestPayloadProspectSchema'
-        prospectDepurationConfig:
-          $ref: '#/components/schemas/prospectDepurationConfig'
-        processAndAuthorizeCharge:
-          type: boolean
-          example: false
-        fallbackToEmailDomainForBackground:
-          type: boolean
-          example: false
-        callbackId:
-          type: string
-          example: 63f6a4145a5e755e2e8fe19d
-      required:
-      - prospect
-    DynamicVideosGetProspectResponseSchema:
-      type: object
-      properties:
-        contactEmail:
-          type: string
-          example: 'Contact Email, Example: john@example.com'
-        backgroundUrl:
-          type: string
-          example: 'Backgound URL, Example: https://example.com'
-        originalBackgroundUrl:
-          type: string
-          example: 'Backgound URL, Example: https://example.com'
-        status:
-          type: string
-          example: 'Current prospect status, Example: saved, billed, errored, processing, uploaded, completed'
-        deletedAt:
-          type: string
-          format: date
-          example: 'Deleted Date if prospect was deleted, Example: 2020-01-01T00:00:00.000Z'
-        valid:
-          type: boolean
-          example: False if prospect has validation errors
-        createdAt:
-          type: string
-          format: date
-          example: 'Create date, example: 2020-01-01T00:00:00.000Z'
-        updatedAt:
-          type: string
-          format: date
-          example: 'Update date, example: 2020-01-01T00:00:00.000Z'
-        validationDetails:
-          $ref: '#/components/schemas/validationDetails'
-        contactName:
-          type: string
-          example: 'Contact Name, example: John Doe'
-        company:
-          type: string
-          example: 'Company Name, example: Sendspark'
-        jobTitle:
-          type: string
-          example: 'Job Title, example: Software Engineer'
-        id:
-          type: string
-          example: 'Internal prospect ID, example: 997f191e810c19729de860fd'
-        shareUrl:
-          type: string
-          example: 'Public URL to share the final video, example: https://sendspark.com/share/997f191e81'
-        emailEmbedHTML:
-          type: string
-          description: HTML code for email embedding
-        fields:
-          $ref: '#/components/schemas/Model101'
-    sharePage:
+    Model146:
       type: object
       properties:
         title:
@@ -796,40 +687,34 @@ components:
         buttons:
           $ref: '#/components/schemas/buttons'
         calendar:
-          $ref: '#/components/schemas/Model138'
+          $ref: '#/components/schemas/Model145'
         layout:
           $ref: '#/components/schemas/layout'
         transcriptionsViewEnabled:
           type: boolean
           example: false
-    RequestParamsCreateDynamicsCampaignsSchema:
+    ResponseBulkUpdateProspectsUrlSchema:
       type: object
       properties:
-        name:
-          type: string
-          example: My Dynamic Campaign
+        updatedCount:
+          type: number
+          description: Number of prospects updated
+        totalCount:
+          type: number
+          description: Total number of prospects
       required:
-      - name
-    object:
-      type: array
-      items:
-        $ref: '#/components/schemas/Model169'
-    placeholders:
-      type: array
-      items:
-        $ref: '#/components/schemas/PlaceholdersGetResponseSchema'
-    ResponseDynamicModifySettingsSchema:
-      type: object
-    ResponseCreateDynamicsCampaignSchema:
+      - updatedCount
+      - totalCount
+    ResponseModifyDynamicsCampaignSchema:
       type: object
       properties:
         name:
           type: string
           example: My Dynamic Campaign
         videoProperties:
-          $ref: '#/components/schemas/videoProperties'
+          $ref: '#/components/schemas/VideoProperties'
         metadata:
-          $ref: '#/components/schemas/Model139'
+          $ref: '#/components/schemas/Metadata'
         combinedVideo:
           type: boolean
           example: false
@@ -857,6 +742,13 @@ components:
           type: string
           format: date
           example: '2021-03-01T00:00:00.000Z'
+        deletedAt:
+          type: string
+          format: date
+          description: For managing soft deletes
+          example: null
+        prospectList:
+          $ref: '#/components/schemas/ResponsePayloadProspectList'
       required:
       - combinedVideo
       - dynamicBackground
@@ -864,66 +756,34 @@ components:
       - creator
       - folder
       - workspace
-      - _id
       - createdAt
-    BadRequest:
+    Model148:
+      type: object
+      properties:
+        version:
+          type: number
+          example: 1
+        migrated:
+          type: string
+          format: date
+          example: '2021-03-01T00:00:00.000Z'
+    ResourceNotFoundOrInvalidAccess:
       type: object
       properties:
         statusCode:
           type: number
-          example: 400
-        code:
-          type: string
-          example: S400-AHVE
+          example: 404
         error:
           type: string
-          example: Bad Request
+          example: Not Found
         message:
           type: string
-          example: Invalid request payload input
-    Model222:
-      type: object
-      properties:
-        videoUrl:
-          type: string
-          example: https://stg341.sendspark.com/share/i5hu8v1ctjt5surn
-          x-format:
-            uri: true
-        name:
-          type: string
-          example: My Dynamic Campaign
-        title:
-          type: string
-          example: Hello there!
-        message:
-          type: string
-          example: welcome to my dynamic campaign
-        buttons:
-          $ref: '#/components/schemas/object'
-        calendar:
-          $ref: '#/components/schemas/Model170'
-        prospectList:
-          $ref: '#/components/schemas/prospectList'
-        voiceCloning:
-          $ref: '#/components/schemas/Model221'
-        prospectDepurationConfig:
-          $ref: '#/components/schemas/prospectDepurationConfig'
-        processAndAuthorizeCharge:
-          type: boolean
-          example: false
-        callbackId:
-          type: string
-          example: 63f6a4145a5e755e2e8fe19d
-        fields:
-          $ref: '#/components/schemas/Fields'
-    RequestPayloadBulkUpdateProspectsUrlSchema:
-      type: object
-      properties:
-        extractUrlFromEmail:
-          type: boolean
-          description: If true, sets backgroundUrl based on email domain. If false, removes backgroundUrls matching email domain.
-      required:
-      - extractUrlFromEmail
+          example: Resource not found or invalid access
+    payloadDepurationStrategy:
+      type: string
+      enum:
+      - keep-first-valid
+      - keep-last-valid
     dynamicSettingsGetResponseSchema:
       type: object
       properties:
@@ -931,10 +791,19 @@ components:
           $ref: '#/components/schemas/dynamicSettingsLanguagesGetResponseSchema'
         multivariableLanguages:
           $ref: '#/components/schemas/MultivariableLanguagesGetResponseSchema'
-    buttons:
+    ResponsePayloadProspectList:
       type: array
       items:
-        type: string
+        $ref: '#/components/schemas/responsePayloadProspectSchema'
+    Model138:
+      type: object
+      properties:
+        provider:
+          type: string
+        link:
+          type: string
+          x-format:
+            uri: true
     requestPayloadProspectSchema:
       type: object
       properties:
@@ -991,361 +860,6 @@ components:
         hash:
           type: string
           example: 63f6a4145a5e755e2e8fe19d
-    Model149:
-      type: object
-      properties:
-        name:
-          type: string
-          example: My Dynamic Campaign
-        languageCode:
-          type: string
-          example: en
-        videoProperties:
-          $ref: '#/components/schemas/Model147'
-        metadata:
-          $ref: '#/components/schemas/Model148'
-        combinedVideo:
-          type: boolean
-          example: false
-        dynamicBackground:
-          type: boolean
-          example: false
-        status:
-          type: string
-          example: pending
-        creator:
-          type: string
-          example: okn4ra9qjlpzhs2zpuni426jizysbdcp
-        folder:
-          type: string
-          example: ibdls2hjvaebvg0k4mz0zgvndbai9th7
-        workspace:
-          type: string
-          example: 3vwdfm4jmhfyzt1yqp0r8v3qgaocrczb
-        videosAssets:
-          $ref: '#/components/schemas/videosAssets'
-        id:
-          type: string
-          example: 63f6a4145a5e755e2e8fe19d
-        createdAt:
-          type: string
-          format: date
-          example: '2021-03-01T00:00:00.000Z'
-      required:
-      - combinedVideo
-      - dynamicBackground
-      - status
-      - creator
-      - folder
-      - workspace
-      - id
-      - createdAt
-    layout:
-      type: string
-      example: layout-default
-      enum:
-      - layout-default
-      - layout-title-above
-    videosAssets:
-      type: array
-      items:
-        type: string
-    Model100:
-      type: object
-      properties:
-        validationField:
-          type: string
-          example: 'Show field with errors, Example: contactEmail'
-        validationMessage:
-          type: string
-          example: 'Show error detail related with field with error, example: Invalid email'
-        validationCode:
-          type: string
-          example: 'Show error code related with field with error, example: 400'
-    ResponseModifyDynamicsCampaignSchema:
-      type: object
-      properties:
-        name:
-          type: string
-          example: My Dynamic Campaign
-        videoProperties:
-          $ref: '#/components/schemas/VideoProperties'
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-        combinedVideo:
-          type: boolean
-          example: false
-        dynamicBackground:
-          type: boolean
-          example: false
-        status:
-          type: string
-          example: pending
-        creator:
-          type: string
-          example: okn4ra9qjlpzhs2zpuni426jizysbdcp
-        folder:
-          type: string
-          example: ibdls2hjvaebvg0k4mz0zgvndbai9th7
-        workspace:
-          type: string
-          example: 3vwdfm4jmhfyzt1yqp0r8v3qgaocrczb
-        videosAssets:
-          $ref: '#/components/schemas/videosAssets'
-        _id:
-          type: string
-          example: 63f6a4145a5e755e2e8fe19d
-        createdAt:
-          type: string
-          format: date
-          example: '2021-03-01T00:00:00.000Z'
-        deletedAt:
-          type: string
-          format: date
-          description: For managing soft deletes
-          example: null
-        prospectList:
-          $ref: '#/components/schemas/ResponsePayloadProspectList'
-      required:
-      - combinedVideo
-      - dynamicBackground
-      - status
-      - creator
-      - folder
-      - workspace
-      - createdAt
-    Forbidden:
-      type: object
-      properties:
-        statusCode:
-          type: number
-          example: 403
-        code:
-          type: string
-          example: S403-UPLD
-        error:
-          type: string
-          example: Forbidden
-        message:
-          type: string
-          example: Invalid request payload input / Any error from provider
-    PlaceholdersGetResponseSchema:
-      type: object
-      properties:
-        word:
-          type: string
-          example: watermelon
-        replace:
-          type: string
-          example: '{{firstname | there}}'
-      required:
-      - word
-      - replace
-    Model169:
-      type: object
-      properties:
-        position:
-          type: number
-        label:
-          type: string
-        link:
-          type: string
-          example: http://www.sendspark.com/
-    LanguagesGetResponseSchema:
-      type: object
-      properties:
-        name:
-          type: string
-          example: English
-        placeholders:
-          $ref: '#/components/schemas/placeholders'
-        fallbacks:
-          $ref: '#/components/schemas/fallbacks'
-      required:
-      - name
-    webhookEvents:
-      type: array
-      example:
-      - video_generated_dv
-      - video_watched
-      - video_played
-      - video_cta_clicked
-      - video_viewed
-      - video_liked
-      items:
-        type: string
-    Model170:
-      type: object
-      properties:
-        provider:
-          type: string
-        link:
-          type: string
-          x-format:
-            uri: true
-    Model146:
-      type: object
-      properties:
-        title:
-          type: string
-          example: Hello there!
-        message:
-          type: string
-          example: welcome to my dynamic campaign
-        buttons:
-          $ref: '#/components/schemas/buttons'
-        calendar:
-          $ref: '#/components/schemas/Model145'
-        layout:
-          $ref: '#/components/schemas/layout'
-        transcriptionsViewEnabled:
-          type: boolean
-          example: false
-    videoProperties:
-      type: object
-      properties:
-        sharePage:
-          $ref: '#/components/schemas/sharePage'
-    ResponseBulkUpdateProspectsUrlSchema:
-      type: object
-      properties:
-        updatedCount:
-          type: number
-          description: Number of prospects updated
-        totalCount:
-          type: number
-          description: Total number of prospects
-      required:
-      - updatedCount
-      - totalCount
-    ResponsePayloadProspectList:
-      type: array
-      items:
-        $ref: '#/components/schemas/responsePayloadProspectSchema'
-    payloadDepurationStrategy:
-      type: string
-      enum:
-      - keep-first-valid
-      - keep-last-valid
-    SharePage:
-      type: object
-      properties:
-        title:
-          type: string
-          example: Hello there!
-        message:
-          type: string
-          example: welcome to my dynamic campaign
-        buttons:
-          $ref: '#/components/schemas/object'
-        calendar:
-          $ref: '#/components/schemas/Model170'
-        layout:
-          $ref: '#/components/schemas/layout'
-        transcriptionsViewEnabled:
-          type: boolean
-          example: false
-    Model139:
-      type: object
-      properties:
-        version:
-          type: number
-          example: 1
-        migrated:
-          type: string
-          format: date
-          example: '2021-03-01T00:00:00.000Z'
-    Model138:
-      type: object
-      properties:
-        provider:
-          type: string
-        link:
-          type: string
-          x-format:
-            uri: true
-    Metadata:
-      type: object
-      properties:
-        version:
-          type: number
-          example: 1
-        migrated:
-          type: string
-          format: date
-          example: '2021-03-01T00:00:00.000Z'
-    Model147:
-      type: object
-      properties:
-        sharePage:
-          $ref: '#/components/schemas/Model146'
-    MultivariableLanguagesGetResponseSchema:
-      type: object
-    Model145:
-      type: object
-      properties:
-        provider:
-          type: string
-        link:
-          type: string
-    Fields:
-      type: object
-    ResourcesStatus:
-      type: object
-    dynamicSettingsLanguagesGetResponseSchema:
-      type: object
-      properties:
-        en:
-          $ref: '#/components/schemas/LanguagesGetResponseSchema'
-        es:
-          $ref: '#/components/schemas/LanguagesGetResponseSchema'
-        de:
-          $ref: '#/components/schemas/LanguagesGetResponseSchema'
-    VideoProperties:
-      type: object
-      properties:
-        sharePage:
-          $ref: '#/components/schemas/SharePage'
-    Model101:
-      type: object
-      description: Additional fields associated with the prospect
-    RequestPayloadBulkProspectsDynamicsCampaignsSchema:
-      type: object
-      properties:
-        prospectList:
-          $ref: '#/components/schemas/prospectList'
-        prospectDepurationConfig:
-          $ref: '#/components/schemas/prospectDepurationConfig'
-        processAndAuthorizeCharge:
-          type: boolean
-          example: false
-        callbackId:
-          type: string
-          example: 63f6a4145a5e755e2e8fe19d
-    prospectDepurationConfig:
-      type: object
-      properties:
-        forceCreation:
-          type: boolean
-          example: false
-        payloadDepurationStrategy:
-          $ref: '#/components/schemas/payloadDepurationStrategy'
-    Model148:
-      type: object
-      properties:
-        version:
-          type: number
-          example: 1
-        migrated:
-          type: string
-          format: date
-          example: '2021-03-01T00:00:00.000Z'
-    validationDetails:
-      type: array
-      items:
-        $ref: '#/components/schemas/Model100'
-    Model57:
-      type: object
     responsePayloadProspectSchema:
       type: object
       properties:
@@ -1447,17 +961,492 @@ components:
           example: 63f6a4145a5e755e2e8fe19d
       required:
       - status
+    RequestPayloadBulkUpdateProspectsUrlSchema:
+      type: object
+      properties:
+        extractUrlFromEmail:
+          type: boolean
+          description: If true, sets backgroundUrl based on email domain. If false, removes backgroundUrls matching email domain.
+      required:
+      - extractUrlFromEmail
+    layout:
+      type: string
+      example: layout-default
+      enum:
+      - layout-default
+      - layout-title-above
+    Model145:
+      type: object
+      properties:
+        provider:
+          type: string
+        link:
+          type: string
+    Model169:
+      type: object
+      properties:
+        position:
+          type: number
+        label:
+          type: string
+        link:
+          type: string
+          example: http://www.sendspark.com/
+    Model139:
+      type: object
+      properties:
+        version:
+          type: number
+          example: 1
+        migrated:
+          type: string
+          format: date
+          example: '2021-03-01T00:00:00.000Z'
+    validationDetails:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model100'
+    RequestParamsCreateDynamicsCampaignsSchema:
+      type: object
+      properties:
+        name:
+          type: string
+          example: My Dynamic Campaign
+      required:
+      - name
+    Model149:
+      type: object
+      properties:
+        name:
+          type: string
+          example: My Dynamic Campaign
+        languageCode:
+          type: string
+          example: en
+        videoProperties:
+          $ref: '#/components/schemas/Model147'
+        metadata:
+          $ref: '#/components/schemas/Model148'
+        combinedVideo:
+          type: boolean
+          example: false
+        dynamicBackground:
+          type: boolean
+          example: false
+        status:
+          type: string
+          example: pending
+        creator:
+          type: string
+          example: okn4ra9qjlpzhs2zpuni426jizysbdcp
+        folder:
+          type: string
+          example: ibdls2hjvaebvg0k4mz0zgvndbai9th7
+        workspace:
+          type: string
+          example: 3vwdfm4jmhfyzt1yqp0r8v3qgaocrczb
+        videosAssets:
+          $ref: '#/components/schemas/videosAssets'
+        id:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
+        createdAt:
+          type: string
+          format: date
+          example: '2021-03-01T00:00:00.000Z'
+      required:
+      - combinedVideo
+      - dynamicBackground
+      - status
+      - creator
+      - folder
+      - workspace
+      - id
+      - createdAt
+    VideoProperties:
+      type: object
+      properties:
+        sharePage:
+          $ref: '#/components/schemas/SharePage'
+    ResponseCreateDynamicsCampaignSchema:
+      type: object
+      properties:
+        name:
+          type: string
+          example: My Dynamic Campaign
+        videoProperties:
+          $ref: '#/components/schemas/videoProperties'
+        metadata:
+          $ref: '#/components/schemas/Model139'
+        combinedVideo:
+          type: boolean
+          example: false
+        dynamicBackground:
+          type: boolean
+          example: false
+        status:
+          type: string
+          example: pending
+        creator:
+          type: string
+          example: okn4ra9qjlpzhs2zpuni426jizysbdcp
+        folder:
+          type: string
+          example: ibdls2hjvaebvg0k4mz0zgvndbai9th7
+        workspace:
+          type: string
+          example: 3vwdfm4jmhfyzt1yqp0r8v3qgaocrczb
+        videosAssets:
+          $ref: '#/components/schemas/videosAssets'
+        _id:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
+        createdAt:
+          type: string
+          format: date
+          example: '2021-03-01T00:00:00.000Z'
+      required:
+      - combinedVideo
+      - dynamicBackground
+      - status
+      - creator
+      - folder
+      - workspace
+      - _id
+      - createdAt
     RequestPayloadDynamicModifySettingsSchema:
       type: object
       properties:
         useFallbackData:
           type: boolean
           example: false
+    placeholders:
+      type: array
+      items:
+        $ref: '#/components/schemas/PlaceholdersGetResponseSchema'
+    dynamicSettingsLanguagesGetResponseSchema:
+      type: object
+      properties:
+        en:
+          $ref: '#/components/schemas/LanguagesGetResponseSchema'
+        es:
+          $ref: '#/components/schemas/LanguagesGetResponseSchema'
+        de:
+          $ref: '#/components/schemas/LanguagesGetResponseSchema'
+    SharePage:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Hello there!
+        message:
+          type: string
+          example: welcome to my dynamic campaign
+        buttons:
+          $ref: '#/components/schemas/object'
+        calendar:
+          $ref: '#/components/schemas/Model170'
+        layout:
+          $ref: '#/components/schemas/layout'
+        transcriptionsViewEnabled:
+          type: boolean
+          example: false
+    Model57:
+      type: object
+    ResponseDynamicsVideoAddSchema:
+      type: object
     fallbacks:
       type: array
       items:
         type: string
         example: there
+    Metadata:
+      type: object
+      properties:
+        version:
+          type: number
+          example: 1
+        migrated:
+          type: string
+          format: date
+          example: '2021-03-01T00:00:00.000Z'
+    webhookEvents:
+      type: array
+      example:
+      - video_generated_dv
+      - video_watched
+      - video_played
+      - video_cta_clicked
+      - video_viewed
+      - video_liked
+      items:
+        type: string
+    ResponseDynamicModifySettingsSchema:
+      type: object
+    Model100:
+      type: object
+      properties:
+        validationField:
+          type: string
+          example: 'Show field with errors, Example: contactEmail'
+        validationMessage:
+          type: string
+          example: 'Show error detail related with field with error, example: Invalid email'
+        validationCode:
+          type: string
+          example: 'Show error code related with field with error, example: 400'
+    prospectDepurationConfig:
+      type: object
+      properties:
+        forceCreation:
+          type: boolean
+          example: false
+        payloadDepurationStrategy:
+          $ref: '#/components/schemas/payloadDepurationStrategy'
+    RequestPayloadAddProspectsDynamicsCampaignsSchema:
+      type: object
+      properties:
+        prospect:
+          $ref: '#/components/schemas/requestPayloadProspectSchema'
+        prospectDepurationConfig:
+          $ref: '#/components/schemas/prospectDepurationConfig'
+        processAndAuthorizeCharge:
+          type: boolean
+          example: false
+        fallbackToEmailDomainForBackground:
+          type: boolean
+          example: false
+        callbackId:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
+      required:
+      - prospect
+    buttons:
+      type: array
+      items:
+        type: string
+    videoProperties:
+      type: object
+      properties:
+        sharePage:
+          $ref: '#/components/schemas/sharePage'
+    MultivariableLanguagesGetResponseSchema:
+      type: object
+    Model147:
+      type: object
+      properties:
+        sharePage:
+          $ref: '#/components/schemas/Model146'
+    Model170:
+      type: object
+      properties:
+        provider:
+          type: string
+        link:
+          type: string
+          x-format:
+            uri: true
+    Fields:
+      type: object
+    Model101:
+      type: object
+      description: Additional fields associated with the prospect
+    DynamicVideosGetProspectResponseSchema:
+      type: object
+      properties:
+        contactEmail:
+          type: string
+          example: 'Contact Email, Example: john@example.com'
+        backgroundUrl:
+          type: string
+          example: 'Backgound URL, Example: https://example.com'
+        originalBackgroundUrl:
+          type: string
+          example: 'Backgound URL, Example: https://example.com'
+        status:
+          type: string
+          example: 'Current prospect status, Example: saved, billed, errored, processing, uploaded, completed'
+        deletedAt:
+          type: string
+          format: date
+          example: 'Deleted Date if prospect was deleted, Example: 2020-01-01T00:00:00.000Z'
+        valid:
+          type: boolean
+          example: False if prospect has validation errors
+        createdAt:
+          type: string
+          format: date
+          example: 'Create date, example: 2020-01-01T00:00:00.000Z'
+        updatedAt:
+          type: string
+          format: date
+          example: 'Update date, example: 2020-01-01T00:00:00.000Z'
+        validationDetails:
+          $ref: '#/components/schemas/validationDetails'
+        contactName:
+          type: string
+          example: 'Contact Name, example: John Doe'
+        company:
+          type: string
+          example: 'Company Name, example: Sendspark'
+        jobTitle:
+          type: string
+          example: 'Job Title, example: Software Engineer'
+        id:
+          type: string
+          example: 'Internal prospect ID, example: 997f191e810c19729de860fd'
+        shareUrl:
+          type: string
+          example: 'Public URL to share the final video, example: https://sendspark.com/share/997f191e81'
+        emailEmbedHTML:
+          type: string
+          description: HTML code for email embedding
+        fields:
+          $ref: '#/components/schemas/Model101'
+    Model144:
+      type: object
+      properties:
+        name:
+          type: string
+          example: My Dynamic Campaign
+        voiceCloning:
+          type: boolean
+          example: false
+        languageCode:
+          type: string
+          example: en
+        videoUrl:
+          type: string
+          example: https://ssoven341-d3vz.com/share/9up29v11k16cqtyie1hx74cmhva5yutz
+        version:
+          type: number
+          example: 1
+        multivariable:
+          type: boolean
+          example: false
+      required:
+      - name
+    videosAssets:
+      type: array
+      items:
+        type: string
+    sharePage:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Hello there!
+        message:
+          type: string
+          example: welcome to my dynamic campaign
+        buttons:
+          $ref: '#/components/schemas/buttons'
+        calendar:
+          $ref: '#/components/schemas/Model138'
+        layout:
+          $ref: '#/components/schemas/layout'
+        transcriptionsViewEnabled:
+          type: boolean
+          example: false
+    object:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model169'
+    prospectList:
+      type: array
+      minItems: 1
+      maxItems: 10000
+      items:
+        $ref: '#/components/schemas/requestPayloadProspectSchema'
+    ResourcesStatus:
+      type: object
+    PlaceholdersGetResponseSchema:
+      type: object
+      properties:
+        word:
+          type: string
+          example: watermelon
+        replace:
+          type: string
+          example: '{{firstname | there}}'
+      required:
+      - word
+      - replace
+    LanguagesGetResponseSchema:
+      type: object
+      properties:
+        name:
+          type: string
+          example: English
+        placeholders:
+          $ref: '#/components/schemas/placeholders'
+        fallbacks:
+          $ref: '#/components/schemas/fallbacks'
+      required:
+      - name
+    Forbidden:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 403
+        code:
+          type: string
+          example: S403-UPLD
+        error:
+          type: string
+          example: Forbidden
+        message:
+          type: string
+          example: Invalid request payload input / Any error from provider
+    Model222:
+      type: object
+      properties:
+        videoUrl:
+          type: string
+          example: https://stg341.sendspark.com/share/i5hu8v1ctjt5surn
+          x-format:
+            uri: true
+        name:
+          type: string
+          example: My Dynamic Campaign
+        title:
+          type: string
+          example: Hello there!
+        message:
+          type: string
+          example: welcome to my dynamic campaign
+        buttons:
+          $ref: '#/components/schemas/object'
+        calendar:
+          $ref: '#/components/schemas/Model170'
+        prospectList:
+          $ref: '#/components/schemas/prospectList'
+        voiceCloning:
+          $ref: '#/components/schemas/Model221'
+        prospectDepurationConfig:
+          $ref: '#/components/schemas/prospectDepurationConfig'
+        processAndAuthorizeCharge:
+          type: boolean
+          example: false
+        callbackId:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
+        fields:
+          $ref: '#/components/schemas/Fields'
+    RequestPayloadBulkProspectsDynamicsCampaignsSchema:
+      type: object
+      properties:
+        prospectList:
+          $ref: '#/components/schemas/prospectList'
+        prospectDepurationConfig:
+          $ref: '#/components/schemas/prospectDepurationConfig'
+        processAndAuthorizeCharge:
+          type: boolean
+          example: false
+        callbackId:
+          type: string
+          example: 63f6a4145a5e755e2e8fe19d
     ServiceUnavailable:
       type: object
       properties:
@@ -1470,12 +1459,23 @@ components:
         message:
           type: string
           example: Service Unavailable
-    prospectList:
-      type: array
-      minItems: 1
-      maxItems: 10000
-      items:
-        $ref: '#/components/schemas/requestPayloadProspectSchema'
+    BadRequest:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 400
+        code:
+          type: string
+          example: S400-AHVE
+        error:
+          type: string
+          example: Bad Request
+        message:
+          type: string
+          example: Invalid request payload input
+    Model221:
+      type: object
   securitySchemes:
     apiKey:
       type: apiKey

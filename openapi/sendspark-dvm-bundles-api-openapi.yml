@@ -143,6 +143,21 @@ paths:
                 $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
 components:
   schemas:
+    tiers:
+      type: array
+      minItems: 1
+      items:
+        $ref: '#/components/schemas/VolumeTierSchema'
+    Model45:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model44'
+    quickPicks:
+      type: array
+      items:
+        type: integer
+        x-constraint:
+          sign: positive
     ResourceNotFoundOrInvalidAccess:
       type: object
       properties:
@@ -155,175 +170,6 @@ components:
         message:
           type: string
           example: Resource not found or invalid access
-    BundlesGetResponseSchema:
-      type: object
-      properties:
-        bundles:
-          $ref: '#/components/schemas/Model45'
-        customBundleConfig:
-          $ref: '#/components/schemas/CustomBundleConfigSchema'
-        activeBundles:
-          $ref: '#/components/schemas/activeBundles'
-        balance:
-          $ref: '#/components/schemas/balance'
-      required:
-      - bundles
-      - balance
-    tiers:
-      type: array
-      minItems: 1
-      items:
-        $ref: '#/components/schemas/VolumeTierSchema'
-    BadRequest:
-      type: object
-      properties:
-        statusCode:
-          type: number
-          example: 400
-        code:
-          type: string
-          example: S400-AHVE
-        error:
-          type: string
-          example: Bad Request
-        message:
-          type: string
-          example: Invalid request payload input
-    BundlesCancelPayloadSchema:
-      type: object
-      properties:
-        subscriptionItemId:
-          type: string
-          example: si_UKraMwyWFL7t4w
-      required:
-      - subscriptionItemId
-    Model45:
-      type: array
-      items:
-        $ref: '#/components/schemas/Model44'
-    BundlesUpdatePayloadSchema:
-      type: object
-      properties:
-        addMinutes:
-          type: integer
-          example: 50
-          x-constraint:
-            sign: positive
-      required:
-      - addMinutes
-    UpdatedBundleResult:
-      type: object
-      properties:
-        bundleId:
-          type: string
-        subscriptionItemId:
-          type: string
-        minutesPerBundle:
-          type: number
-        label:
-          type: string
-        unitPriceCents:
-          type: number
-        totalPriceCents:
-          type: number
-      required:
-      - bundleId
-      - subscriptionItemId
-      - minutesPerBundle
-      - label
-      - unitPriceCents
-      - totalPriceCents
-    BundlesUpdateResponseSchema:
-      type: object
-      properties:
-        bundle:
-          $ref: '#/components/schemas/UpdatedBundleResult'
-        addedMinutes:
-          type: integer
-        previousTotalMinutes:
-          type: integer
-        newTotalMinutes:
-          type: integer
-        additionalChargeCents:
-          type: integer
-        balance:
-          type: string
-      required:
-      - bundle
-      - addedMinutes
-      - previousTotalMinutes
-      - newTotalMinutes
-      - additionalChargeCents
-    CustomBundleConfigSchema:
-      type: object
-      properties:
-        id:
-          type: string
-        priceId:
-          type: string
-        tiersMode:
-          $ref: '#/components/schemas/tiersMode'
-        tiers:
-          $ref: '#/components/schemas/tiers'
-        minMinutes:
-          type: integer
-        maxMinutes:
-          type: integer
-        stepMinutes:
-          type: integer
-        quickPicks:
-          $ref: '#/components/schemas/quickPicks'
-        mostPopular:
-          type: integer
-          x-constraint:
-            sign: positive
-        label:
-          type: string
-        recurring:
-          type: boolean
-        interval:
-          $ref: '#/components/schemas/Model46'
-      required:
-      - id
-      - priceId
-      - tiersMode
-      - tiers
-      - minMinutes
-      - maxMinutes
-      - stepMinutes
-      - quickPicks
-      - mostPopular
-      - label
-      - recurring
-      - interval
-    Model47:
-      type: string
-      enum:
-      - active
-      - canceling
-      - canceled
-    tiersMode:
-      type: string
-      enum:
-      - volume
-      - graduated
-    Forbidden:
-      type: object
-      properties:
-        statusCode:
-          type: number
-          example: 403
-        code:
-          type: string
-          example: S403-UPLD
-        error:
-          type: string
-          example: Forbidden
-        message:
-          type: string
-          example: Invalid request payload input / Any error from provider
-    balance:
-      type: object
     ActiveBundleSchema:
       type: object
       properties:
@@ -383,15 +229,6 @@ components:
       - priceId
       - subscriptionItemId
       - status
-    Model46:
-      type: string
-      enum:
-      - month
-      - year
-    activeBundles:
-      type: array
-      items:
-        $ref: '#/components/schemas/ActiveBundleSchema'
     Model44:
       type: object
       properties:
@@ -427,17 +264,42 @@ components:
       - unitPriceCents
       - totalPriceCents
       - sortOrder
-    Model48:
+    Model46:
       type: string
       enum:
       - month
       - year
-    quickPicks:
-      type: array
-      items:
-        type: integer
-        x-constraint:
-          sign: positive
+    BundlesUpdateResponseSchema:
+      type: object
+      properties:
+        bundle:
+          $ref: '#/components/schemas/UpdatedBundleResult'
+        addedMinutes:
+          type: integer
+        previousTotalMinutes:
+          type: integer
+        newTotalMinutes:
+          type: integer
+        additionalChargeCents:
+          type: integer
+        balance:
+          type: string
+      required:
+      - bundle
+      - addedMinutes
+      - previousTotalMinutes
+      - newTotalMinutes
+      - additionalChargeCents
+    BundlesUpdatePayloadSchema:
+      type: object
+      properties:
+        addMinutes:
+          type: integer
+          example: 50
+          x-constraint:
+            sign: positive
+      required:
+      - addMinutes
     BundlesCancelResponseSchema:
       type: object
       properties:
@@ -458,6 +320,34 @@ components:
       - one-time
       - recurring
       - custom
+    Model47:
+      type: string
+      enum:
+      - active
+      - canceling
+      - canceled
+    UpdatedBundleResult:
+      type: object
+      properties:
+        bundleId:
+          type: string
+        subscriptionItemId:
+          type: string
+        minutesPerBundle:
+          type: number
+        label:
+          type: string
+        unitPriceCents:
+          type: number
+        totalPriceCents:
+          type: number
+      required:
+      - bundleId
+      - subscriptionItemId
+      - minutesPerBundle
+      - label
+      - unitPriceCents
+      - totalPriceCents
     VolumeTierSchema:
       type: object
       properties:
@@ -468,6 +358,116 @@ components:
       required:
       - upTo
       - unitAmountCents
+    Model48:
+      type: string
+      enum:
+      - month
+      - year
+    balance:
+      type: object
+    BundlesGetResponseSchema:
+      type: object
+      properties:
+        bundles:
+          $ref: '#/components/schemas/Model45'
+        customBundleConfig:
+          $ref: '#/components/schemas/CustomBundleConfigSchema'
+        activeBundles:
+          $ref: '#/components/schemas/activeBundles'
+        balance:
+          $ref: '#/components/schemas/balance'
+      required:
+      - bundles
+      - balance
+    BundlesCancelPayloadSchema:
+      type: object
+      properties:
+        subscriptionItemId:
+          type: string
+          example: si_UKraMwyWFL7t4w
+      required:
+      - subscriptionItemId
+    Forbidden:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 403
+        code:
+          type: string
+          example: S403-UPLD
+        error:
+          type: string
+          example: Forbidden
+        message:
+          type: string
+          example: Invalid request payload input / Any error from provider
+    tiersMode:
+      type: string
+      enum:
+      - volume
+      - graduated
+    activeBundles:
+      type: array
+      items:
+        $ref: '#/components/schemas/ActiveBundleSchema'
+    CustomBundleConfigSchema:
+      type: object
+      properties:
+        id:
+          type: string
+        priceId:
+          type: string
+        tiersMode:
+          $ref: '#/components/schemas/tiersMode'
+        tiers:
+          $ref: '#/components/schemas/tiers'
+        minMinutes:
+          type: integer
+        maxMinutes:
+          type: integer
+        stepMinutes:
+          type: integer
+        quickPicks:
+          $ref: '#/components/schemas/quickPicks'
+        mostPopular:
+          type: integer
+          x-constraint:
+            sign: positive
+        label:
+          type: string
+        recurring:
+          type: boolean
+        interval:
+          $ref: '#/components/schemas/Model46'
+      required:
+      - id
+      - priceId
+      - tiersMode
+      - tiers
+      - minMinutes
+      - maxMinutes
+      - stepMinutes
+      - quickPicks
+      - mostPopular
+      - label
+      - recurring
+      - interval
+    BadRequest:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 400
+        code:
+          type: string
+          example: S400-AHVE
+        error:
+          type: string
+          example: Bad Request
+        message:
+          type: string
+          example: Invalid request payload input
   securitySchemes:
     apiKey:
       type: apiKey
