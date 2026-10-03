@@ -188,18 +188,21 @@ components:
           type: string
       required:
       - provider
-    identifiers:
-      type: array
-      items:
-        type: string
-        example: sdfgh2345werty345678dfghj
-    extraHeaders:
-      type: array
-      example:
-      - Authorization
-      - Content-Type
-      items:
-        type: string
+    module:
+      type: string
+      example: global | dynamics
+      enum:
+      - global
+      - dynamics
+    WebhookMetadataSchema:
+      type: object
+      properties:
+        automation:
+          $ref: '#/components/schemas/automation'
+      required:
+      - automation
+    ModifyWebhookResponseSchema:
+      type: object
     events:
       type: array
       example:
@@ -214,36 +217,13 @@ components:
       - video_generated_error
       items:
         $ref: '#/components/schemas/Model217'
-    Model143:
-      type: string
-      enum:
-      - video_watched
-      - video_played
-      - video_cta_clicked
-      - video_viewed
-      - video_liked
-      - video_request_received
-      - video_generated_dv
-      - video_mp4_ready
-      - video_generated_error
-    module:
-      type: string
-      example: global | dynamics
-      enum:
-      - global
-      - dynamics
-    Model217:
-      type: string
-      enum:
-      - video_watched
-      - video_played
-      - video_cta_clicked
-      - video_viewed
-      - video_liked
-      - video_request_received
-      - video_generated_dv
-      - video_mp4_ready
-      - video_generated_error
+    extraHeaders:
+      type: array
+      example:
+      - Authorization
+      - Content-Type
+      items:
+        type: string
     ModifyWebhookRequestPayloadSchema:
       type: object
       properties:
@@ -269,6 +249,46 @@ components:
         enabled:
           type: boolean
           example: true
+    ResourceNotFoundOrInvalidAccess:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 404
+        error:
+          type: string
+          example: Not Found
+        message:
+          type: string
+          example: Resource not found or invalid access
+    CreateWebhookResponseSchema:
+      type: object
+    WebhookVideoEventsSchema:
+      type: array
+      example:
+      - video_watched
+      - video_played
+      - video_cta_clicked
+      - video_viewed
+      - video_liked
+      - video_request_received
+      - video_generated_dv
+      - video_mp4_ready
+      - video_generated_error
+      items:
+        $ref: '#/components/schemas/Model143'
+    Model217:
+      type: string
+      enum:
+      - video_watched
+      - video_played
+      - video_cta_clicked
+      - video_viewed
+      - video_liked
+      - video_request_received
+      - video_generated_dv
+      - video_mp4_ready
+      - video_generated_error
     CreateWebhookRequestPayloadSchema:
       type: object
       properties:
@@ -297,41 +317,6 @@ components:
       - name
       - url
       - module
-    WebhookVideoEventsSchema:
-      type: array
-      example:
-      - video_watched
-      - video_played
-      - video_cta_clicked
-      - video_viewed
-      - video_liked
-      - video_request_received
-      - video_generated_dv
-      - video_mp4_ready
-      - video_generated_error
-      items:
-        $ref: '#/components/schemas/Model143'
-    ResourceNotFoundOrInvalidAccess:
-      type: object
-      properties:
-        statusCode:
-          type: number
-          example: 404
-        error:
-          type: string
-          example: Not Found
-        message:
-          type: string
-          example: Resource not found or invalid access
-    CreateWebhookResponseSchema:
-      type: object
-    WebhookMetadataSchema:
-      type: object
-      properties:
-        automation:
-          $ref: '#/components/schemas/automation'
-      required:
-      - automation
     BadRequest:
       type: object
       properties:
@@ -347,8 +332,23 @@ components:
         message:
           type: string
           example: Invalid request payload input
-    ModifyWebhookResponseSchema:
-      type: object
+    identifiers:
+      type: array
+      items:
+        type: string
+        example: sdfgh2345werty345678dfghj
+    Model143:
+      type: string
+      enum:
+      - video_watched
+      - video_played
+      - video_cta_clicked
+      - video_viewed
+      - video_liked
+      - video_request_received
+      - video_generated_dv
+      - video_mp4_ready
+      - video_generated_error
   securitySchemes:
     apiKey:
       type: apiKey

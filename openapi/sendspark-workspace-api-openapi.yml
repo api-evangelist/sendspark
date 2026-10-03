@@ -58,6 +58,16 @@ paths:
                 $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
 components:
   schemas:
+    WorkspaceResponseSchemadropdownRendering:
+      type: object
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+      required:
+      - _id
+      - name
     WorspacesResponseSchema:
       type: object
       properties:
@@ -79,16 +89,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/WorkspaceResponseSchemadropdownRendering'
-    WorkspaceResponseSchemadropdownRendering:
-      type: object
-      properties:
-        _id:
-          type: string
-        name:
-          type: string
-      required:
-      - _id
-      - name
     GetWorkspaceIdByApiKeyResponseSchema:
       type: object
       properties:
