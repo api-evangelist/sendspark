@@ -58,45 +58,6 @@ paths:
                 $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
 components:
   schemas:
-    WorkspaceResponseSchemadropdownRendering:
-      type: object
-      properties:
-        _id:
-          type: string
-        name:
-          type: string
-      required:
-      - _id
-      - name
-    WorspacesResponseSchema:
-      type: object
-      properties:
-        workspaces:
-          $ref: '#/components/schemas/Workspaces'
-    ResourceNotFoundOrInvalidAccess:
-      type: object
-      properties:
-        statusCode:
-          type: number
-          example: 404
-        error:
-          type: string
-          example: Not Found
-        message:
-          type: string
-          example: Resource not found or invalid access
-    Workspaces:
-      type: array
-      items:
-        $ref: '#/components/schemas/WorkspaceResponseSchemadropdownRendering'
-    GetWorkspaceIdByApiKeyResponseSchema:
-      type: object
-      properties:
-        workspaceId:
-          type: string
-          example: 7voa5y6qjj04kkbfqbgjd7kdvxlf4gqo
-      required:
-      - workspaceId
     BadRequest:
       type: object
       properties:
@@ -112,6 +73,45 @@ components:
         message:
           type: string
           example: Invalid request payload input
+    Workspaces:
+      type: array
+      items:
+        $ref: '#/components/schemas/WorkspaceResponseSchemadropdownRendering'
+    WorspacesResponseSchema:
+      type: object
+      properties:
+        workspaces:
+          $ref: '#/components/schemas/Workspaces'
+    GetWorkspaceIdByApiKeyResponseSchema:
+      type: object
+      properties:
+        workspaceId:
+          type: string
+          example: 7voa5y6qjj04kkbfqbgjd7kdvxlf4gqo
+      required:
+      - workspaceId
+    WorkspaceResponseSchemadropdownRendering:
+      type: object
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+      required:
+      - _id
+      - name
+    ResourceNotFoundOrInvalidAccess:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 404
+        error:
+          type: string
+          example: Not Found
+        message:
+          type: string
+          example: Resource not found or invalid access
   securitySchemes:
     apiKey:
       type: apiKey

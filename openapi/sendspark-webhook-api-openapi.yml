@@ -179,51 +179,12 @@ paths:
                 $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
 components:
   schemas:
-    automation:
-      type: object
-      properties:
-        workflowId:
-          type: number
-        provider:
-          type: string
-      required:
-      - provider
     module:
       type: string
       example: global | dynamics
       enum:
       - global
       - dynamics
-    WebhookMetadataSchema:
-      type: object
-      properties:
-        automation:
-          $ref: '#/components/schemas/automation'
-      required:
-      - automation
-    ModifyWebhookResponseSchema:
-      type: object
-    events:
-      type: array
-      example:
-      - video_watched
-      - video_played
-      - video_cta_clicked
-      - video_viewed
-      - video_liked
-      - video_request_received
-      - video_generated_dv
-      - video_mp4_ready
-      - video_generated_error
-      items:
-        $ref: '#/components/schemas/Model217'
-    extraHeaders:
-      type: array
-      example:
-      - Authorization
-      - Content-Type
-      items:
-        type: string
     ModifyWebhookRequestPayloadSchema:
       type: object
       properties:
@@ -249,34 +210,13 @@ components:
         enabled:
           type: boolean
           example: true
-    ResourceNotFoundOrInvalidAccess:
+    WebhookMetadataSchema:
       type: object
       properties:
-        statusCode:
-          type: number
-          example: 404
-        error:
-          type: string
-          example: Not Found
-        message:
-          type: string
-          example: Resource not found or invalid access
-    CreateWebhookResponseSchema:
-      type: object
-    WebhookVideoEventsSchema:
-      type: array
-      example:
-      - video_watched
-      - video_played
-      - video_cta_clicked
-      - video_viewed
-      - video_liked
-      - video_request_received
-      - video_generated_dv
-      - video_mp4_ready
-      - video_generated_error
-      items:
-        $ref: '#/components/schemas/Model143'
+        automation:
+          $ref: '#/components/schemas/automation'
+      required:
+      - automation
     Model217:
       type: string
       enum:
@@ -289,6 +229,46 @@ components:
       - video_generated_dv
       - video_mp4_ready
       - video_generated_error
+    ModifyWebhookResponseSchema:
+      type: object
+    BadRequest:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 400
+        code:
+          type: string
+          example: S400-AHVE
+        error:
+          type: string
+          example: Bad Request
+        message:
+          type: string
+          example: Invalid request payload input
+    extraHeaders:
+      type: array
+      example:
+      - Authorization
+      - Content-Type
+      items:
+        type: string
+    events:
+      type: array
+      example:
+      - video_watched
+      - video_played
+      - video_cta_clicked
+      - video_viewed
+      - video_liked
+      - video_request_received
+      - video_generated_dv
+      - video_mp4_ready
+      - video_generated_error
+      items:
+        $ref: '#/components/schemas/Model217'
+    CreateWebhookResponseSchema:
+      type: object
     CreateWebhookRequestPayloadSchema:
       type: object
       properties:
@@ -317,26 +297,46 @@ components:
       - name
       - url
       - module
-    BadRequest:
+    automation:
       type: object
       properties:
-        statusCode:
+        workflowId:
           type: number
-          example: 400
-        code:
+        provider:
           type: string
-          example: S400-AHVE
-        error:
-          type: string
-          example: Bad Request
-        message:
-          type: string
-          example: Invalid request payload input
+      required:
+      - provider
     identifiers:
       type: array
       items:
         type: string
         example: sdfgh2345werty345678dfghj
+    WebhookVideoEventsSchema:
+      type: array
+      example:
+      - video_watched
+      - video_played
+      - video_cta_clicked
+      - video_viewed
+      - video_liked
+      - video_request_received
+      - video_generated_dv
+      - video_mp4_ready
+      - video_generated_error
+      items:
+        $ref: '#/components/schemas/Model143'
+    ResourceNotFoundOrInvalidAccess:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 404
+        error:
+          type: string
+          example: Not Found
+        message:
+          type: string
+          example: Resource not found or invalid access
     Model143:
       type: string
       enum:

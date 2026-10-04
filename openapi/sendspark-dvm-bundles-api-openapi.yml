@@ -143,41 +143,20 @@ paths:
                 $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
 components:
   schemas:
-    Model44:
+    BundlesGetResponseSchema:
       type: object
       properties:
-        id:
-          type: string
-          example: prod_UB6XkMTrkKEdxB
-        priceId:
-          type: string
-          example: price_1RBg7yADxQe4sXwj5E3Bt8qM
-        minutes:
-          type: integer
-          example: 30
-        label:
-          type: string
-          example: 30-Minute Bundle
-        unitPriceCents:
-          type: integer
-          example: 100
-        totalPriceCents:
-          type: integer
-          example: 3000
-        badge:
-          type: string
-          example: Best Value
-        sortOrder:
-          type: integer
-          example: 1
+        bundles:
+          $ref: '#/components/schemas/Model45'
+        customBundleConfig:
+          $ref: '#/components/schemas/CustomBundleConfigSchema'
+        activeBundles:
+          $ref: '#/components/schemas/activeBundles'
+        balance:
+          $ref: '#/components/schemas/balance'
       required:
-      - id
-      - priceId
-      - minutes
-      - label
-      - unitPriceCents
-      - totalPriceCents
-      - sortOrder
+      - bundles
+      - balance
     UpdatedBundleResult:
       type: object
       properties:
@@ -200,215 +179,6 @@ components:
       - label
       - unitPriceCents
       - totalPriceCents
-    Model45:
-      type: array
-      items:
-        $ref: '#/components/schemas/Model44'
-    BundlesUpdatePayloadSchema:
-      type: object
-      properties:
-        addMinutes:
-          type: integer
-          example: 50
-          x-constraint:
-            sign: positive
-      required:
-      - addMinutes
-    ResourceNotFoundOrInvalidAccess:
-      type: object
-      properties:
-        statusCode:
-          type: number
-          example: 404
-        error:
-          type: string
-          example: Not Found
-        message:
-          type: string
-          example: Resource not found or invalid access
-    Model46:
-      type: string
-      enum:
-      - month
-      - year
-    tiersMode:
-      type: string
-      enum:
-      - volume
-      - graduated
-    tiers:
-      type: array
-      minItems: 1
-      items:
-        $ref: '#/components/schemas/VolumeTierSchema'
-    BundlesUpdateResponseSchema:
-      type: object
-      properties:
-        bundle:
-          $ref: '#/components/schemas/UpdatedBundleResult'
-        addedMinutes:
-          type: integer
-        previousTotalMinutes:
-          type: integer
-        newTotalMinutes:
-          type: integer
-        additionalChargeCents:
-          type: integer
-        balance:
-          type: string
-      required:
-      - bundle
-      - addedMinutes
-      - previousTotalMinutes
-      - newTotalMinutes
-      - additionalChargeCents
-    BundlesCancelResponseSchema:
-      type: object
-      properties:
-        status:
-          type: string
-          example: canceling
-        endsAt:
-          type: string
-          format: date
-        message:
-          type: string
-      required:
-      - status
-      - message
-    Model48:
-      type: string
-      enum:
-      - month
-      - year
-    balance:
-      type: object
-    quickPicks:
-      type: array
-      items:
-        type: integer
-        x-constraint:
-          sign: positive
-    Forbidden:
-      type: object
-      properties:
-        statusCode:
-          type: number
-          example: 403
-        code:
-          type: string
-          example: S403-UPLD
-        error:
-          type: string
-          example: Forbidden
-        message:
-          type: string
-          example: Invalid request payload input / Any error from provider
-    Model47:
-      type: string
-      enum:
-      - active
-      - canceling
-      - canceled
-    VolumeTierSchema:
-      type: object
-      properties:
-        upTo:
-          type: integer
-        unitAmountCents:
-          type: number
-      required:
-      - upTo
-      - unitAmountCents
-    BundlesGetResponseSchema:
-      type: object
-      properties:
-        bundles:
-          $ref: '#/components/schemas/Model45'
-        customBundleConfig:
-          $ref: '#/components/schemas/CustomBundleConfigSchema'
-        activeBundles:
-          $ref: '#/components/schemas/activeBundles'
-        balance:
-          $ref: '#/components/schemas/balance'
-      required:
-      - bundles
-      - balance
-    CustomBundleConfigSchema:
-      type: object
-      properties:
-        id:
-          type: string
-        priceId:
-          type: string
-        tiersMode:
-          $ref: '#/components/schemas/tiersMode'
-        tiers:
-          $ref: '#/components/schemas/tiers'
-        minMinutes:
-          type: integer
-        maxMinutes:
-          type: integer
-        stepMinutes:
-          type: integer
-        quickPicks:
-          $ref: '#/components/schemas/quickPicks'
-        mostPopular:
-          type: integer
-          x-constraint:
-            sign: positive
-        label:
-          type: string
-        recurring:
-          type: boolean
-        interval:
-          $ref: '#/components/schemas/Model46'
-      required:
-      - id
-      - priceId
-      - tiersMode
-      - tiers
-      - minMinutes
-      - maxMinutes
-      - stepMinutes
-      - quickPicks
-      - mostPopular
-      - label
-      - recurring
-      - interval
-    Model49:
-      type: string
-      enum:
-      - one-time
-      - recurring
-      - custom
-    BundlesCancelPayloadSchema:
-      type: object
-      properties:
-        subscriptionItemId:
-          type: string
-          example: si_UKraMwyWFL7t4w
-      required:
-      - subscriptionItemId
-    activeBundles:
-      type: array
-      items:
-        $ref: '#/components/schemas/ActiveBundleSchema'
-    BadRequest:
-      type: object
-      properties:
-        statusCode:
-          type: number
-          example: 400
-        code:
-          type: string
-          example: S400-AHVE
-        error:
-          type: string
-          example: Bad Request
-        message:
-          type: string
-          example: Invalid request payload input
     ActiveBundleSchema:
       type: object
       properties:
@@ -468,6 +238,236 @@ components:
       - priceId
       - subscriptionItemId
       - status
+    ResourceNotFoundOrInvalidAccess:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 404
+        error:
+          type: string
+          example: Not Found
+        message:
+          type: string
+          example: Resource not found or invalid access
+    Model45:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model44'
+    Model46:
+      type: string
+      enum:
+      - month
+      - year
+    tiersMode:
+      type: string
+      enum:
+      - volume
+      - graduated
+    Model44:
+      type: object
+      properties:
+        id:
+          type: string
+          example: prod_UB6XkMTrkKEdxB
+        priceId:
+          type: string
+          example: price_1RBg7yADxQe4sXwj5E3Bt8qM
+        minutes:
+          type: integer
+          example: 30
+        label:
+          type: string
+          example: 30-Minute Bundle
+        unitPriceCents:
+          type: integer
+          example: 100
+        totalPriceCents:
+          type: integer
+          example: 3000
+        badge:
+          type: string
+          example: Best Value
+        sortOrder:
+          type: integer
+          example: 1
+      required:
+      - id
+      - priceId
+      - minutes
+      - label
+      - unitPriceCents
+      - totalPriceCents
+      - sortOrder
+    Model49:
+      type: string
+      enum:
+      - one-time
+      - recurring
+      - custom
+    BundlesCancelPayloadSchema:
+      type: object
+      properties:
+        subscriptionItemId:
+          type: string
+          example: si_UKraMwyWFL7t4w
+      required:
+      - subscriptionItemId
+    tiers:
+      type: array
+      minItems: 1
+      items:
+        $ref: '#/components/schemas/VolumeTierSchema'
+    BundlesUpdatePayloadSchema:
+      type: object
+      properties:
+        addMinutes:
+          type: integer
+          example: 50
+          x-constraint:
+            sign: positive
+      required:
+      - addMinutes
+    BundlesUpdateResponseSchema:
+      type: object
+      properties:
+        bundle:
+          $ref: '#/components/schemas/UpdatedBundleResult'
+        addedMinutes:
+          type: integer
+        previousTotalMinutes:
+          type: integer
+        newTotalMinutes:
+          type: integer
+        additionalChargeCents:
+          type: integer
+        balance:
+          type: string
+      required:
+      - bundle
+      - addedMinutes
+      - previousTotalMinutes
+      - newTotalMinutes
+      - additionalChargeCents
+    VolumeTierSchema:
+      type: object
+      properties:
+        upTo:
+          type: integer
+        unitAmountCents:
+          type: number
+      required:
+      - upTo
+      - unitAmountCents
+    quickPicks:
+      type: array
+      items:
+        type: integer
+        x-constraint:
+          sign: positive
+    Forbidden:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 403
+        code:
+          type: string
+          example: S403-UPLD
+        error:
+          type: string
+          example: Forbidden
+        message:
+          type: string
+          example: Invalid request payload input / Any error from provider
+    activeBundles:
+      type: array
+      items:
+        $ref: '#/components/schemas/ActiveBundleSchema'
+    CustomBundleConfigSchema:
+      type: object
+      properties:
+        id:
+          type: string
+        priceId:
+          type: string
+        tiersMode:
+          $ref: '#/components/schemas/tiersMode'
+        tiers:
+          $ref: '#/components/schemas/tiers'
+        minMinutes:
+          type: integer
+        maxMinutes:
+          type: integer
+        stepMinutes:
+          type: integer
+        quickPicks:
+          $ref: '#/components/schemas/quickPicks'
+        mostPopular:
+          type: integer
+          x-constraint:
+            sign: positive
+        label:
+          type: string
+        recurring:
+          type: boolean
+        interval:
+          $ref: '#/components/schemas/Model46'
+      required:
+      - id
+      - priceId
+      - tiersMode
+      - tiers
+      - minMinutes
+      - maxMinutes
+      - stepMinutes
+      - quickPicks
+      - mostPopular
+      - label
+      - recurring
+      - interval
+    BadRequest:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 400
+        code:
+          type: string
+          example: S400-AHVE
+        error:
+          type: string
+          example: Bad Request
+        message:
+          type: string
+          example: Invalid request payload input
+    Model48:
+      type: string
+      enum:
+      - month
+      - year
+    Model47:
+      type: string
+      enum:
+      - active
+      - canceling
+      - canceled
+    BundlesCancelResponseSchema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: canceling
+        endsAt:
+          type: string
+          format: date
+        message:
+          type: string
+      required:
+      - status
+      - message
+    balance:
+      type: object
   securitySchemes:
     apiKey:
       type: apiKey
