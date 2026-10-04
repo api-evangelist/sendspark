@@ -160,6 +160,9 @@ apis:
   - type: Webhooks
     url: asyncapi/sendspark-webhooks-asyncapi.yml
 common:
+- type: CapabilityMap
+  url: capabilities/sendspark-capability-edges.yml
+  name: Sendspark Business Capability Map
 - type: Overlay
   url: overlays/sendspark-openapi-overlay.yaml
 - type: AgenticAccess
