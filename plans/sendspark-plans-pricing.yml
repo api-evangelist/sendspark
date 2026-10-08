@@ -85,3 +85,41 @@ notes: >-
   (https://help.sendspark.com/mcp/overview.md). On free-tier workspaces the MCP
   analytics tool returns the aggregate summary only; the per-visitor breakdown
   is returned empty and marked locked.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  - subscription
+  units: []
+  plans:
+  - name: Solo
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Growth
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Team
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Business
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Agency & Enterprise
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
