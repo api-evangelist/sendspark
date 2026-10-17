@@ -179,6 +179,37 @@ paths:
                 $ref: '#/components/schemas/ResourceNotFoundOrInvalidAccess'
 components:
   schemas:
+    extraHeaders:
+      type: array
+      example:
+      - Authorization
+      - Content-Type
+      items:
+        type: string
+    Model143:
+      type: string
+      enum:
+      - video_watched
+      - video_played
+      - video_cta_clicked
+      - video_viewed
+      - video_liked
+      - video_request_received
+      - video_generated_dv
+      - video_mp4_ready
+      - video_generated_error
+    Model217:
+      type: string
+      enum:
+      - video_watched
+      - video_played
+      - video_cta_clicked
+      - video_viewed
+      - video_liked
+      - video_request_received
+      - video_generated_dv
+      - video_mp4_ready
+      - video_generated_error
     module:
       type: string
       example: global | dynamics
@@ -217,58 +248,18 @@ components:
           $ref: '#/components/schemas/automation'
       required:
       - automation
-    Model217:
-      type: string
-      enum:
-      - video_watched
-      - video_played
-      - video_cta_clicked
-      - video_viewed
-      - video_liked
-      - video_request_received
-      - video_generated_dv
-      - video_mp4_ready
-      - video_generated_error
-    ModifyWebhookResponseSchema:
-      type: object
-    BadRequest:
+    ResourceNotFoundOrInvalidAccess:
       type: object
       properties:
         statusCode:
           type: number
-          example: 400
-        code:
-          type: string
-          example: S400-AHVE
+          example: 404
         error:
           type: string
-          example: Bad Request
+          example: Not Found
         message:
           type: string
-          example: Invalid request payload input
-    extraHeaders:
-      type: array
-      example:
-      - Authorization
-      - Content-Type
-      items:
-        type: string
-    events:
-      type: array
-      example:
-      - video_watched
-      - video_played
-      - video_cta_clicked
-      - video_viewed
-      - video_liked
-      - video_request_received
-      - video_generated_dv
-      - video_mp4_ready
-      - video_generated_error
-      items:
-        $ref: '#/components/schemas/Model217'
-    CreateWebhookResponseSchema:
-      type: object
+          example: Resource not found or invalid access
     CreateWebhookRequestPayloadSchema:
       type: object
       properties:
@@ -297,15 +288,6 @@ components:
       - name
       - url
       - module
-    automation:
-      type: object
-      properties:
-        workflowId:
-          type: number
-        provider:
-          type: string
-      required:
-      - provider
     identifiers:
       type: array
       items:
@@ -325,21 +307,18 @@ components:
       - video_generated_error
       items:
         $ref: '#/components/schemas/Model143'
-    ResourceNotFoundOrInvalidAccess:
+    automation:
       type: object
       properties:
-        statusCode:
+        workflowId:
           type: number
-          example: 404
-        error:
+        provider:
           type: string
-          example: Not Found
-        message:
-          type: string
-          example: Resource not found or invalid access
-    Model143:
-      type: string
-      enum:
+      required:
+      - provider
+    events:
+      type: array
+      example:
       - video_watched
       - video_played
       - video_cta_clicked
@@ -349,6 +328,27 @@ components:
       - video_generated_dv
       - video_mp4_ready
       - video_generated_error
+      items:
+        $ref: '#/components/schemas/Model217'
+    ModifyWebhookResponseSchema:
+      type: object
+    CreateWebhookResponseSchema:
+      type: object
+    BadRequest:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 400
+        code:
+          type: string
+          example: S400-AHVE
+        error:
+          type: string
+          example: Bad Request
+        message:
+          type: string
+          example: Invalid request payload input
   securitySchemes:
     apiKey:
       type: apiKey
