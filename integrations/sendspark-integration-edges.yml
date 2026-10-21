@@ -111,6 +111,23 @@ edges:
     year: '2020'
   detected_by: sweep-accelerator-portfolios.py
   first_seen: '2026-10-21'
+- partner_name: HubSpot (own)
+  partner: hubspot
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://ecosystem.hubspot.com/marketplace/listing/sendspark
+  mirror_of: hubspot/integrations/hubspot-integration-edges.yml
+  apps:
+  - Sendspark
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: VIDEO
 generated: '2026-10-15'
 method: searched
 source:
@@ -125,3 +142,4 @@ checked:
 - https://www.antler.co/portfolio
 - https://www.techstars.com/portfolio
 - https://www.ycombinator.com/companies
+- hubspot/integrations/hubspot-integration-edges.yml

@@ -105,3 +105,16 @@
     year: '2020'
   status: not-a-workflow
   arazzo: null
+- slug: sendspark-hubspot-own
+  label: HubSpot (own)
+  partner: hubspot
+  partner_name: HubSpot (own)
+  category: VIDEO
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://ecosystem.hubspot.com/marketplace/listing/sendspark
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
